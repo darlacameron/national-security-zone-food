@@ -14,34 +14,34 @@
     	//var storymap_data = 'http://storymap.knightlab.com/static/demo/demo.json'; // This can also be a javascript object.
 
         var storymap_data = 
-        	{ storymap: 
-        		{ slides: 
-        			[ { location: { 
-	        				name: "A farm", 
-	        				lat:-80, 
-	        				lon:50, 
-	        				zoom:10, 
-	        				line:true
+        	{ "storymap": 
+        		{ "slides": 
+        			[ { "location": { 
+	        				"name": "A farm", 
+	        				"lat":-80, 
+	        				"lon":50, 
+	        				"zoom":10, 
+	        				"line":true
 	        			},
-        				text: {
-        					headline: "Some food originated here",
-        					text: "Veggies sunt bona vobis, proinde vos postulo esse magis onion chickpea epazote chard corn sweet pepper peanut desert raisin cucumber bitterleaf asparagus chicory mung bean kohlrabi gram radicchio."
+        				"text": {
+        					"headline": "Some food originated here",
+        					"text": "Veggies sunt bona vobis, proinde vos postulo esse magis onion chickpea epazote chard corn sweet pepper peanut desert raisin cucumber bitterleaf asparagus chicory mung bean kohlrabi gram radicchio."
         				}
-        			}, { location: {
-        					name: "Shipment facility",
-        					lat: 41.8819,
-        					lon: -87.6278,
-        					zoom:10,
-        					line:true
+        			}, { "location": {
+        					"name": "Shipment facility",
+        					"lat": 41.8819,
+        					"lon": -87.6278,
+        					"zoom":10,
+        					"line":true
         				},
-        				text: {
-        				headline:"Some shipment stuff happens in Chicago",
-        				text: "Veggies sunt bona vobis, proinde vos postulo esse magis onion chickpea epazote chard corn sweet pepper peanut desert raisin cucumber bitterleaf asparagus chicory mung bean kohlrabi gram radicchio."
+        				"text": {
+        				"headline":"Some shipment stuff happens in Chicago",
+        				"text": "Veggies sunt bona vobis, proinde vos postulo esse magis onion chickpea epazote chard corn sweet pepper peanut desert raisin cucumber bitterleaf asparagus chicory mung bean kohlrabi gram radicchio."
         				}
         			}
         			] 
         		} 
-        	};
+        	}
         	console.log(storymap_data)
         var storymap = new VCO.StoryMap('storymap', storymap_data);
         window.onresize = function(event) {
