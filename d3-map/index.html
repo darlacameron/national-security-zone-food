@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<style>
+
+		/* CSS goes here. */
+
+		</style>
+	</head>
+	<body>
+		<div id='simple'></div>
+		<div id='complex'></div>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script>
+			//STEPS
+			// 1. use this to make the data http://bost.ocks.org/mike/map/
+			// 2. in the topo step, add -o --simplify-proportion .5
+			// 3. test here http://shancarter.github.io/distillery/
+			
+			var width = 960,
+				height = 1160;
+
+			var svg = d3.select("simple").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			d3.json("data/ne_10m_admin_0_map_subunits/world-small-topo.json", function(error, world) {
+			  	console.log(world);
+			  	svg.append("path")
+			      .datum(topojson.feature(world, world.objects.subunits))
+			      .attr("d", d3.geo.path().projection(d3.geo.mercator()));
+			});
+
+		</script>
+	</body>
+</html>
