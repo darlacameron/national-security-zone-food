@@ -4,9 +4,10 @@
 
 		/* CSS goes here. */
 
-		.country {fill: #ddd; stroke:#fff;}
+		.country, .state {fill: #ddd; stroke:#fff;}
 		.country.usa {fill: #ddc;}
 		.country.algeria {fill: #ddc;}
+		.state.texas {fill: #cdd;}
 		</style>
 	</head>
 	<body>
@@ -34,11 +35,17 @@
 			    .attr("width", width)
 			    .attr("height", height);
 
-			d3.json("data/ne_10m_admin_0_map_subunits/world-topo.json", function(error, world) {
+			d3.json("data/world-us-topo.json", function(error, world) {
+			  console.log(world)
 			  svg.selectAll(".subunit")
 			      .data(topojson.feature(world, world.objects.subunits).features)
 			    .enter().append("path")
 			      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+			      .attr("d", path);
+			  svg.selectAll(".states")
+			      .data(topojson.feature(world, world.objects['states-geo']).features)
+			    .enter().append("path")
+			      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 			      .attr("d", path);
 			});
 
