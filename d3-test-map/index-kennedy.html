@@ -43,12 +43,12 @@
 			var width = 960,
 				height = 1160;
 
-			var projection = d3.geo.mercator()
+			var projection = d3.geo.stereographic()
 				.center([-44.121094, 30.574085])
 				.scale(500)
 				.translate([width/2, height/2])
 				// .clipExtent([], [])
-				// .rotate([50, 0])
+				.rotate([50, 0])
 
 			var pathFunc = d3.geo.path().projection(projection);
 
