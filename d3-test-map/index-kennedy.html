@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+
+		/* CSS goes here. */
+
+		path {
+			fill: #a0a0a0;
+		}
+
+		#map {
+			width: 960px;
+			height: 1160px;
+			overflow: hidden;
+		}
+
+		path.boundary {
+			fill: none;
+			stroke: #ffffff;
+		}
+		
+		path.points {
+			fill: none;
+			stroke:steelblue;
+			stroke-width: 4px;
+		}
+
+
+		</style>
+	</head>
+	<body>
+		<div id='map'></div>
+
+
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script>
+			//STEPS
+			// 1. use this to make the data http://bost.ocks.org/mike/map/
+			// 2. in the topo step, add -o --simplify-proportion .5
+			// 3. test here http://shancarter.github.io/distillery/
+			
+			var width = 960,
+				height = 1160;
+
+			var projection = d3.geo.mercator()
+				.center([37.182914, -40.585938])
+				.scale(150)
+				.translate([width/2, height/2])
+				// .clipExtent([], [])
+				// .rotate([50, 0])
+
+			var pathFunc = d3.geo.path().projection(projection);
+
+			var pathPoints = [
+				{
+					type: 'LineString',
+					coordinates: [
+						[-97.743061, 30.267153],
+						[-87.629798, 41.878114]
+		
+					]
+				},
+				{
+					type: 'LineString',
+					coordinates: [
+						[-77.036464, 38.907231],
+						[-118.243685, 34.052234]
+		
+					]
+				}
+			];
+			
+
+			var svg = d3.select("#map").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			d3.json("data/worldtopo.json", function(error, world) {
+			  	
+			  	var subunits = topojson.feature(world, world.objects.subunits),
+			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; });
+			  	// console.log(subunits);
+
+			  	svg.append("path")
+			        .datum(subunits)
+			        .attr("d", pathFunc);
+
+			    svg.append("path")
+			        .datum(subunitsMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+			        
+			    svg.selectAll('.points')
+					.data(pathPoints)
+					.enter()
+					.append('path')
+					.attr('class', 'points')
+					.attr('d', pathFunc);
+			});
+			
+			
+
+		</script>
+	</body>
+</html>
