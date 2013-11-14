@@ -43,12 +43,12 @@
 			var width = 960,
 				height = 1160;
 
-			var projection = d3.geo.stereographic()
-				.center([-44.121094, 30.574085])
-				.scale(500)
+			var projection = d3.geo.mercator()
+				.center([-44.121094, 10.574085])
+				.scale(400)
 				.translate([width/2, height/2])
-				// .clipExtent([], [])
-				.rotate([50, 0])
+				//.clipExtent([-138.515625, 53.294772], [50.097656, -4.420352])
+				//.rotate([50, 0])
 
 			var pathFunc = d3.geo.path().projection(projection);
 
@@ -129,19 +129,19 @@
 					]
 				},
 				{
-					//port in Savannah to port in Tanger Med Morocco
+					//port in Savannah to port in Cotonou Port, Benin
 					type: 'LineString',
 					coordinates: [
 						[-81.150796, 32.123716], //Savannah port
-						[-5.494752, 35.891206] //Tanger Med Morocco port
+						[2.417421, 6.350392] //Cotonou Port, Benin
 						
 					]
 				},
 				{
-					//port in Tanger Med Morocco to Maradi, Niger
+					//port in Cotonou Port, Benin to Maradi, Niger
 					type: 'LineString',
 					coordinates: [
-						[-5.494752, 35.891206], //Tanger Med Morocco port
+						[2.417421, 6.350392], //Cotonou Port, Benin
 						[7.100000, 13.483333] //Maradi, Niger
 						
 					]
