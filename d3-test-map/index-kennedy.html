@@ -25,13 +25,21 @@
 			stroke-width: 4px;
 		}
 
+		#button {
+			padding: 10px;
+			background-color: blue;
+			color:#ffffff;
+			cursor: pointer;
+		}
 
 		</style>
 	</head>
 	<body>
+		<p id="button">Click here</p>
 		<div id='map'></div>
 
 
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
 		<script>
@@ -115,7 +123,7 @@
 					type: 'LineString',
 					coordinates: [
 						[-87.535552, 41.722964], //Port in Chicago, need to confirm actual location with Didion
-						[-89.106284, 43.539738] //Norfolk port
+						[-76.283264, 36.844077] //Norfolk port
 						
 					]
 				},
@@ -123,7 +131,7 @@
 					//port in Norfolk to port in Savannah
 					type: 'LineString',
 					coordinates: [
-						[-89.106284, 43.539738], //Norfolk port
+						[-76.283264, 36.844077], //Norfolk port
 						[-81.150796, 32.123716] //Savannah port
 						
 					]
@@ -154,7 +162,7 @@
 				.attr("width", width)
 				.attr("height", height);
 			
-			d3.json("data/worldtopo.json", function(error, world) {
+			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
 			  	var subunits = topojson.feature(world, world.objects.subunits),
 			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; });
@@ -169,14 +177,31 @@
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
 			        
-			    svg.selectAll('.points')
-					.data(pathPoints)
-					.enter()
+			    svg
+			    	//.selectAll('.points')
+					//.data(pathPoints)
+					//.enter()
 					.append('path')
 					.attr('class', 'points')
-					.attr('d', pathFunc);
+					//.attr('d', pathFunc);
+					.attr('d', pathFunc(pathPoints[0]))
 			});
 			
+			var counter = 1;
+			
+			function drawLine() {
+					//pathPoints.slice(0,1);
+					svg.append('path')
+					.attr('class', 'points')
+					.attr('d', pathFunc(pathPoints[counter]))
+					
+				counter += 1;
+			}
+			
+			
+			$('#button').on('click',function() {
+				drawLine();
+			});
 			
 
 		</script>
