@@ -71,7 +71,25 @@
 		
 		#time{
 			font-family:'Ruda', sans-serif;
-			font-size:
+			font-size: 18px;
+			position: absolute;
+			top:0px;
+			right:0px;
+			background: #3580C3;
+			color: #FEFEFE;
+			z-index:100;
+			padding:10px;
+			margin-top:0px;
+			height: 100px;
+			width: 100px;
+			text-align:center;
+			
+		}
+		
+		#count{
+			margin:5px;
+			font-family:'Ruda', sans-serif;
+			font-size: 36px;
 		}
 		
 		/*.country.niger {
@@ -86,6 +104,7 @@
 		<div id="map"></div>
 		<p id="button">>></p>
 		<p id="backButton"><<</p>
+		<div id="time">Approx.<p id="count"></p>Days</div>
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
@@ -157,6 +176,9 @@
 				writeText();
 				
 				counter += 1;
+				
+		//added to test day counter
+				document.getElementById('count').innerHTML = counter;
 			}
 
 			var animatePath = function(obj) {
