@@ -5,14 +5,14 @@
 		/* CSS goes here. */
 
 		path {
-			fill: #d2d2d2;
+			fill: #a0a0a0;
 		}
 
-		/*#map {
+		#map {
 			width: 960px;
 			height: 1160px;
 			overflow: hidden;
-		}*/
+		}
 
 		path.boundary {
 			fill: none;
@@ -22,7 +22,7 @@
 		path.points {
 			fill: none;
 			stroke:steelblue;
-			stroke-width: 3px;
+			stroke-width: 4px;
 		}
 
 		#button {
@@ -32,25 +32,12 @@
 			cursor: pointer;
 		}
 
-		path.states {
-			fill: none;
-			stroke: #ffffff;
-		}
-
-		#text {
-			font-family: Helvetica, Arial, sans-serif;
-		}
-
 
 		</style>
 	</head>
 	<body>
 		<p id="button">Click me</p>
-		<div id="map"></div>
-		<div id="text">
-			<p id="headline"></p>
-			<p id="body"></p>
-		</div>
+		<div id='map'></div>
 		
 
 
@@ -62,17 +49,15 @@
 			// 1. use this to make the data http://bost.ocks.org/mike/map/
 			// 2. in the topo step, add -o --simplify-proportion .5
 			// 3. test here http://shancarter.github.io/distillery/
-
-			var counter = 0;
 			
 			var width = 960,
-				height = 460;
+				height = 1160;
 
 			var projection = d3.geo.mercator()
-				.center([-42.871094, 25.349798])
+				.center([-44.121094, 10.574085])
 				.scale(400)
-				 
-				// .clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
+				.translate([width/2, height/2])
+				//.clipExtent([-138.515625, 53.294772], [50.097656, -4.420352])
 				//.rotate([50, 0])
 
 			var pathFunc = d3.geo.path().projection(projection);
@@ -182,9 +167,8 @@
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
 			  	var subunits = topojson.feature(world, world.objects.subunits),
-			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-			  		// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
-			  		states = topojson.feature(world, world.objects['states-geo']);
+			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; });
+			  	// console.log(subunits);
 
 			  	svg.append("path")
 			        .datum(subunits)
@@ -194,36 +178,63 @@
 			        .datum(subunitsMesh)
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
-
-			    svg.append("path")
-			        .datum(states)
-			        .attr("class", "states")
-			        .attr("d", pathFunc);
-
-				drawLine();
-			});
-
-			function drawLine() {
-				var path = svg.append('path')
+			        
+			    var path = svg
+			    	// .selectAll('.points')
+					// .data(pathPoints)
+					// .enter()
+					.append('path')
 					.attr('class', 'points')
-					.attr('d', pathFunc(pathPoints[0]));
+					// .attr('d', pathFunc)
+					.attr('d', pathFunc(pathPoints[3]))
+					// .transition()
+				 //    .duration(1000)
+				 //    .attrTween('d', pathTween);
 
-				animatePath(path);
-				pathPoints = pathPoints.slice(1);
-			}
+				 var totalLength = path.node().getTotalLength();
 
-			var animatePath = function(obj) {
-				var totalLength = obj.node().getTotalLength();
-
-				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
+			    path
+				    .attr("stroke-dasharray", totalLength + " " + totalLength)
 				    .attr("stroke-dashoffset", totalLength)
 				    .transition()
-				    .duration(1000)
+				    .duration(2000)
 				    .ease("linear")
 				    .attr("stroke-dashoffset", 0);
-			};
+			});
+
+			var pathTween = function() {
+				var interpolate = d3.scale.quantile()
+					.domain([0, 1])
+					.range(d3.range(1, pathPoints.length + 1));
+
+				return function(t) {
+					return pathFunc(pathPoints.slice(0, interpolate(t)));
+				};
+			}
+
+
+			// var pathTween = function() {
+			//     var interpolate = d3.scale.quantile()
+			//             .domain([0,1])
+			//             .range(d3.range(1, pathPoints.length + 1));
+			//     return function(t) {
+			//         return pathFunc(pathPoints.slice(0, interpolate(t)));
+			//     };
+			// }​
+
+			var counter = 1;
+
+			function drawLine() {
+				// pathPoints.slice(0, 1);
+				svg.append('path')
+					.attr('class', 'points')
+					.attr('d', pathFunc(pathPoints[counter]));
+
+				counter += 1;
+			}
 
 			$('#button').on('click', function() {
+
 				drawLine();
 			});
 		</script>
