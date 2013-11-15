@@ -7,6 +7,7 @@
 		path {
 			fill: #a0a0a0;
 		}
+		
 
 		#map {
 			width: 960px;
@@ -31,13 +32,20 @@
 			color:#ffffff;
 			cursor: pointer;
 		}
+		
+		text {
+			font-family: Helvetica, Arial, sans-serif;
+		}
 
 		</style>
 	</head>
 	<body>
 		<p id="button">Click here</p>
 		<div id='map'></div>
-
+		<div id='text'>
+			<p id='headline'></p>
+			<p id='body'></p>
+		</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -47,6 +55,8 @@
 			// 1. use this to make the data http://bost.ocks.org/mike/map/
 			// 2. in the topo step, add -o --simplify-proportion .5
 			// 3. test here http://shancarter.github.io/distillery/
+			
+			var counter = 0;
 			
 			var width = 960,
 				height = 1160;
@@ -187,15 +197,11 @@
 					.attr('d', pathFunc(pathPoints[0]))
 			});
 			
-			var counter = 1;
-			
 			function drawLine() {
 					//pathPoints.slice(0,1);
 					svg.append('path')
 					.attr('class', 'points')
 					.attr('d', pathFunc(pathPoints[counter]))
-					
-				counter += 1;
 			}
 			
 			
