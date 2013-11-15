@@ -5,8 +5,7 @@ var process_text = [
 	},
 	{
 		headline: '2. USAID asks for NGO & shipping proposals - Washington, DC',
-		body: 'USAID requests proposals from aid agencies, like Catholic Relief Services, Save the Children or World Vision. The agencies propose how they would provide aid to the country, listing the specific food they’d like to send and how much. 
-'
+		body: 'USAID requests proposals from aid agencies, like Catholic Relief Services, Save the Children or World Vision. The agencies propose how they would provide aid to the country, listing the specific food they’d like to send and how much.'
 	}
 	
 ];
