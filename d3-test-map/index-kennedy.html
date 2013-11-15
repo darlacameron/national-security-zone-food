@@ -36,7 +36,7 @@
 
 		path.states {
 			fill: none;
-			stroke: #fefefe;
+			stroke: #FEFEFE;
 		}
 		
 		#headline {
@@ -61,7 +61,7 @@
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
-			
+			<p id="time"></p>
 		</div>
 		
 
@@ -147,10 +147,15 @@
 				$('#headline').text(process_text[counter].headline);
 				$('#body').text(process_text[counter].body);
 			}
+			
+			function timeLapsed() {
+				$('#time').text(counter);
+			}
 
 			$('#button').on('click', function() {
 				drawLine();
 			});
+			
 		</script>
 	</body>
 </html>
