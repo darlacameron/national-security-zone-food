@@ -16,40 +16,52 @@
 
 		path.boundary {
 			fill: none;
-			stroke: #ffffff;
+			stroke: #fefefe;
 		}
 		
 		path.points {
 			fill: none;
-			stroke:steelblue;
+			stroke:#3580C3;
 			stroke-width: 3px;
 		}
 
 		#button {
+			float:right;
 			padding: 10px;
-			background-color: blue;
-			color: #ffffff;
+			background-color: #3580C3;
+			color: #fefefe;
 			cursor: pointer;
+			font-family:'Open Sans', sans-serif;
 		}
 
 		path.states {
 			fill: none;
-			stroke: #ffffff;
+			stroke: #fefefe;
+		}
+		
+		#headline {
+			font-family: 'Ruda', sans-serif;
+			font-size:18px;
+			color:#1A374D;
 		}
 
 		#text {
-			font-family: Helvetica, Arial, sans-serif;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 14px;
+			line-height:17px;
 		}
 
 
 		</style>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<p id="button">Click me</p>
 		<div id="map"></div>
+		<p id="button">>></p>
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
+			
 		</div>
 		
 
@@ -58,6 +70,7 @@
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
 		<script src="data/process-text.js"></script>
+		<script src="data/path_points.js"></script>
 		<script>
 			//STEPS
 			// 1. use this to make the data http://bost.ocks.org/mike/map/
@@ -66,115 +79,17 @@
 
 			var counter = 0;
 			
-			var width = 960,
-				height = 460;
+			var width = 1250,
+				height = 500;
 
 			var projection = d3.geo.mercator()
-				.center([-42.871094, 25.349798])
-				.scale(400)
+				.center([-52.871094, 25.349798])
+				.scale(600)
 				 
 				// .clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
 				//.rotate([50, 0])
 
 			var pathFunc = d3.geo.path().projection(projection);
-
-			var pathPoints = [
-			
-					//Declaration of emergency/DART response can we shade Niger to show where it starts or something?			
-				
-				// {
-				// 	//AID requests NGO proposals, Niger to DC		
-				// 	type: 'LineString',
-				// 	coordinates: [
-				// 		[8.081666, 17.607789], //Niger, general search for coordinates
-				// 		[-77.029716, 38.895300] //USAID office, DC
-		
-				// 	]
-				// },
-				// {
-				// 	//Goes to KCCO for bids, DC to Kansas City
-				// 	type: 'LineString',
-				// 	coordinates: [
-				// 		[-77.029716, 38.895300], //USAID office, DC
-				// 		[-94.506628, 39.009088] //KCCO
-		
-				// 	]
-				// },
-				// {
-				// 	//farm to Didion processor				
-				// 	type: 'LineString',
-				// 	coordinates: [
-				// 		[-89.127544, 43.596402], //Sanderson's Farm
-				// 		[-89.106284, 43.539738] //Didion
-		
-				// 	]
-				// },
-				// {
-				// 	//farm to Didion processor	
-				// 	type: 'LineString',
-				// 	coordinates: [
-				// 		[-89.135772, 43.547443], //Weirsma's Farm
-				// 		[-89.106284, 43.539738] //Didion
-		
-				// 	]
-				// },
-				// {
-				// 	//farm to Didion processor	
-				// 	type: 'LineString',
-				// 	coordinates: [
-				// 		[-88.814436, 43.531547], //Ferron's Farm
-				// 		[-89.106284, 43.539738] //Didion
-		
-				// 	]
-				// },
-				{
-					//Didion processor to port in Chicago
-					type: 'LineString',
-					coordinates: [
-						[-89.106284, 43.539738], //Didion
-						[-87.535552, 41.722964] //Port in Chicago, need to confirm actual location with Didion
-		
-					]
-				},
-				{
-					//port in Chicago to port in Norfolk
-					type: 'LineString',
-					coordinates: [
-						[-87.535552, 41.722964], //Port in Chicago, need to confirm actual location with Didion
-						[-76.283264, 36.844077] //Norfolk port
-						
-					]
-				},
-				{
-					//port in Norfolk to port in Savannah
-					type: 'LineString',
-					coordinates: [
-						[-76.283264, 36.844077], //Norfolk port
-						[-81.150796, 32.123716] //Savannah port
-						
-					]
-				},
-				{
-					//port in Savannah to port in Cotonou Port, Benin
-					type: 'LineString',
-					coordinates: [
-						[-81.150796, 32.123716], //Savannah port
-						[2.417421, 6.350392] //Cotonou Port, Benin
-						
-					]
-				},
-				{
-					//port in Cotonou Port, Benin to Maradi, Niger
-					type: 'LineString',
-					coordinates: [
-						[2.417421, 6.350392], //Cotonou Port, Benin
-						[7.100000, 13.483333] //Maradi, Niger
-						
-					]
-				}
-				//May have distribution to camps here, but waiting on info from Save the Children
-			];
-			
 
 			var svg = d3.select("#map").append("svg")
 				.attr("width", width)
