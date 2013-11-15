@@ -3,16 +3,21 @@
 		<style>
 
 		/* CSS goes here. */
+		
+		body{
+			background:#fefefe;
+		}
 
 		path {
 			fill: #d2d2d2;
 		}
 
-		/*#map {
-			width: 960px;
+		#map {
+			/*width: 960px;
 			height: 1160px;
-			overflow: hidden;
-		}*/
+			overflow: hidden;*/
+			text-align:center;
+		}
 
 		path.boundary {
 			fill: none;
@@ -32,6 +37,17 @@
 			color: #fefefe;
 			cursor: pointer;
 			font-family:'Open Sans', sans-serif;
+			height:100px;
+		}
+		
+		#backButton {
+			float:left;
+			padding: 10px;
+			background-color: #3580C3;
+			color: #fefefe;
+			cursor: pointer;
+			font-family:'Open Sans', sans-serif;
+			height: 100px;
 		}
 
 		path.states {
@@ -46,10 +62,21 @@
 		}
 
 		#text {
+			width:80%;
+			margin:auto;
 			font-family: 'Open Sans', sans-serif;
 			font-size: 14px;
 			line-height:17px;
 		}
+		
+		#time{
+			font-family:'Ruda', sans-serif;
+			font-size:
+		}
+		
+		/*.country.niger {
+			fill:#000;
+		}*/
 
 
 		</style>
@@ -58,10 +85,10 @@
 	<body>
 		<div id="map"></div>
 		<p id="button">>></p>
+		<p id="backButton"><<</p>
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
-			<p id="time"></p>
 		</div>
 		
 

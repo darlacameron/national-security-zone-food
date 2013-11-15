@@ -4,7 +4,7 @@ var pathPoints = [
 				//Declaration of emergency - can we shade Niger to show where it starts or something?
 				 	type: 'LineString',
 					coordinates: [
-						[0, 0], //filler
+						[10, 10], //filler
 						[100, 100] //filler
 		 			]
 				},
