@@ -57,6 +57,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script src="data/process-text.js"></script>
 		<script>
 			//STEPS
 			// 1. use this to make the data http://bost.ocks.org/mike/map/
@@ -206,10 +207,14 @@
 			function drawLine() {
 				var path = svg.append('path')
 					.attr('class', 'points')
-					.attr('d', pathFunc(pathPoints[0]));
+					.attr('d', pathFunc(pathPoints[counter]));
 
 				animatePath(path);
-				pathPoints = pathPoints.slice(1);
+				// pathPoints = pathPoints.slice(1);
+
+				writeText();
+
+				counter += 1;
 			}
 
 			var animatePath = function(obj) {
@@ -222,6 +227,11 @@
 				    .ease("linear")
 				    .attr("stroke-dashoffset", 0);
 			};
+
+			function writeText() {
+				$('#headline').text(process_text[counter].headline);
+				$('#body').text(process_text[counter].body);
+			}
 
 			$('#button').on('click', function() {
 				drawLine();
