@@ -16,7 +16,7 @@
 			/*width: 960px;
 			height: 1160px;
 			overflow: hidden;*/
-			text-align:center;
+			/*text-align:center;*/
 		}
 
 		path.boundary {
@@ -103,8 +103,14 @@
 	<body>
 		<div id="map"></div>
 		<div class="nav">
+<<<<<<< HEAD
 		<p id="next">>></p>
 		<p id="prev"><<</p></div>
+=======
+			<p id="next">>></p>
+			<p id="prev"><<</p>
+		</div>
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 		<div id="time">Approx.<p id="count"></p>Days</div>
 		<div id="text">
 			<p id="headline"></p>
@@ -119,11 +125,8 @@
 		<script src="data/process-text.js"></script>
 		<script src="data/path_points.js"></script>
 		<script>
-			//STEPS
-			// 1. use this to make the data http://bost.ocks.org/mike/map/
-			// 2. in the topo step, add -o --simplify-proportion .5
-			// 3. test here http://shancarter.github.io/distillery/
 
+<<<<<<< HEAD
 			var counter = 0; 
 			var animating = false;
 			
@@ -136,12 +139,26 @@
 				 
 				//.clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
 				//.rotate([50, 0])
+=======
+			var counter = 0,
+				animating = false,
+				centered;
+			
+			var width = 900,
+				height = 500;
+
+			var projection = d3.geo.mercator()
+				.center([-35.949707, 26.358221])
+				.scale(400);
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 
 			var pathFunc = d3.geo.path().projection(projection);
 
 			var svg = d3.select("#map").append("svg")
 				.attr("width", width)
 				.attr("height", height);
+
+			var g = svg.append('g');
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
@@ -150,25 +167,29 @@
 			  		// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 			  		states = topojson.feature(world, world.objects['states-geo']);
 
-			  	svg.append("path")
+			  	g.append("path")
 			        .datum(subunits)
-			        .attr("d", pathFunc);
+			        .attr("d", pathFunc)
+			        .on("click", clicked);
 
-			    svg.append("path")
+			    g.append("path")
 			        .datum(subunitsMesh)
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
 
-			    svg.append("path")
+			    g.append("path")
 			        .datum(states)
 			        .attr("class", "states")
 			        .attr("d", pathFunc);
 
-				drawLine();
+				var p = drawLine();
+				animatePath(p);
+				writeText();
 			});
 
 			function drawLine() {
 				animating = true;
+<<<<<<< HEAD
 				
 				var path = svg.append('path')
 					.attr('class', 'points')
@@ -180,9 +201,18 @@
 				
 				writeText();
 				
+=======
+
+				var path = g.append('path')
+					.attr('class', 'points')
+					.attr('id', 'point-' + counter)
+					.attr('d', pathFunc(pathPoints[counter]));
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 				
-		//added to test day counter
+				//added to test day counter
 				document.getElementById('count').innerHTML = counter;
+
+				return path;
 			}
 
 			var animatePath = function(obj) {
@@ -194,7 +224,25 @@
 				    .duration(1000)
 				    .ease("linear")
 				    .attr("stroke-dashoffset", 0)
+<<<<<<< HEAD
 				    .each('end', function(){
+=======
+				    .each('end', function() {
+				    	animating = false;
+				    });
+			};
+
+			var animatePathReverse = function(obj) {
+				var totalLength = obj.node().getTotalLength();
+
+				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
+				    .attr("stroke-dashoffset", 0)
+				    .transition()
+				    .duration(1000)
+				    .ease("linear")
+				    .attr("stroke-dashoffset", totalLength)
+				    .each('end', function() {
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 				    	animating = false;
 				    });
 			};
@@ -208,21 +256,85 @@
 				$('#time').text(counter);
 			}
 
+<<<<<<< HEAD
 			//$('#button').on('click', function() {
 			//	drawLine();
 			//});
 			
+=======
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 			$('#next').on('click', function() {
 				if (animating) {
 					return;
 				}
+<<<<<<< HEAD
 				if (counter === pathPoints.length-1) {
+=======
+
+				if (counter === pathPoints.length - 1) {
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 					counter = 0;
 				} else {
 					counter += 1;
 				}
+<<<<<<< HEAD
 				drawLine();
+=======
+				
+				var p = drawLine();
+				animatePath(p);
+				writeText();
+>>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 			});
+
+			$('#prev').on('click', function() {
+				if (animating) {
+					return;
+				}
+
+				$('#point-' + counter).remove();
+				
+				var p = drawLine();
+				animatePathReverse(p);
+				writeText();
+
+
+				if (counter === 0) {
+					counter = pathPoints.length - 1;
+				} else {
+					counter -= 1;
+				}
+			});
+
+
+			function clicked(d) {
+			  var x, y, k;
+
+			  if (d && centered !== d) {
+			    // var centroid = pathFunc.centroid(d);
+			    var centroid = [87.976074, 80.733377];
+			    x = centroid[0];
+			    y = centroid[1];
+			    k = 10;
+			    centered = d;
+			  } else {
+			    x = width / 2;
+			    y = height / 2;
+			    k = 1;
+			    centered = null;
+			  }
+
+			  g.selectAll("path")
+			      .classed("active", centered && function(d) { return d === centered; });
+
+			  g.transition()
+			      .duration(750)
+			      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+			      .style("stroke-width", 1.5 / k + "px");
+
+			  d3.selectAll('path.points').style('stroke-width', 1 / k + 'px');
+			}
+
 			
 			$('#prev').on('click', function() {
 				if (animating) {

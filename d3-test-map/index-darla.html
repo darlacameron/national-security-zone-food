@@ -1,0 +1,226 @@
+<html>
+	<head>
+		<style>
+
+		/* CSS goes here. */
+		
+		body{
+			background:#fefefe;
+		}
+
+		path {
+			fill: #A4B48C;
+		}
+
+		#map {
+			/*width: 960px;
+			height: 1160px;
+			overflow: hidden;*/
+			text-align:center;
+		}
+
+		.country, .state {stroke:#fefefe; stroke-width:1px;}
+		
+		/*when the line goes to a country or state, we can add and remove this highlight class*/
+		path .highlight {fill:#679AC7;}
+
+		/*for now, just highlighting all of these at once*/
+		.country.niger {fill:#679AC7;}
+		.state.district-of-columbia {fill:#679AC7;}
+		.state.missouri {fill:#679AC7;}
+		.state.wisconsin {fill:#679AC7;}
+		.state.illinois {fill:#679AC7;}
+		.state.virginia {fill:#679AC7;}
+		.country.benin {fill:#679AC7;}
+
+
+		path.boundary {
+			fill: none;
+			stroke: #fefefe;
+		}
+		
+		path.points {
+			fill: none;
+			stroke:#3580C3;
+			stroke-width: 3px;
+		}
+
+		#button {
+			float:right;
+			padding: 10px;
+			background-color: #3580C3;
+			color: #fefefe;
+			cursor: pointer;
+			font-family:'Open Sans', sans-serif;
+			height:100px;
+		}
+		
+		#backButton {
+			float:left;
+			padding: 10px;
+			background-color: #3580C3;
+			color: #fefefe;
+			cursor: pointer;
+			font-family:'Open Sans', sans-serif;
+			height: 100px;
+		}
+
+		path.states {
+			fill: none;
+			stroke: #FEFEFE;
+		}
+		
+		#headline {
+			font-family: 'Ruda', sans-serif;
+			font-size:18px;
+			color:#1A374D;
+		}
+
+		#text {
+			width:80%;
+			margin:auto;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 14px;
+			line-height:17px;
+		}
+		
+		#time{
+			font-family:'Ruda', sans-serif;
+			font-size: 18px;
+			position: absolute;
+			top:0px;
+			right:0px;
+			background: #3580C3;
+			color: #FEFEFE;
+			z-index:100;
+			padding:10px;
+			margin-top:0px;
+			height: 100px;
+			width: 100px;
+			text-align:center;
+			
+		}
+		
+		#count{
+			margin:5px;
+			font-family:'Ruda', sans-serif;
+			font-size: 36px;
+		}
+		
+		/*.country.niger {
+			fill:#000;
+		}*/
+
+
+		</style>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id="map"></div>
+		<p id="button"></p>
+		<p id="backButton"></p>
+		<div id="time">Approx.<p id="count"></p>Days</div>
+		<div id="text">
+			<p id="headline"></p>
+			<p id="body"></p>
+		</div>
+		
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script src="data/process-text.js"></script>
+		<script src="data/path_points.js"></script>
+		<script>
+			
+
+			var counter = 0;
+			
+			var width = 1250,
+				height = 500;
+
+			var projection = d3.geo.mercator()
+				.center([-52.871094, 25.349798])
+				.scale(600)
+				 
+				// .clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
+				//.rotate([50, 0])
+
+			var pathFunc = d3.geo.path().projection(projection);
+
+			var svg = d3.select("#map").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			d3.json("data/world-us-topo.json", function(error, world) {
+			  	
+			  	//used this instead of mesh to add the country shapes. we can do the outlines directly w/ svg styles instead of adding them separately, i think.
+
+			  	svg.selectAll(".subunit")
+				      .data(topojson.feature(world, world.objects.subunits).features)
+				    .enter().append("path")
+				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
+				  svg.selectAll(".states")
+				      .data(topojson.feature(world, world.objects['states-geo']).features)
+				    .enter().append("path")
+				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
+
+
+				drawLine();
+			});
+
+			function drawLine() {
+				var path = svg.append('path')
+					.attr('class', 'points')
+					.attr('d', pathFunc(pathPoints[counter]));
+
+				animatePath(path);
+				//pathPoints = pathPoints.slice(1);
+				
+				writeText();
+				
+				counter += 1;
+				
+		//added to test day counter
+				document.getElementById('count').innerHTML = counter;
+			}
+
+			var animatePath = function(obj) {
+				var totalLength = obj.node().getTotalLength();
+
+				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
+				    .attr("stroke-dashoffset", totalLength)
+				    .transition()
+				    .duration(1000)
+				    .ease("linear")
+				    .attr("stroke-dashoffset", 0);
+			};
+			
+			function writeText() {
+				$('#headline').text(process_text[counter].headline);
+				$('#body').text(process_text[counter].body);
+			}
+			
+			function timeLapsed() {
+				$('#time').text(counter);
+			}
+
+			$('#button').on('click', function() {
+				drawLine();
+			});
+
+			function convertToSlug(Text)
+				{
+				    return Text
+				        .toLowerCase()
+				        .replace(/[^\w ]+/g,'')
+				        .replace(/ +/g,'-')
+				        ;
+				}
+			
+		</script>
+	</body>
+</html>

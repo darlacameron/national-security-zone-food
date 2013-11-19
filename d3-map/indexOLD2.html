@@ -1,0 +1,242 @@
+<html>
+	<head>
+		<style>
+
+		/* CSS goes here. */
+
+		path {
+			fill: #a0a0a0;
+		}
+
+		#map {
+			width: 960px;
+			height: 1160px;
+			overflow: hidden;
+		}
+
+		path.boundary {
+			fill: none;
+			stroke: #ffffff;
+		}
+		
+		path.points {
+			fill: none;
+			stroke:steelblue;
+			stroke-width: 4px;
+		}
+
+		#button {
+			padding: 10px;
+			background-color: blue;
+			color: #ffffff;
+			cursor: pointer;
+		}
+
+
+		</style>
+	</head>
+	<body>
+		<p id="button">Click me</p>
+		<div id='map'></div>
+		
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script>
+			//STEPS
+			// 1. use this to make the data http://bost.ocks.org/mike/map/
+			// 2. in the topo step, add -o --simplify-proportion .5
+			// 3. test here http://shancarter.github.io/distillery/
+			
+			var width = 960,
+				height = 1160;
+
+			var projection = d3.geo.mercator()
+				.center([-44.121094, 10.574085])
+				.scale(400)
+				.translate([width/2, height/2])
+				//.clipExtent([-138.515625, 53.294772], [50.097656, -4.420352])
+				//.rotate([50, 0])
+
+			var pathFunc = d3.geo.path().projection(projection);
+
+			var pathPoints = [
+			
+					//Declaration of emergency/DART response can we shade Niger to show where it starts or something?			
+				
+				// {
+				// 	//AID requests NGO proposals, Niger to DC		
+				// 	type: 'LineString',
+				// 	coordinates: [
+				// 		[8.081666, 17.607789], //Niger, general search for coordinates
+				// 		[-77.029716, 38.895300] //USAID office, DC
+		
+				// 	]
+				// },
+				// {
+				// 	//Goes to KCCO for bids, DC to Kansas City
+				// 	type: 'LineString',
+				// 	coordinates: [
+				// 		[-77.029716, 38.895300], //USAID office, DC
+				// 		[-94.506628, 39.009088] //KCCO
+		
+				// 	]
+				// },
+				// {
+				// 	//farm to Didion processor				
+				// 	type: 'LineString',
+				// 	coordinates: [
+				// 		[-89.127544, 43.596402], //Sanderson's Farm
+				// 		[-89.106284, 43.539738] //Didion
+		
+				// 	]
+				// },
+				// {
+				// 	//farm to Didion processor	
+				// 	type: 'LineString',
+				// 	coordinates: [
+				// 		[-89.135772, 43.547443], //Weirsma's Farm
+				// 		[-89.106284, 43.539738] //Didion
+		
+				// 	]
+				// },
+				// {
+				// 	//farm to Didion processor	
+				// 	type: 'LineString',
+				// 	coordinates: [
+				// 		[-88.814436, 43.531547], //Ferron's Farm
+				// 		[-89.106284, 43.539738] //Didion
+		
+				// 	]
+				// },
+				{
+					//Didion processor to port in Chicago
+					type: 'LineString',
+					coordinates: [
+						[-89.106284, 43.539738], //Didion
+						[-87.535552, 41.722964] //Port in Chicago, need to confirm actual location with Didion
+		
+					]
+				},
+				{
+					//port in Chicago to port in Norfolk
+					type: 'LineString',
+					coordinates: [
+						[-87.535552, 41.722964], //Port in Chicago, need to confirm actual location with Didion
+						[-76.283264, 36.844077] //Norfolk port
+						
+					]
+				},
+				{
+					//port in Norfolk to port in Savannah
+					type: 'LineString',
+					coordinates: [
+						[-76.283264, 36.844077], //Norfolk port
+						[-81.150796, 32.123716] //Savannah port
+						
+					]
+				},
+				{
+					//port in Savannah to port in Cotonou Port, Benin
+					type: 'LineString',
+					coordinates: [
+						[-81.150796, 32.123716], //Savannah port
+						[2.417421, 6.350392] //Cotonou Port, Benin
+						
+					]
+				},
+				{
+					//port in Cotonou Port, Benin to Maradi, Niger
+					type: 'LineString',
+					coordinates: [
+						[2.417421, 6.350392], //Cotonou Port, Benin
+						[7.100000, 13.483333] //Maradi, Niger
+						
+					]
+				}
+				//May have distribution to camps here, but waiting on info from Save the Children
+			];
+			
+
+			var svg = d3.select("#map").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			d3.json("data/world-us-topo.json", function(error, world) {
+			  	
+			  	var subunits = topojson.feature(world, world.objects.subunits),
+			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; });
+			  	// console.log(subunits);
+
+			  	svg.append("path")
+			        .datum(subunits)
+			        .attr("d", pathFunc);
+
+			    svg.append("path")
+			        .datum(subunitsMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+			        
+			    var path = svg
+			    	// .selectAll('.points')
+					// .data(pathPoints)
+					// .enter()
+					.append('path')
+					.attr('class', 'points')
+					// .attr('d', pathFunc)
+					.attr('d', pathFunc(pathPoints[3]))
+					// .transition()
+				 //    .duration(1000)
+				 //    .attrTween('d', pathTween);
+
+				 var totalLength = path.node().getTotalLength();
+
+			    path
+				    .attr("stroke-dasharray", totalLength + " " + totalLength)
+				    .attr("stroke-dashoffset", totalLength)
+				    .transition()
+				    .duration(2000)
+				    .ease("linear")
+				    .attr("stroke-dashoffset", 0);
+			});
+
+			var pathTween = function() {
+				var interpolate = d3.scale.quantile()
+					.domain([0, 1])
+					.range(d3.range(1, pathPoints.length + 1));
+
+				return function(t) {
+					return pathFunc(pathPoints.slice(0, interpolate(t)));
+				};
+			}
+
+
+			// var pathTween = function() {
+			//     var interpolate = d3.scale.quantile()
+			//             .domain([0,1])
+			//             .range(d3.range(1, pathPoints.length + 1));
+			//     return function(t) {
+			//         return pathFunc(pathPoints.slice(0, interpolate(t)));
+			//     };
+			// }​
+
+			var counter = 1;
+
+			function drawLine() {
+				// pathPoints.slice(0, 1);
+				svg.append('path')
+					.attr('class', 'points')
+					.attr('d', pathFunc(pathPoints[counter]));
+
+				counter += 1;
+			}
+
+			$('#button').on('click', function() {
+
+				drawLine();
+			});
+		</script>
+	</body>
+</html>
