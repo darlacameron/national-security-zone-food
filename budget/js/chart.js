@@ -30,7 +30,7 @@ var svg = d3.select("chart").append("svg")
 d3.csv("../data/test-data.csv", function(error, data) {
   data.forEach(function(d) {
   		console.log(d)
-  }
+  })
 });
 
 
