@@ -9,7 +9,7 @@
 		}
 
 		path {
-			fill: #A4B48C;
+			fill: lightgrey;
 		}
 
 		#map {
@@ -30,7 +30,7 @@
 			stroke-width: 3px;
 		}
 
-		#button {
+		#next {
 			float:right;
 			padding: 10px;
 			background-color: #3580C3;
@@ -40,7 +40,7 @@
 			height:100px;
 		}
 		
-		#backButton {
+		#prev {
 			float:left;
 			padding: 10px;
 			background-color: #3580C3;
@@ -102,8 +102,9 @@
 	</head>
 	<body>
 		<div id="map"></div>
-		<p id="button">>></p>
-		<p id="backButton"><<</p>
+		<div class="nav">
+		<p id="next">>></p>
+		<p id="prev"><<</p></div>
 		<div id="time">Approx.<p id="count"></p>Days</div>
 		<div id="text">
 			<p id="headline"></p>
@@ -123,16 +124,17 @@
 			// 2. in the topo step, add -o --simplify-proportion .5
 			// 3. test here http://shancarter.github.io/distillery/
 
-			var counter = 0;
+			var counter = 0; 
+			var animating = false;
 			
-			var width = 1250,
+			var width = 960,
 				height = 500;
 
 			var projection = d3.geo.mercator()
 				.center([-52.871094, 25.349798])
-				.scale(600)
+				.scale(400)
 				 
-				// .clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
+				//.clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
 				//.rotate([50, 0])
 
 			var pathFunc = d3.geo.path().projection(projection);
@@ -166,16 +168,18 @@
 			});
 
 			function drawLine() {
+				animating = true;
+				
 				var path = svg.append('path')
 					.attr('class', 'points')
+					.attr('id','point-' + counter)
 					.attr('d', pathFunc(pathPoints[counter]));
 
 				animatePath(path);
-				//pathPoints = pathPoints.slice(1);
+				
 				
 				writeText();
 				
-				counter += 1;
 				
 		//added to test day counter
 				document.getElementById('count').innerHTML = counter;
@@ -189,7 +193,10 @@
 				    .transition()
 				    .duration(1000)
 				    .ease("linear")
-				    .attr("stroke-dashoffset", 0);
+				    .attr("stroke-dashoffset", 0)
+				    .each('end', function(){
+				    	animating = false;
+				    });
 			};
 			
 			function writeText() {
@@ -201,8 +208,35 @@
 				$('#time').text(counter);
 			}
 
-			$('#button').on('click', function() {
+			//$('#button').on('click', function() {
+			//	drawLine();
+			//});
+			
+			$('#next').on('click', function() {
+				if (animating) {
+					return;
+				}
+				if (counter === pathPoints.length-1) {
+					counter = 0;
+				} else {
+					counter += 1;
+				}
 				drawLine();
+			});
+			
+			$('#prev').on('click', function() {
+				if (animating) {
+					return;
+				}
+			
+				$('#point-'+counter).remove();
+				
+				if (counter === 0) {
+					counter = pathPoints.length-1;
+				} else {
+					counter -= 1;
+				}
+				writeText ();
 			});
 			
 		</script>
