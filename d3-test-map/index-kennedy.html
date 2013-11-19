@@ -9,7 +9,7 @@
 		}
 
 		path {
-			fill: lightgrey;
+			fill: #A4B48C;
 		}
 
 		#map {
@@ -103,14 +103,9 @@
 	<body>
 		<div id="map"></div>
 		<div class="nav">
-<<<<<<< HEAD
-		<p id="next">>></p>
-		<p id="prev"><<</p></div>
-=======
 			<p id="next">>></p>
 			<p id="prev"><<</p>
 		</div>
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 		<div id="time">Approx.<p id="count"></p>Days</div>
 		<div id="text">
 			<p id="headline"></p>
@@ -126,20 +121,6 @@
 		<script src="data/path_points.js"></script>
 		<script>
 
-<<<<<<< HEAD
-			var counter = 0; 
-			var animating = false;
-			
-			var width = 960,
-				height = 500;
-
-			var projection = d3.geo.mercator()
-				.center([-52.871094, 25.349798])
-				.scale(400)
-				 
-				//.clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
-				//.rotate([50, 0])
-=======
 			var counter = 0,
 				animating = false,
 				centered;
@@ -150,7 +131,6 @@
 			var projection = d3.geo.mercator()
 				.center([-35.949707, 26.358221])
 				.scale(400);
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 
 			var pathFunc = d3.geo.path().projection(projection);
 
@@ -189,25 +169,11 @@
 
 			function drawLine() {
 				animating = true;
-<<<<<<< HEAD
-				
-				var path = svg.append('path')
-					.attr('class', 'points')
-					.attr('id','point-' + counter)
-					.attr('d', pathFunc(pathPoints[counter]));
-
-				animatePath(path);
-				
-				
-				writeText();
-				
-=======
 
 				var path = g.append('path')
 					.attr('class', 'points')
 					.attr('id', 'point-' + counter)
 					.attr('d', pathFunc(pathPoints[counter]));
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 				
 				//added to test day counter
 				document.getElementById('count').innerHTML = counter;
@@ -224,9 +190,6 @@
 				    .duration(1000)
 				    .ease("linear")
 				    .attr("stroke-dashoffset", 0)
-<<<<<<< HEAD
-				    .each('end', function(){
-=======
 				    .each('end', function() {
 				    	animating = false;
 				    });
@@ -242,7 +205,6 @@
 				    .ease("linear")
 				    .attr("stroke-dashoffset", totalLength)
 				    .each('end', function() {
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 				    	animating = false;
 				    });
 			};
@@ -256,35 +218,20 @@
 				$('#time').text(counter);
 			}
 
-<<<<<<< HEAD
-			//$('#button').on('click', function() {
-			//	drawLine();
-			//});
-			
-=======
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 			$('#next').on('click', function() {
 				if (animating) {
 					return;
 				}
-<<<<<<< HEAD
-				if (counter === pathPoints.length-1) {
-=======
 
 				if (counter === pathPoints.length - 1) {
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 					counter = 0;
 				} else {
 					counter += 1;
 				}
-<<<<<<< HEAD
-				drawLine();
-=======
 				
 				var p = drawLine();
 				animatePath(p);
 				writeText();
->>>>>>> 61bfef84d03dd7b7113436290fcb96769555af5c
 			});
 
 			$('#prev').on('click', function() {
@@ -335,21 +282,6 @@
 			  d3.selectAll('path.points').style('stroke-width', 1 / k + 'px');
 			}
 
-			
-			$('#prev').on('click', function() {
-				if (animating) {
-					return;
-				}
-			
-				$('#point-'+counter).remove();
-				
-				if (counter === 0) {
-					counter = pathPoints.length-1;
-				} else {
-					counter -= 1;
-				}
-				writeText ();
-			});
 			
 		</script>
 	</body>
