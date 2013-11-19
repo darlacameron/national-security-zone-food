@@ -1,5 +1,10 @@
+
+
 var data = {};
 
+console.log (UN);
+
+console.log (UN[0].Country);
 
 // SETUP VARIABLES, CAN CHANGE THESE TO RESIZE CHART
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
