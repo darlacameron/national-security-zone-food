@@ -20,11 +20,19 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+d3.csv("../data/test-data.csv", function(error, data) {
+  data.forEach(function(d) {
+  		console.log(d)
+  }
+});
+
 
 
 
