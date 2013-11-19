@@ -156,27 +156,27 @@
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
-			  /*	var subunits = topojson.feature(world, world.objects.subunits),
-			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-			  		// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
-			  		states = topojson.feature(world, world.objects['states-geo']);
+			  	// var subunits = topojson.feature(world, world.objects.subunits),
+			  	// 	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
+			  	// 	// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
+			  	// 	states = topojson.feature(world, world.objects['states-geo']);
 
-			  	g.append("path")
-			        .datum(subunits)
-			        .attr("d", pathFunc)
-			        .on("click", clicked);
+			  	// g.append("path")
+			   //      .datum(subunits)
+			   //      .attr("d", pathFunc)
+			   //      .on("click", clicked);
 
-			    g.append("path")
-			        .datum(subunitsMesh)
-			        .attr("class", "boundary")
-			        .attr("d", pathFunc);
+			   //  g.append("path")
+			   //      .datum(subunitsMesh)
+			   //      .attr("class", "boundary")
+			   //      .attr("d", pathFunc);
 
-			    g.append("path")
-			        .datum(states)
-			        .attr("class", "states")
-			        .attr("d", pathFunc);*/
+			   //  g.append("path")
+			   //      .datum(states)
+			   //      .attr("class", "states")
+			   //      .attr("d", pathFunc);
 
-	// DARLAS VERSION TO SELECT STATES. RIGHT NOW IS DRAWING ON TOP OF THE LINES THO
+	// darla's version of states digs deeper into those country sets to add state names 
 			svg.selectAll(".subunit")
 				      .data(topojson.feature(world, world.objects.subunits).features)
 				    .enter().append("path")
@@ -208,6 +208,7 @@
 			}
 
 			var animatePath = function(obj) {
+				//this needs to draw on top, or re-add itself on top. 
 				var totalLength = obj.node().getTotalLength();
 
 				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
