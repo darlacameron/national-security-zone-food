@@ -18,6 +18,20 @@
 			overflow: hidden;*/
 			/*text-align:center;*/
 		}
+		
+		.country, .state {stroke:#fefefe; stroke-width:1px;}
+		
+		/*when the line goes to a country or state, we can add and remove this highlight class*/
+		path .highlight {fill:#679AC7;}
+
+		/*for now, just highlighting all of these at once*/
+		.country.niger {fill:#679AC7;}
+		.state.district-of-columbia {fill:#679AC7;}
+		.state.missouri {fill:#679AC7;}
+		.state.wisconsin {fill:#679AC7;}
+		.state.illinois {fill:#679AC7;}
+		.state.virginia {fill:#679AC7;}
+		.country.benin {fill:#679AC7;}
 
 		path.boundary {
 			fill: none;
@@ -142,7 +156,7 @@
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
-			  	var subunits = topojson.feature(world, world.objects.subunits),
+			  /*	var subunits = topojson.feature(world, world.objects.subunits),
 			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
 			  		// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 			  		states = topojson.feature(world, world.objects['states-geo']);
@@ -160,7 +174,19 @@
 			    g.append("path")
 			        .datum(states)
 			        .attr("class", "states")
-			        .attr("d", pathFunc);
+			        .attr("d", pathFunc);*/
+
+	// DARLAS VERSION TO SELECT STATES. RIGHT NOW IS DRAWING ON TOP OF THE LINES THO
+			svg.selectAll(".subunit")
+				      .data(topojson.feature(world, world.objects.subunits).features)
+				    .enter().append("path")
+				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
+				  svg.selectAll(".states")
+				      .data(topojson.feature(world, world.objects['states-geo']).features)
+				    .enter().append("path")
+				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
 
 				var p = drawLine();
 				animatePath(p);
@@ -281,6 +307,15 @@
 
 			  d3.selectAll('path.points').style('stroke-width', 1 / k + 'px');
 			}
+			
+			function convertToSlug(Text)
+				{
+				    return Text
+				        .toLowerCase()
+				        .replace(/[^\w ]+/g,'')
+				        .replace(/ +/g,'-')
+				        ;
+				}
 
 			
 		</script>
