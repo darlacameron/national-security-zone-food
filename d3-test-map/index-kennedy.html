@@ -19,7 +19,7 @@
 			/*text-align:center;*/
 		}
 		
-		.country, .state {stroke:#fefefe; stroke-width:1px;}
+		.country, .state {stroke:#fefefe; /*stroke-width:1px*/;}
 		
 		/*when the line goes to a country or state, we can add and remove this highlight class*/
 		path .highlight {fill:#679AC7;}
@@ -152,41 +152,41 @@
 				.attr("width", width)
 				.attr("height", height);
 
+				//need to move the g in front of the map paths when it animates
 			var g = svg.append('g');
+			//tried appending the paths to this m object
+			//var m = svg.append('m')
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
-			  	// var subunits = topojson.feature(world, world.objects.subunits),
-			  	// 	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-			  	// 	// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
-			  	// 	states = topojson.feature(world, world.objects['states-geo']);
+			  	var subunits = topojson.feature(world, world.objects.subunits).features,
+			  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
+			  	states = topojson.feature(world, world.objects['states-geo']).features,
+				statesMesh = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 
-			  	// g.append("path")
-			   //      .datum(subunits)
-			   //      .attr("d", pathFunc)
-			   //      .on("click", clicked);
 
-			   //  g.append("path")
-			   //      .datum(subunitsMesh)
-			   //      .attr("class", "boundary")
-			   //      .attr("d", pathFunc);
-
-			   //  g.append("path")
-			   //      .datum(states)
-			   //      .attr("class", "states")
-			   //      .attr("d", pathFunc);
-
-	// darla's version of states digs deeper into those country sets to add state names 
-			svg.selectAll(".subunit")
-				      .data(topojson.feature(world, world.objects.subunits).features)
+			    svg.selectAll(".subunit")
+				      .data(subunits)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
-				  svg.selectAll(".states")
-				      .data(topojson.feature(world, world.objects['states-geo']).features)
+
+				svg.selectAll(".states")
+				      .data(states)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
+
+			    g.append("path")
+			        .datum(subunitsMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+
+			    g.append("path")
+			        .datum(statesMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
 
 				var p = drawLine();
 				animatePath(p);
@@ -196,11 +196,15 @@
 			function drawLine() {
 				animating = true;
 
+				//we need to move this on top by re-adding it to the the svg
+
 				var path = g.append('path')
 					.attr('class', 'points')
 					.attr('id', 'point-' + counter)
 					.attr('d', pathFunc(pathPoints[counter]));
 				
+
+
 				//added to test day counter
 				document.getElementById('count').innerHTML = counter;
 

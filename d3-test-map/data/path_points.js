@@ -6,7 +6,7 @@ var pathPoints = [
 					coordinates: [
 						[10, 10], //filler
 						[100, 100] //filler
-		 			]
+		 			],
 				},
 				{
 				//AID requests NGO proposals, Niger to DC		
