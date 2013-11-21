@@ -165,14 +165,14 @@
 				statesMesh = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 
 
-			    svg.selectAll(".subunit")
+			    g.selectAll(".subunit")
 				      .data(subunits)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
 				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
 
-				svg.selectAll(".states")
+				g.selectAll(".states")
 				      .data(states)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
@@ -212,7 +212,6 @@
 			}
 
 			var animatePath = function(obj) {
-				//this needs to draw on top, or re-add itself on top. 
 				var totalLength = obj.node().getTotalLength();
 
 				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
