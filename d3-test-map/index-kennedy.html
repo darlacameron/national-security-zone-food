@@ -9,7 +9,7 @@
 		}
 
 		path {
-			fill: #A4B48C;
+			fill: lightgrey;
 		}
 
 		#map {
@@ -22,16 +22,18 @@
 		.country, .state {stroke:#fefefe; /*stroke-width:1px*/;}
 		
 		/*when the line goes to a country or state, we can add and remove this highlight class*/
-		path .highlight {fill:#679AC7;}
+		path .highlight {fill:#B6BEA9;}
 
 		/*for now, just highlighting all of these at once*/
-		.country.niger {fill:#679AC7;}
-		.state.district-of-columbia {fill:#679AC7;}
+		.country.niger {fill:#B6BEA9;}
+		/* 
+.state.district-of-columbia {fill:#679AC7;}
 		.state.missouri {fill:#679AC7;}
 		.state.wisconsin {fill:#679AC7;}
 		.state.illinois {fill:#679AC7;}
 		.state.virginia {fill:#679AC7;}
 		.country.benin {fill:#679AC7;}
+ */
 
 		path.boundary {
 			fill: none;
@@ -83,6 +85,7 @@
 			line-height:17px;
 		}
 		
+/* 
 		#time{
 			font-family:'Ruda', sans-serif;
 			font-size: 18px;
@@ -97,6 +100,7 @@
 			height: 100px;
 			width: 100px;
 			text-align:center;
+ */
 			
 		}
 		
@@ -106,15 +110,18 @@
 			font-size: 36px;
 		}
 		
-		/*.country.niger {
-			fill:#000;
-		}*/
+		#container{
+			width: 900;
+			height: 500;
+		}
+		
 
 
 		</style>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
+	<div id="container">
 		<div id="map"></div>
 		<div class="nav">
 			<p id="next">>></p>
@@ -126,7 +133,7 @@
 			<p id="body"></p>
 			<div id="time">Approx.<p id="count"></p>Days</div>
 		</div>
-		
+		</div>
 
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
