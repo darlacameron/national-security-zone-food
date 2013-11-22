@@ -8,11 +8,58 @@
 </head>
 <body>
 
+<div id="chart"></div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="data/process-text.js"></script>
+<script src="data/comm-data.js"></script>
 <script type="text/javascript">
+
+var W = 800,
+	H = 500,
+	margin = {top: 40, right: 40, bottom: 40, left: 40};
+
+var xScale = d3.scale.linear()
+	.domain(d3.extent(d3.range(comm_data.length)))
+	.range([0, W]);
+
+var yScale = d3.scale.linear()
+	.domain(d3.extent(comm_data, function(d) {
+		return d['2009 Pounds'];
+	}))
+	.range([H, 0]);
+
+var xAxis = d3.svg.axis()
+	.scale(xScale)
+	.orient('bottom');
+
+var yAxis = d3.svg.axis()
+	.scale(yScale)
+	.orient('left');
+
+var svg = d3.select('#chart')
+	.append('svg')
+	.attr('width', W)
+	.attr('height', H)
+	.append('g')
+	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+	.attr('width', W - margin.left - margin.right)
+	.attr('height', H - margin.top - margin.bottom);
+
+svg.append('g')
+	.attr('class', 'xaxis')
+	// .attr('transform', 'translate(0,' +  + ')')
+	.call(xAxis);
+
+svg.append('g')
+	.attr('class', 'yaxis')
+	// .attr('transform', 'translate(0,' +  + ')')
+	.call(yAxis);
+
+
+
+
+
 </script>
 
 </body>
