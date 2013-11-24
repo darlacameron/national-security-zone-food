@@ -9,7 +9,7 @@
 		}
 
 		path {
-			fill: #A4B48C;
+			fill: lightgrey;
 		}
 
 		#map {
@@ -19,19 +19,21 @@
 			/*text-align:center;*/
 		}
 		
-		.country, .state {stroke:#fefefe; stroke-width:1px;}
+		.country, .state {stroke:#fefefe; /*stroke-width:1px*/;}
 		
 		/*when the line goes to a country or state, we can add and remove this highlight class*/
-		path .highlight {fill:#679AC7;}
+		path .highlight {fill:#B6BEA9;}
 
 		/*for now, just highlighting all of these at once*/
-		.country.niger {fill:#679AC7;}
-		.state.district-of-columbia {fill:#679AC7;}
+		.country.niger {fill:#B6BEA9;}
+		/* 
+.state.district-of-columbia {fill:#679AC7;}
 		.state.missouri {fill:#679AC7;}
 		.state.wisconsin {fill:#679AC7;}
 		.state.illinois {fill:#679AC7;}
 		.state.virginia {fill:#679AC7;}
 		.country.benin {fill:#679AC7;}
+ */
 
 		path.boundary {
 			fill: none;
@@ -83,12 +85,10 @@
 			line-height:17px;
 		}
 		
-		#time{
+ 
+		#timer{
 			font-family:'Ruda', sans-serif;
 			font-size: 18px;
-			position: absolute;
-			top:0px;
-			right:0px;
 			background: #3580C3;
 			color: #FEFEFE;
 			z-index:100;
@@ -97,35 +97,41 @@
 			height: 100px;
 			width: 100px;
 			text-align:center;
+			float: right;
+ 
 			
 		}
 		
-		#count{
+		#days{
 			margin:5px;
 			font-family:'Ruda', sans-serif;
 			font-size: 36px;
 		}
 		
-		/*.country.niger {
-			fill:#000;
-		}*/
+		#container{
+			width: 900;
+			height: 500;
+		}
+		
 
 
 		</style>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
+	<div id="container">
 		<div id="map"></div>
 		<div class="nav">
 			<p id="next">>></p>
 			<p id="prev"><<</p>
 		</div>
-		<div id="time">Approx.<p id="count"></p>Days</div>
+		
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
+			<div id="timer">Approx.<p id="days"></p>Days</div>
 		</div>
-		
+		</div>
 
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -152,63 +158,66 @@
 				.attr("width", width)
 				.attr("height", height);
 
+				//need to move the g in front of the map paths when it animates
 			var g = svg.append('g');
+			//tried appending the paths to this m object
+			//var m = svg.append('m')
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
-			  	// var subunits = topojson.feature(world, world.objects.subunits),
-			  	// 	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-			  	// 	// states = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
-			  	// 	states = topojson.feature(world, world.objects['states-geo']);
+			  	var subunits = topojson.feature(world, world.objects.subunits).features,
+			  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
+			  	states = topojson.feature(world, world.objects['states-geo']).features,
+				statesMesh = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 
-			  	// g.append("path")
-			   //      .datum(subunits)
-			   //      .attr("d", pathFunc)
-			   //      .on("click", clicked);
 
-			   //  g.append("path")
-			   //      .datum(subunitsMesh)
-			   //      .attr("class", "boundary")
-			   //      .attr("d", pathFunc);
-
-			   //  g.append("path")
-			   //      .datum(states)
-			   //      .attr("class", "states")
-			   //      .attr("d", pathFunc);
-
-	// darla's version of states digs deeper into those country sets to add state names 
-			svg.selectAll(".subunit")
-				      .data(topojson.feature(world, world.objects.subunits).features)
+			    g.selectAll(".subunit")
+				      .data(subunits)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
-				  svg.selectAll(".states")
-				      .data(topojson.feature(world, world.objects['states-geo']).features)
+
+				g.selectAll(".states")
+				      .data(states)
 				    .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
 
-				var p = drawLine();
-				animatePath(p);
+			    g.append("path")
+			        .datum(subunitsMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+
+			    g.append("path")
+			        .datum(statesMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+
+				// var p = drawLine();
+				// animatePath(p);
 				writeText();
 			});
 
 			function drawLine() {
 				animating = true;
 
+				//we need to move this on top by re-adding it to the the svg
+
 				var path = g.append('path')
 					.attr('class', 'points')
 					.attr('id', 'point-' + counter)
 					.attr('d', pathFunc(pathPoints[counter]));
 				
+
+
 				//added to test day counter
-				document.getElementById('count').innerHTML = counter;
+				// document.getElementById('count').innerHTML = counter;
 
 				return path;
 			}
 
 			var animatePath = function(obj) {
-				//this needs to draw on top, or re-add itself on top. 
 				var totalLength = obj.node().getTotalLength();
 
 				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
@@ -239,6 +248,7 @@
 			function writeText() {
 				$('#headline').text(process_text[counter].headline);
 				$('#body').text(process_text[counter].body);
+				$('#days').text(process_text[counter].days)
 			}
 			
 			function timeLapsed() {
@@ -254,10 +264,11 @@
 					counter = 0;
 				} else {
 					counter += 1;
+					var p = drawLine();
+					animatePath(p);
 				}
 				
-				var p = drawLine();
-				animatePath(p);
+				
 				writeText();
 			});
 
@@ -268,10 +279,12 @@
 
 				$('#point-' + counter).remove();
 				
-				var p = drawLine();
-				animatePathReverse(p);
+				if (counter != 0){
+					var p = drawLine();
+					animatePathReverse(p);
+				}
+				
 				writeText();
-
 
 				if (counter === 0) {
 					counter = pathPoints.length - 1;
