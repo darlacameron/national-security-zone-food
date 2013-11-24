@@ -1,10 +1,35 @@
-
+(function ($) {
 
 var data = {};
 
-console.log (UN);
+var container = [];
 
-console.log (UN[0].Country);
+// console.log (UN);
+
+// console.log (UN[0].Country);
+
+// console.log (food);
+
+$.each(UN, function (i, v) {
+	var UNCountry = v.Country;
+	$.each(food, function (j, w) {
+		var foodCountry = w.country;
+		if (UNCountry === foodCountry) {
+			// console.log('match',foodCountry, UNCountry);
+			container.push (UNCountry);
+		
+		}
+	});
+	
+});
+
+// console.log (data);
+console.log (container.length);
+console.log (container);
+
+})(jQuery);
+
+/*
 
 // SETUP VARIABLES, CAN CHANGE THESE TO RESIZE CHART
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -38,7 +63,5 @@ d3.csv("../data/test-data.csv", function(error, data) {
   })
 });
 
-
-
-
+*/
 
