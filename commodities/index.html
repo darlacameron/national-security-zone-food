@@ -4,30 +4,102 @@
 	<meta charset="utf-8">
     <title>Title goes here</title>
     <style type="text/css">
+    body {
+    	font-size: 12px;
+    	font-family: Helvetica, Arial;
+    	font-weight: lighter;
+    }
+
+    .axis path {
+    	fill: none;
+    	stroke: black;
+    	shape-rendering: crispEdges;
+    }
+
+    circle {
+    	fill: #ff00ff;
+    }
+
+    circle.asia {
+    	fill: black;
+    }
+
+    circle.africa {
+    	fill: #ff0000;
+    }
+
+    circle.europe {
+    	fill: steelblue;
+    }
+
+    circle.sam {
+    	fill: yellow;
+    }
+
     </style>
 </head>
 <body>
 
-<div id="chart"></div>
+<div id='chart'></div>
+<p id="next">Next <span></span></div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="data/comm-data.js"></script>
+<script src="data/comm-data-raw.js"></script>
+<script src="data/mal-data.js"></script>
 <script type="text/javascript">
 
-var W = 800,
-	H = 500,
-	margin = {top: 40, right: 40, bottom: 40, left: 40};
+var data,
+	years = d3.set(comm_data_raw.map(function(v) { return v.year; } )).values();
+
+var thousFormat = d3.format('s');
+
+var data = years.map(function(year, i) {
+	var vals = [];
+
+	comm_data.forEach(function(dp, i) {
+		var y = dp.year.toString();
+
+		if (y === year && typeof dp.mal !== 'undefined' && dp.pounds !== 'NA' && dp.country !== 'Russia') {
+			dp.pounds = parseFloat(dp.pounds);
+			dp.mal = parseFloat(dp.mal);
+			vals.push(dp);
+		}
+	});
+
+	return {
+		year: year,
+		values: vals
+	};
+
+});
+
+var year = 0,
+	curr_data = data[year];
+
+console.log(data)
+
+var W = 900,
+	H = 600,
+	margin = {top: 80, right: 80, bottom: 80, left: 80},
+	w = W - margin.left - margin.right,
+	h = H - margin.top - margin.bottom;
 
 var xScale = d3.scale.linear()
-	.domain(d3.extent(d3.range(comm_data.length)))
-	.range([0, W]);
+	// .domain(d3.extent(data[0].values, function (d) {
+	// 	return d['mal'];
+	// })) //data input
+	.domain([5, 77])
+	.range([0, w]); //pixel output
 
 var yScale = d3.scale.linear()
-	.domain(d3.extent(comm_data, function(d) {
-		return d['2009 Pounds'];
-	}))
-	.range([H, 0]);
+	// .domain(d3.extent(data[0].values, function (d) {
+	// 	return d['pounds'];
+	// }))
+	// .domain([44090, 10731551758]) // with russia
+	.domain([44090, 2150829830])
+	.range([h, 0]);
 
 var xAxis = d3.svg.axis()
 	.scale(xScale)
@@ -35,32 +107,133 @@ var xAxis = d3.svg.axis()
 
 var yAxis = d3.svg.axis()
 	.scale(yScale)
-	.orient('left');
+	.orient('left')
+	.tickFormat(function (d) {
+      if ((d / 1000000) >= 1) {
+        d = d / 1000000;
+      }
+      return d;
+    });
 
 var svg = d3.select('#chart')
 	.append('svg')
 	.attr('width', W)
 	.attr('height', H)
 	.append('g')
-	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-	.attr('width', W - margin.left - margin.right)
-	.attr('height', H - margin.top - margin.bottom);
+	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 svg.append('g')
-	.attr('class', 'xaxis')
-	// .attr('transform', 'translate(0,' +  + ')')
+	.attr('class', 'x axis')
+	.attr('transform', 'translate(0,' + h + ')')
 	.call(xAxis);
 
 svg.append('g')
-	.attr('class', 'yaxis')
-	// .attr('transform', 'translate(0,' +  + ')')
+	.attr('class', 'y axis')
+	.attr('transform', 'translate(0,' + 0 + ')')
 	.call(yAxis);
+
+var drawCircles = function() {
+	var circle = svg.selectAll('circle')
+		.data(curr_data.values, function(d) { return d.country; })
+
+	circle.enter()
+		.append('circle')
+		.attr('r', 5)
+		.attr('class', function(d) {
+			if (d.region === 'Asia') {
+				return 'asia';
+			} else if (d.region === 'Africa') {
+				return 'africa';
+			} else if (d.region === 'Europe') {
+				return 'europe';
+			} else if (d.region === 'Central/South America/Caribbean') {
+				return 'sam';
+			}
+		})
+		.on('mouseover', function(d) {
+			console.log(d.country, d.pounds);
+		});
+
+	if (year === 0) {
+		circle.attr('cx', 0).attr('cy', 0);
+	}
+
+	circle.transition()
+		.attr('cx', function(d) {
+			return xScale(d['mal']);
+		})
+		.attr('cy', function(d) {
+			return yScale(d['pounds']);
+		});
+		
+
+	circle.exit().remove();
+};
+
+
+drawCircles();
+
+$('#next').on('click', function() {
+	year += 1;
+	curr_data = data[year];
+
+	$(this).find('span').text(curr_data.year);
+
+	drawCircles();
+});
+
+// match comm data to mal data
+// comm_data_raw.forEach(function(dp, i) {
+// 	var country = dp.country,
+// 		year = dp.year;
+
+// 	mal_data.forEach(function(m) {
+// 		if (m.country === country && m.year === year) {
+// 			dp.mal = m.value;
+// 		}
+// 	});
+
+// 	// if (typeof dp.mal === 'undefined') {
+// 	// 	console.log('undefined', country)
+// 	// }
+// });
+
+// JSON.stringify(comm_data_raw)
+
+
+// find min and max of pounds and mal no
+// var mins = [];
+
+// for (var i = 0; i < data.length - 1; i += 1) {
+// 	mins.push(d3.min(data[i].values, function (d) {
+// 			return (d['pounds']);
+// 		}))
+// }
+
+// console.log(d3.min(mins))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 </script>
-
 </body>
 </html>

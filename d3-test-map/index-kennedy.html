@@ -86,7 +86,7 @@
 		}
 		
  
-		#time{
+		#timer{
 			font-family:'Ruda', sans-serif;
 			font-size: 18px;
 			background: #3580C3;
@@ -102,7 +102,7 @@
 			
 		}
 		
-		#count{
+		#days{
 			margin:5px;
 			font-family:'Ruda', sans-serif;
 			font-size: 36px;
@@ -129,7 +129,7 @@
 		<div id="text">
 			<p id="headline"></p>
 			<p id="body"></p>
-			<div id="time">Approx.<p id="count"></p>Days</div>
+			<div id="timer">Approx.<p id="days"></p>Days</div>
 		</div>
 		</div>
 
@@ -212,7 +212,7 @@
 
 
 				//added to test day counter
-				document.getElementById('count').innerHTML = counter;
+				// document.getElementById('count').innerHTML = counter;
 
 				return path;
 			}
@@ -248,6 +248,7 @@
 			function writeText() {
 				$('#headline').text(process_text[counter].headline);
 				$('#body').text(process_text[counter].body);
+				$('#days').text(process_text[counter].days)
 			}
 			
 			function timeLapsed() {
