@@ -194,8 +194,8 @@
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
 
-				var p = drawLine();
-				animatePath(p);
+				// var p = drawLine();
+				// animatePath(p);
 				writeText();
 			});
 
@@ -264,10 +264,11 @@
 					counter = 0;
 				} else {
 					counter += 1;
+					var p = drawLine();
+					animatePath(p);
 				}
 				
-				var p = drawLine();
-				animatePath(p);
+				
 				writeText();
 			});
 
@@ -278,10 +279,12 @@
 
 				$('#point-' + counter).remove();
 				
-				var p = drawLine();
-				animatePathReverse(p);
+				if (counter != 0){
+					var p = drawLine();
+					animatePathReverse(p);
+				}
+				
 				writeText();
-
 
 				if (counter === 0) {
 					counter = pathPoints.length - 1;
