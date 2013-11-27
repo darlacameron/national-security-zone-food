@@ -1,156 +1,8 @@
 <html>
 	<head>
-		<style>
-
-		/* CSS goes here. */
-		
-		body{
-			background: #FEFEFE;
-		}
-
-		path {
-			fill: #C0C0C0;
-		}
-
-		#map {
-			width: 650px;
-			height: 500px;
-			overflow: hidden;*/
-			/*text-align:center;*/
-			background: purple;
-			float:left;
-		}
-		
-		.country, .state {stroke:#FEFEFE; /*stroke-width:1px*/;}
-		
-		/*when the line goes to a country or state, we can add and remove this highlight class*/
-		path .highlight {fill:#B6BEA9;}
-
-		/*for now, just highlighting all of these at once*/
-		.country.niger {fill:#B6BEA9;}
-		/* 
-.state.district-of-columbia {fill:#679AC7;}
-		.state.missouri {fill:#679AC7;}
-		.state.wisconsin {fill:#679AC7;}
-		.state.illinois {fill:#679AC7;}
-		.state.virginia {fill:#679AC7;}
-		.country.benin {fill:#679AC7;}
- */
-
-		path.boundary {
-			fill: none;
-			stroke: #fefefe;
-		}
-		
-		path.points {
-			fill: none;
-			stroke:#3580C3;
-			stroke-width: 2.5px;
-		}
-
-		#next {
-			float:right;
-			cursor: pointer;
-			vertical-align: middle;
-			margin-bottom:0px;
-			font-family: "Ruda", sans-serif;
-			font-size:24px;
-			color:#3580C3;
-		}
-		
-		#prev {
-			float:left;
-			cursor: pointer;
-			margin-bottom:0px;	
-			font-family: "Ruda", sans-serif;
-			font-size:24px;
-			color:#3580C3;
-		}
-
-		path.states {
-			fill: none;
-			stroke: #FEFEFE;
-		}
-		
-		#headline {
-			font-family: 'Ruda', sans-serif;
-			font-size:26px;
-			line-height:28px;
-			color:#1A374D;
-			margin-bottom:10px;
-		}
-
-		#location {
-			font-family: 'Ruda', sans-serif;
-			font-size:16px;
-			line-height:20px;
-			color:#1A374D;
-		}
-
-		#text {
-			padding:10px;
-			float: left;
-			font-family: 'Gotham', sans-serif;
-			font-size: 14px;
-			line-height:19px;
-			color:black;
-			width:290px;
-		}
- 
-		#days{
-			font-family:'Ruda', sans-serif;
-			font-size: 24px;
-			color: #1A374D;
-			text-align:center;
-			display:inline-block;
-			margin-top: 23px;
-		}
-
-		h1 {
-			font-family:'Ruda', sans-serif;
-			font-size: 36px;
-			color: #1A374D;
-			margin-bottom:15px;
-		}
-
-		h3 {
-			font-family:'Gotham', sans-serif;
-			font-size: 18px;
-			color: #1A374D;
-			margin:5px;
-			font-weight: 500;
-		}
-
-		h4 {
-			font-family:'Ruda', sans-serif;
-			font-size: 24px;
-			color: #1A374D;
-			text-align:center;
-			display:inline-block;
-			margin-top: 23px;
-			margin-left:60px;
-		}
-		
-		#wrapper{
-			width: 960;
-			height: 500;
-		}
-
-		#source{
-			color:#646464;
-			font-family:'Gotham',serif;
-			font-size:10px;
-			position:fixed;
-			left:0px;
-			bottom:0px;
-		}
-
-		circle {
-    	fill: #ff00ff;
-    }
-
-		</style>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="css/reset.css">
+		<link type="text/css" rel="stylesheet" href="css/process.css">
 	</head>
 	<body>
 	
@@ -162,12 +14,12 @@
 		<div id="text">
 			<div class="nav">
 				<p id="next">>></p>
-				<h4>Day:&nbsp;&nbsp;</h1><p id="days"></p>
+				<h4>Day:&nbsp;&nbsp;</h4><p id="days"></p>
 				<p id="prev"><<</p>
 			</div>
 			<h2 id="headline"></h2>
 			<p id="location"></p>
-			<p id="body"></p>
+			<p id="body" class="body"></p>
 		</div>
 		<p id="source">Source information goes here.</p>
 	</div>
@@ -194,12 +46,8 @@
 
 			var svg = d3.select("#map").append("svg")
 				.attr("width", width)
-				.attr("height", height);
-
-				//need to move the g in front of the map paths when it animates
-			var g = svg.append('g');
-			//tried appending the paths to this m object
-			//var m = svg.append('m')
+				.attr("height", height)
+				.append('g');
 			
 			d3.json("data/world-us-topo.json", function(error, world) {
 			  	
@@ -209,75 +57,60 @@
 				statesMesh = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
 
 
-			    g.selectAll(".subunit")
+			    svg.selectAll(".subunit")
 				      .data(subunits)
 				      .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
 				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
 
-				g.selectAll(".states")
+				svg.selectAll(".states")
 				      .data(states)
 				      .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
 
-			    g.append("path")
+			    svg.append("path")
 			        .datum(subunitsMesh)
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
 
-			    g.append("path")
+			    svg.append("path")
 			        .datum(statesMesh)
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
-
-				// var p = drawLine();
-				// animatePath(p);
 				writeText();
 			});
 
-			function drawLine() {
-				animating = true;
+			function drawLine(direction) {
+				if (counter === 0) {
+					d3.selectAll('.points').remove();
+				} else {
+					animating = true;
 
-				//we need to move this on top by re-adding it to the the svg
+					var path = svg.append('path')
+						.attr('class', 'points')
+						.attr('id', 'point-' + counter)
+						.attr('d', pathFunc(pathPoints[counter]));
 
-				var path = g.append('path')
-					.attr('class', 'points')
-					.attr('id', 'point-' + counter)
-					.attr('d', pathFunc(pathPoints[counter]));
-				
+					var totalLength = path.node().getTotalLength();
 
-
-				//added to test day counter
-				// document.getElementById('count').innerHTML = counter;
-
-				return path;
+					if (direction === 'next') {
+						animatePath(path, totalLength, totalLength, 0);
+					} else {
+						animatePath(path, totalLength, 0, totalLength);
+					}
+					
+				}
 			}
 
-			var animatePath = function(obj) {
-				var totalLength = obj.node().getTotalLength();
-
-				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
-				    .attr("stroke-dashoffset", totalLength)
+			var animatePath = function(obj, total, beginning, end) {
+				obj.attr("stroke-dasharray", total + " " + total)
+				    .attr("stroke-dashoffset", beginning)
 				    .transition()
 				    .duration(1000)
 				    .ease("linear")
-				    .attr("stroke-dashoffset", 0)
-				    .each('end', function() {
-				    	animating = false;
-				    });
-			};
-
-			var animatePathReverse = function(obj) {
-				var totalLength = obj.node().getTotalLength();
-
-				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
-				    .attr("stroke-dashoffset", 0)
-				    .transition()
-				    .duration(1000)
-				    .ease("linear")
-				    .attr("stroke-dashoffset", totalLength)
+				    .attr("stroke-dashoffset", end)
 				    .each('end', function() {
 				    	animating = false;
 				    });
@@ -303,11 +136,9 @@
 					counter = 0;
 				} else {
 					counter += 1;
-					var p = drawLine();
-					animatePath(p);
 				}
 				
-				
+				drawLine('next');
 				writeText();
 			});
 
@@ -317,11 +148,7 @@
 				}
 
 				$('#point-' + counter).remove();
-				
-				if (counter != 0){
-					var p = drawLine();
-					animatePathReverse(p);
-				}
+				drawLine('prev');
 				
 				writeText();
 
