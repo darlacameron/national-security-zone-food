@@ -102,13 +102,7 @@ var yScale = d3.scale.linear()
 	// }))
 	// .domain([44090, 10731551758]) // with russia
 	.domain([44090, 2150829830])
-	.range([0, w]); //pixel output
-
-var yScale = d3.scale.linear()
-	.domain(d3.extent(comm_data, function (d) {
-		return d['2009 Pounds'];
-	}))
-	.range([h, 0]);
+	.range([h, 0]); //pixel output
 
 var xAxis = d3.svg.axis()
 	.scale(xScale)
@@ -207,7 +201,7 @@ $('#next').on('click', function() {
 // 	// }
 // });
 
-// JSON.stringify(comm_data_raw)
+// console.log(JSON.stringify(comm_data_raw))
 
 
 // find min and max of pounds and mal no
