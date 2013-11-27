@@ -1,0 +1,102 @@
+body {
+	font-size: 12px;
+	font-family: 'Open Sans', Helvetica, Arial;
+	font-weight: lighter;
+}
+
+#chart .axis path {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+
+/*#chart circle {
+	fill: #ff00ff;
+}*/
+
+circle.asia {
+	fill: black;
+}
+
+circle.africa {
+	fill: #ff0000;
+}
+
+circle.europe {
+	fill: steelblue;
+}
+
+circle.sam {
+	fill: yellow;
+}
+
+/* text */
+
+#chart-wrapper {
+	position: relative;
+	height: 600px;
+}
+
+#chart,
+#text {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#text {
+	pointer-events: none;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+.chatter {
+	font-size: 1.4em;
+	line-height: 1.4em;
+}
+
+/* brush */
+
+.slider-axis {
+	font: 10px sans-serif;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.slider-axis .domain {
+	fill: none;
+	stroke: #000;
+	stroke-opacity: .3;
+	stroke-width: 10px;
+	stroke-linecap: round;
+}
+
+.slider-axis .slider-halo {
+	fill: none;
+	stroke: #ddd;
+	stroke-width: 8px;
+	stroke-linecap: round;
+}
+
+.slider-slider .slider-handle {
+	fill: #fff;
+	stroke: #000;
+	stroke-opacity: .5;
+	stroke-width: 1.25px;
+	pointer-events: none;
+}
+
+
+/* line cap: round; */
+
+
+
+
+
+
+
+
+
