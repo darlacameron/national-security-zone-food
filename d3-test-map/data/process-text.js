@@ -1,7 +1,7 @@
 var process_text = [
 	{
 		headline: "Emergency Declared",
-		body: "A food emergency can be declared in a few different ways. A country's government can ask for help directly, or USAID's FEWS system (Famine Early Warnings Systems Network) can detect the upcoming need for aid. Sometimes, the U.S. government has time to send a DART (Direct Action Response Team) to assess the needs of the country, but this doesn't happen in every situation, due to time constraints. In the case of Niger, Prime Minister Mahamadou Danda appealed to the international community for emergency aid to stem the food insecurity crisis in March 2010. The aid the U.S. is providing to Niger is a longer term project, not a single emergency situation.",
+		body: "A food emergency can be declared in a few different ways. A country's government can ask for help directly, or USAID's FEWS (Famine Early Warnings Systems) Network can detect the upcoming need for aid. Sometimes, the U.S. government has time to send a DART (Direct Action Response Team) to assess a country's needs, but due to time constraints this doesn't happen in every situation. In the case of Niger, Prime Minister Mahamadou Danda appealed to the international community for emergency aid to stem the food insecurity crisis in March 2010. The aid the U.S. is providing to Niger is a longer term project, not a single emergency situation.",
 		location: "Niger",
 		days: "N/A"
 	},

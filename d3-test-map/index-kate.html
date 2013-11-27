@@ -13,11 +13,11 @@
 		}
 
 		#map {
-			width: 900px;
+			width: 650px;
 			height: 500px;
 			overflow: hidden;*/
 			/*text-align:center;*/
-			background: blue;
+			background: purple;
 			float:left;
 		}
 		
@@ -45,7 +45,7 @@
 		path.points {
 			fill: none;
 			stroke:#3580C3;
-			stroke-width: 3px;
+			stroke-width: 2.5px;
 		}
 
 		#next {
@@ -53,12 +53,18 @@
 			cursor: pointer;
 			vertical-align: middle;
 			margin-bottom:0px;
+			font-family: "Ruda", sans-serif;
+			font-size:24px;
+			color:#3580C3;
 		}
 		
 		#prev {
 			float:left;
 			cursor: pointer;
 			margin-bottom:0px;	
+			font-family: "Ruda", sans-serif;
+			font-size:24px;
+			color:#3580C3;
 		}
 
 		path.states {
@@ -82,14 +88,13 @@
 		}
 
 		#text {
-			margin-right:10px;
 			padding:10px;
-			float: right;
+			float: left;
 			font-family: 'Gotham', sans-serif;
 			font-size: 14px;
-			line-height:18px;
-			width:25%;
+			line-height:19px;
 			color:black;
+			width:290px;
 		}
  
 		#days{
@@ -99,6 +104,21 @@
 			text-align:center;
 			display:inline-block;
 			margin-top: 23px;
+		}
+
+		h1 {
+			font-family:'Ruda', sans-serif;
+			font-size: 36px;
+			color: #1A374D;
+			margin-bottom:15px;
+		}
+
+		h3 {
+			font-family:'Gotham', sans-serif;
+			font-size: 18px;
+			color: #1A374D;
+			margin:5px;
+			font-weight: 500;
 		}
 
 		h4 {
@@ -111,39 +131,46 @@
 			margin-left:60px;
 		}
 		
-		#container{
-			width: 100%;
+		#wrapper{
+			width: 960;
 			height: 500;
 		}
 
 		#source{
-			color:black;
+			color:#646464;
 			font-family:'Gotham',serif;
 			font-size:10px;
 			position:fixed;
-			right:0px;
-			top:495px;
+			left:0px;
+			bottom:0px;
 		}
+
+		circle {
+    	fill: #ff00ff;
+    }
 
 		</style>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-	<div id="container">
+	
+	<div id="wrapper">
+		<h1>Graphic Headline</h1>
+		<h3>Graphic subhead goes here. Blah blah blah more text here.</h3>
 		<div id="map"></div>
 		
 		<div id="text">
 			<div class="nav">
-			<p id="next"><img src="images/arrow-blue-right.png" width="40px" height="40px"></p>
-			<h4>Day:&nbsp;&nbsp;&nbsp;</h1><p id="days"></p>
-			<p id="prev"><img src="images/arrow-blue-left.png" width="40px" height="40px"></p>
+				<p id="next">>></p>
+				<h4>Day:&nbsp;&nbsp;&nbsp;</h1><p id="days"></p>
+				<p id="prev"><<</p>
 			</div>
 			<h2 id="headline"></h2>
 			<p id="location"></p>
 			<p id="body"></p>
 		</div>
 		<p id="source">Source information goes here.</p>
-		</div>
+	</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -160,8 +187,8 @@
 				height = 500;
 
 			var projection = d3.geo.mercator()
-				.center([-35.949707, 26.358221])
-				.scale(400);
+				.center([-12.949707, 26.358221])
+				.scale(310);
 
 			var pathFunc = d3.geo.path().projection(projection);
 
@@ -184,14 +211,14 @@
 
 			    g.selectAll(".subunit")
 				      .data(subunits)
-				    .enter().append("path")
+				      .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
 				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
 
 				g.selectAll(".states")
 				      .data(states)
-				    .enter().append("path")
+				      .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
 
