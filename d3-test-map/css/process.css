@@ -1,18 +1,30 @@
-.group:after {
-	visibility: hidden;
-	display: block;
-	content: "";
-	clear: both;
-	height: 0;
-	}
-* html .group             { zoom: 1; } /* IE6 */
-*:first-child+html .group { zoom: 1; } /* IE7 */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+} 
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
 
-#wrapper {
+.clear {
+	clear: both;
+}
+
+/* interactive */
+
+#process {
 	width: 960px;
 	height: 500px;
 	margin: 60px auto 0 auto;
 	color: #282828;
+}
+
+#wrapper {
+	margin: 10px 0;
 }
 
 /* map stuff */
@@ -59,10 +71,6 @@ path.states {
 	margin-left: 20px;
 }
 
-#nav {
-	/*height: 30px;*/
-}
-
 #next,
 #prev {
 	font-family: "Ruda", sans-serif;
@@ -86,6 +94,7 @@ h1 {
 	font-size: 36px;
 	font-family: 'Ruda', sans-serif;
 	font-weight: 700;
+	line-height: 1.2em;
 	/*color: #1A374D;*/
 	/*margin-bottom:15px;*/
 }
@@ -94,6 +103,7 @@ h2 {
 	font-size: 24px;
 	font-family:'Ruda', sans-serif;
 	font-weight: 900;
+	line-height: 1.2em;
 	/*font-size:26px;*/
 	/*line-height:28px;*/
 	/*color:#1A374D;*/
@@ -110,40 +120,31 @@ h3 {
 
 h4 {
 	font-family:'Ruda', sans-serif;
-	/*font-size: 24px;*/
 	color: #1A374D;
 	text-align:center;
-	display:inline-block;
-	/*margin-top: 23px;*/
-	margin-left:60px;
+}
 
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
+#headline {
+	margin: 20px 0 10px 0;
 }
 
 #location {
 	font-family: 'Ruda', sans-serif;
 	font-size: 16px;
 	color: #1A374D;
+	margin-bottom: 14px;
+	line-height: 1.3em;
 }
 
 #days {
 	font-family:'Ruda', sans-serif;
-	/*font-size: 24px;*/
 	color: #1A374D;
 	text-align:center;
 	display:inline-block;
-	/*margin-top: 23px;*/
-
-	/*-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;*/
 }
 
 .body {
+	margin-bottom: 8px;
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
 	font-weight: lighter;

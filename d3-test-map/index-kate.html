@@ -6,20 +6,23 @@
 	</head>
 	<body>
 	
-	<div id="wrapper">
+	<div id="process">
 		<h1>Graphic Headline</h1>
 		<h3>Graphic subhead goes here. Blah blah blah more text here.</h3>
-		<div id="map"></div>
-		
-		<div id="text">
-			<div class="nav" class="group">
-				<p id="next"><img src="images/arrows-right.png"></img></p>
-				<h4>Day:&nbsp;&nbsp;</h1><p id="days"></p>
-				<p id="prev"><img src="images/arrows-left.png"></img></p>
+		<div id="wrapper" class="clearfix">
+			<div id="map"></div>
+			
+			<div id="text">
+				<div class="nav" class="clearfix">
+					<p id="next"><img src="images/arrows-right.png"></img></p>
+					<p id="prev"><img src="images/arrows-left.png"></img></p>
+					<h4 class="clearfix">Day:&nbsp;&nbsp;<span id="days"></span></h4>
+				</div>
+
+				<h2 id="headline"></h2>
+				<p id="location"></p>
+				<p id="body" class="body"></p>
 			</div>
-			<h2 id="headline"></h2>
-			<p id="location"></p>
-			<p id="body" class="body"></p>
 		</div>
 		<p id="source">Source information goes here.</p>
 	</div>
@@ -118,9 +121,17 @@
 			
 			function writeText() {
 				$('#headline').text(process_text[counter].headline);
-				$('#body').text(process_text[counter].body);
+				// $('#body').text(process_text[counter].body);
 				$('#location').text(process_text[counter].location);
-				$('#days').text(process_text[counter].days)
+				$('#days').text(process_text[counter].days);
+
+				var $body = $('#body');
+				$body.text('');
+				$.each(process_text[counter].body, function(i, sentence) {
+					var $sentence = $('<div class="body">');
+					$sentence.text(sentence);
+					$body.append($sentence);
+				});
 			}
 			
 			function timeLapsed() {
