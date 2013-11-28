@@ -98,16 +98,16 @@ path.states {
 	/* width and height can be anything, as long as they're equal */
 }
 
-h1 {
+/*h1 {
 	font-size: 36px;
 	font-family: 'Ruda', sans-serif;
 	font-weight: 400;
 	line-height: 1.2em;
 	/*color: #1A374D;*/
 	/*margin-bottom:15px;*/
-}
+/*}*/
 
-h2 {
+/*h2 {
 	font-size: 20px;
 	font-family:'Ruda', sans-serif;
 	font-weight: 900;
@@ -115,25 +115,24 @@ h2 {
 	/*font-size:26px;*/
 	/*line-height:28px;*/
 	/*color:#1A374D;*/
-	/*margin-bottom:10px;*/
-}
+	/*margin-bottom:10px;
+}*/
 
-h3 {
+/*h3 {
 	font-size: 16px;
 	font-family:'Gotham', sans-serif;
 	color: #1A374D;
 	margin:5px;
 	font-weight: 500;
-}
+}*/
 
-h4 {
+/*h4 {
 	font-family:'Ruda', sans-serif;
 	color: #1A374D;
-	text-align:center;
-}
+}*/
 
 #headline {
-	margin: 20px 0 10px 0;
+	margin: 10px 0 10px 0;
 }
 
 #location {
