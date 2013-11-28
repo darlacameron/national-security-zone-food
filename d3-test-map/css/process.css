@@ -90,6 +90,14 @@ path.states {
 	/*color:#3580C3;*/
 }
 
+.circle {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px; 
+	background:#DCDCDC;
+	/* width and height can be anything, as long as they're equal */
+}
+
 h1 {
 	font-size: 36px;
 	font-family: 'Ruda', sans-serif;
@@ -155,8 +163,4 @@ h4 {
 	color: #646464;
 	font-family: 'Gotham', sans-serif;
 	font-size: 10px;
-}
-
-circle {
-	fill: #ff00ff;
 }
