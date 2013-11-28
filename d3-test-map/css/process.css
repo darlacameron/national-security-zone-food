@@ -91,9 +91,11 @@ path.states {
 }
 
 .circle {
+	float: left;
 	border-radius: 50%;
 	width: 10px;
 	height: 10px; 
+	margin: 0 2px;
 	background:#DCDCDC;
 	/* width and height can be anything, as long as they're equal */
 }
