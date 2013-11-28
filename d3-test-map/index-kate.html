@@ -16,9 +16,9 @@
 				<div class="nav" class="clearfix">
 					<p id="next"><img src="images/arrows-right.png"></img></p>
 					<p id="prev"><img src="images/arrows-left.png"></img></p>
-					<h4 class="clearfix">Day:&nbsp;&nbsp;<span id="days"></span></h4>
+				<div id="steps"></div>
 				</div>
-
+				<h4 class="clearfix">Day:&nbsp;&nbsp;<span id="days"></span></h4>
 				<h2 id="headline"></h2>
 				<p id="location"></p>
 				<p id="body" class="body"></p>
@@ -208,7 +208,15 @@
 				        ;
 				}
 
-			
+			function makeCircles (){
+				var $steps = $('#steps');
+				$.each(process_text[counter].body, function(i, sentence) {
+				var $circle = $('<div class="circle">');
+				});
+				$steps.append($circle);
+			}
+			makeCircles();
+
 		</script>
 	</body>
 </html>
