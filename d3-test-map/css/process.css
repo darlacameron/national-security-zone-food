@@ -93,14 +93,14 @@ path.states {
 h1 {
 	font-size: 36px;
 	font-family: 'Ruda', sans-serif;
-	font-weight: 700;
+	font-weight: 400;
 	line-height: 1.2em;
 	/*color: #1A374D;*/
 	/*margin-bottom:15px;*/
 }
 
 h2 {
-	font-size: 24px;
+	font-size: 20px;
 	font-family:'Ruda', sans-serif;
 	font-weight: 900;
 	line-height: 1.2em;
