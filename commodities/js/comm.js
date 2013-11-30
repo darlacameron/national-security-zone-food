@@ -29,7 +29,7 @@ var data = years.map(function(year, i) {
 
 });
 
-var year = data.length - 1,
+var year = 0,
 	curr_data = data[year];
 
 console.log(curr_data)
