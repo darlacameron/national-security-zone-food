@@ -4,19 +4,42 @@
 	<meta charset="utf-8">
     <title>Title goes here</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
     <link type="text/css" rel="stylesheet" href="css/comm.css">
 </head>
 <body>
 	
-<div id="chart-wrapper">
-	<div id="chart"></div>
-	<div id="text">
-		<h3>Lorem ipsum dolor sit amet</h3>
-		<p></p>
+<div id="comm">
+	<div id="chart-wrapper">
+		<div id="chart"></div>
+		<div id="text">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p class="chatter">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			<div id="key">
+				<div class="key-row clearfix">
+					<p>Africa</p>
+					<span class="bar africa"></span>
+				</div>
+				<div class="key-row clearfix">
+					<p>Asia</p>
+					<span class="bar asia"></span>
+				</div>
+				<div class="key-row clearfix">
+					<p>Europe</p>
+					<span class="bar europe"></span>
+				</div>
+				<div class="key-row clearfix">
+					<p>SAM</p>
+					<span class="bar sam"></span>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<p id="next">Next <span></span></p>
+	<div id="slider"></div>
 </div>
-<p id="next">Next <span></span></p>
-<div id="slider"></div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>

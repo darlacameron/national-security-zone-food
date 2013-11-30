@@ -3,36 +3,52 @@
 
 var data,
 	years = d3.set(comm_data.map(function(v) { return v.year; } )).values(),
-	DUR = 1000,
+	DUR = 500,
 	svg,
 	yScale,
 	xScale;
 
-var data = years.map(function(year, i) {
-	var vals = [];
+data = years.map(function(year, i) {
+	var vals = [],
+		totals = { total: 0 };
 
 	comm_data.forEach(function(dp, i) {
-		var y = dp.year.toString();
+		var y = dp.year.toString(),
+			region = dp.region.split('/')[0].toLowerCase();
 
 		// if (y === year && typeof dp.mal !== 'undefined' && dp.pounds !== 'NA' && dp.country !== 'Russia') {
 		if (y === year && typeof dp.mal !== 'undefined' && dp.pounds !== 'NA') {
 			dp.pounds = parseFloat(dp.pounds);
 			dp.mal = parseFloat(dp.mal);
 			vals.push(dp);
+
+			if (typeof totals[region] === 'undefined') {
+				totals[region] = 0;
+			}
+
+			totals[region] += dp.pounds;
+			totals.total += dp.pounds
 		}
+
+		
 	});
 
 	return {
 		year: year,
+		africa: totals.africa,
+		asia: totals.asia,
+		europe: totals.europe,
+		sam: totals.central,
+		total: totals.total,
 		values: vals
 	};
 
 });
 
 var year = 0,
-	curr_data = data[year];
+	curr_data;
 
-console.log(curr_data)
+// console.log(curr_data)
 
 var init = function() {
 	makeChart();
@@ -42,12 +58,13 @@ var init = function() {
 
 var makeChart = function() {
 	var W = 900,
-		H = 600,
-		margin = {top: 20, right: 20, bottom: 20, left: 40},
+		H = 650,
+		margin = {top: 20, right: 20, bottom: 20, left: 50},
 		w = W - margin.left - margin.right,
 		h = H - margin.top - margin.bottom;
 
-	var thousFormat = d3.format('s');
+	var thousFormat = d3.format('s'),
+		perFormat = d3.format('%');
 
 	xScale = d3.scale.linear()
 		.domain([5, 77])
@@ -56,11 +73,17 @@ var makeChart = function() {
 	yScale = d3.scale.linear()
 		// .domain([44090, 10731551758]) // with russia
 		.domain([44090, 2150829830])
+		// .domain([44090, 3226244745])
+		// .domain([44090, 4301659660])
 		.range([h, 0]); //pixel output
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
 		.orient('bottom')
+		.tickFormat(function(d) {
+			d = d + '%';
+			return d;
+		})
 		.tickSize(0)
 		.tickPadding(12);
 
@@ -68,9 +91,7 @@ var makeChart = function() {
 		.scale(yScale)
 		.orient('left')
 		.tickFormat(function (d) {
-	      if ((d / 1000000) >= 1) {
-	        d = d / 1000000;
-	      }
+	        d = addCommas(d / 1000000);
 	      return d;
 	    })
 	    .tickSize(0)
@@ -96,6 +117,10 @@ var makeChart = function() {
 };
 
 var drawCircles = function() {
+	curr_data = data[year];
+
+	console.log(curr_data)
+
 	var circle = svg.selectAll('.circle')
 		.data(curr_data.values, function(d) { return d.country; })
 
@@ -133,6 +158,21 @@ var drawCircles = function() {
 		.attr('cx', 0)
 		.attr('cy', yScale(-20000000000))
 		.remove();
+
+	setKey();
+};
+
+var setKey = function() {
+	var total = curr_data.total,
+		africa = (curr_data.africa / total) * 100,
+		asia = (curr_data.asia / total) * 100,
+		europe = (curr_data.europe / total) * 100,
+		sam = (curr_data.sam / total) * 100;
+
+	$('.key-row .africa').css('width', africa + '%');
+	$('.key-row .asia').css('width', asia + '%');
+	$('.key-row .europe').css('width', europe + '%');
+	$('.key-row .sam').css('width', sam + '%');
 };
 
 
@@ -149,8 +189,8 @@ $('#next').on('click', function() {
 
 
 var makeSlider = function() {
-	var W = 800,
-		H = 200,
+	var W = 400,
+		H = 70,
 		margin = {top: 10, right: 20, bottom: 10, left: 20},
 	    w = W - margin.left - margin.right,
 	    h = H - margin.bottom - margin.top;
@@ -161,10 +201,6 @@ var makeSlider = function() {
 	    .domain(d3.extent(years))
 	    .range([0, w])
 	    .clamp(true);
-
-	// var xSlider = d3.scale.ordinal()
-	// 	.domain(years)
-	// 	.rangePoints([0, w]);
 
 	var brush = d3.svg.brush()
 	    .x(xSlider)
@@ -208,12 +244,14 @@ var makeSlider = function() {
 
 	var starter = 2009;
 
-	slider
-	    .call(brush.event)
-	  	.transition() // gratuitous intro!
-	    .duration(750)
-	    .call(brush.extent([starter, starter]))
-	    .call(brush.event);
+	// slider
+	//     .call(brush.event)
+	//   	.transition() // gratuitous intro!
+	//     .duration(750)
+	//     .call(brush.extent([starter, starter]))
+	//     .call(brush.event);
+
+	var sliderStarted = false;
 
 	function brushed() {
 		var value = brush.extent()[0];
@@ -230,33 +268,39 @@ var makeSlider = function() {
 		// console.log(value)
 
 		var diff = 1,
-			yr = value;
+			nearestYear = value;
 
 		years.forEach(function(year, i) {
 			var year = parseFloat(year),
-				f = Math.abs(year - value);
+				thisDiff = Math.abs(year - value);
 
-			if (diff > f) {
-				diff = f;
-				yr = year;
+			if (thisDiff < diff) {
+				diff = thisDiff;
+				nearestYear = year;
 			}
 		});
 
-		handle.attr('cx', xSlider(yr));
+		handle.attr('cx', xSlider(nearestYear));
 
-		if (year !== yr.toString()) {
-			// year = years.indexOf(yr.toString());
-			// curr_data = data[year];
-			// drawCircles();
+		if (sliderStarted) {
+			if (nearestYear.toString() !== data[year].year) {
+				year = years.indexOf(nearestYear.toString());
+				drawCircles();
+			}
 		}
 
+		sliderStarted = true;
 	}
 };
 
 
 
 
+/* helper functions */
 
+var addCommas = function(num) {
+	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
 
 
