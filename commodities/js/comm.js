@@ -169,10 +169,15 @@ var setKey = function() {
 		europe = (curr_data.europe / total) * 100,
 		sam = (curr_data.sam / total) * 100;
 
-	$('.key-row .africa').css('width', africa + '%');
-	$('.key-row .asia').css('width', asia + '%');
-	$('.key-row .europe').css('width', europe + '%');
-	$('.key-row .sam').css('width', sam + '%');
+	// $('.key-row .africa').css('width', africa + '%');
+	// $('.key-row .asia').css('width', asia + '%');
+	// $('.key-row .europe').css('width', europe + '%');
+	// $('.key-row .sam').css('width', sam + '%');
+
+	$('.key-row .africa').animate({'width': africa + '%'}, DUR);
+	$('.key-row .asia').animate({'width': asia + '%'}, DUR);
+	$('.key-row .europe').animate({'width': europe + '%'}, DUR);
+	$('.key-row .sam').animate({'width': sam + '%'}, DUR);
 };
 
 
