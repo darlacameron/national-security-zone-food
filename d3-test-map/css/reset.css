@@ -49,24 +49,18 @@ table {
 
 /* site styles */
 
-body {
-	margin: 0;
-}
-
-#allContent {
-	width: 940px;
-	background: #fff;
-	margin: 0 auto;
-	color: #505050;
-	font-family: Helvetica, Arial, sans-serif;
-    font-size: 10px; /* 10px */
-}
-
-#allContent .clearfix {
-    content: ".";
-    display: block;
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+} 
+.clearfix:after {
     clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.clear {
+	clear: both;
 }
