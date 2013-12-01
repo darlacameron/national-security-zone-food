@@ -118,6 +118,12 @@ h1 {
 	height: 100%;
 }
 
+#source {
+	color: #646464;
+	font-family: 'Gotham', sans-serif;
+	font-size: 10px;
+}
+
 /* brush */
 
 #slider {
