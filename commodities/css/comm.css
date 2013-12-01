@@ -16,6 +16,7 @@
 .slider-axis text {
 	fill: #646464;
 	font-size: 11px;
+	font-family: "Gotham", sans-serif;
 }
 
 /*#chart circle {
@@ -23,37 +24,37 @@
 }*/
 
 circle.asia {
-	fill: black;
+	fill: #1A374D;
 }
 
 circle.africa {
-	fill: #ff0000;
+	fill: #C96916;
 }
 
 circle.europe {
-	fill: steelblue;
+	fill: #DAA520;
 }
 
 circle.sam {
-	fill: yellow;
+	fill: #A4B48C;
 }
 
 /* text */
 
 .asia {
-	background-color: black;
+	background-color: #1A374D;
 }
 
 .africa {
-	background-color: #ff0000;
+	background-color: #C96916;
 }
 
 .europe {
-	background-color: steelblue;
+	background-color: #DAA520;
 }
 
 .sam {
-	background-color: yellow;
+	background-color: #A4B48C;
 }
 
 #chart-wrapper {
@@ -103,7 +104,7 @@ h1 {
 	position: relative;
 	height: 16px;
 	margin: 8px 0 0 50px;
-	background-color: #dcdcdc;
+	background-color: #D4D4D4;
 }
 
 .key-row p {
