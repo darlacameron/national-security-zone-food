@@ -25,7 +25,7 @@ var process_text = [
 	},
 	{
 		headline: "Food arrives at its first stop",
-		body: ["The crops travel by rail from the mill to \"bridge facility,\" a step toward their final U.S. destination, their departure port.", "Great Lakes Set Aside!!!"],
+		body: ["The crops travel by rail from the mill to \"bridge facility,\" a step toward their final U.S. destination, their departure port.", "A stipulation called the Great Lakes Set-Aside required that 25 percent of aid shipments travel through Great Lakes facilities as a way to protect area businesses. The set-aside was removed in the 2012 highways bill, but many shipments still follow this route."],
 		location: "Chicago, Illinois",
 		days: "59" //November 14
 	},

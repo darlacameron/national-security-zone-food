@@ -31,7 +31,7 @@ var annotations = [
 	},
 	{
 		country: "Burundi",
-		year: "2012",
+		year: "2011",
 		text:"The U.S. contributes approximately 23 percent of the 44,000 metric tons of food aid that World Food Program distributes in Burundi. The country has long been plagued by drought, poverty and conflict, which contribute to high levels of malnourishment in a rapidly growing population.”",
 		source:""
 	}
