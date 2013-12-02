@@ -29,4 +29,10 @@ var annotations = [
 		text:"Following the dissolution of the Soviet Union in 1991, many post-Soviet states received aid as a means to promote democracy and stabilize the new countries. Of the 24 initial recipient countries, 11 have now graduated from U.S. assistance.",
 		source:""
 	},
+	{
+		country: "Burundi",
+		year: "2012",
+		text:"The U.S. contributes approximately 23 percent of the 44,000 metric tons of food aid that World Food Program distributes in Burundi. The country has long been plagued by drought, poverty and conflict, which contribute to high levels of malnourishment in a rapidly growing population.”",
+		source:""
+	}
 ];
