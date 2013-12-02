@@ -185,7 +185,6 @@ var setKey = function() {
 
 $('#next').on('click', function() {
 	year += 1;
-	curr_data = data[year];
 
 	$(this).find('span').text(curr_data.year);
 

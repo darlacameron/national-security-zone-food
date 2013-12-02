@@ -1,0 +1,22 @@
+.state {
+	fill: #dcdcdc;
+	stroke: none;
+}
+
+path.boundary {
+	fill: none;
+	stroke: #ffffff;
+	stroke-width: 1px;
+}
+
+.vendor {
+	fill: red;
+}
+
+.drop {
+	fill: black;
+}
+
+.port {
+	fill: yellow;
+}
