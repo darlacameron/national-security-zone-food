@@ -53,12 +53,13 @@
 				.attr("height", height)
 				.append('g');
 			
-			d3.json("data/world-us-topo.json", function(error, world) {
+			d3.json("data/world-us-lakes-topo.json", function(error, world) {
 			  	
 			  	var subunits = topojson.feature(world, world.objects.subunits).features,
 			  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-			  	states = topojson.feature(world, world.objects['states-geo']).features,
-				statesMesh = topojson.mesh(world, world.objects['states-geo'], function(a, b) { return a !== b; });
+			  	states = topojson.feature(world, world.objects.states).features,
+				statesMesh = topojson.mesh(world, world.objects.states, function(a, b) { return a !== b; }),
+				lakes = topojson.feature(world, world.objects.lakes).features;
 
 
 			    svg.selectAll(".subunit")
@@ -72,6 +73,12 @@
 				      .data(states)
 				      .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
+
+				svg.selectAll(".lakes")
+				      .data(lakes)
+				      .enter().append("path")
+				      .attr("class", function(d) { return "lake " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
 
 			    svg.append("path")

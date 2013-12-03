@@ -7,7 +7,7 @@
 	</head>
 
 	<style>
-	.lake {fill:#f5f5f5; stroke:1px solid #fff;}
+	.lake {fill:#f5f5f5;}
 	</style>
 	<body>
 	
@@ -63,8 +63,8 @@
 			  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
 			  	states = topojson.feature(world, world.objects.states).features,
 				statesMesh = topojson.mesh(world, world.objects.states, function(a, b) { return a !== b; }),
-				lakes = topojson.feature(world, world.objects.lakes).features,
-				lakesMesh = topojson.mesh(world, world.objects.lakes, function(a, b) { return a !== b; });
+				lakes = topojson.feature(world, world.objects.lakes).features;
+				
 
 
 			    svg.selectAll(".subunit")
@@ -96,10 +96,6 @@
 			        .attr("class", "boundary")
 			        .attr("d", pathFunc);
 
-			    // svg.append("path")
-			    //     .datum(lakesMesh)
-			    //     .attr("class", "boundary")
-			    //     .attr("d", pathFunc);
 				writeText();
 			});
 
