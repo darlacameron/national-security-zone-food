@@ -1,131 +1,36 @@
 <html>
 	<head>
-		<style>
-
-		/* CSS goes here. */
-		
-		body{
-			background:#fefefe;
-		}
-
-		path {
-			fill: #A4B48C;
-		}
-
-		#map {
-			/*width: 960px;
-			height: 1160px;
-			overflow: hidden;*/
-			text-align:center;
-		}
-
-		.country, .state {stroke:#fefefe; stroke-width:1px;}
-		
-		/*when the line goes to a country or state, we can add and remove this highlight class*/
-		path .highlight {fill:#679AC7;}
-
-		/*for now, just highlighting all of these at once*/
-		.country.niger {fill:#679AC7;}
-		.state.district-of-columbia {fill:#679AC7;}
-		.state.missouri {fill:#679AC7;}
-		.state.wisconsin {fill:#679AC7;}
-		.state.illinois {fill:#679AC7;}
-		.state.virginia {fill:#679AC7;}
-		.country.benin {fill:#679AC7;}
-
-
-		path.boundary {
-			fill: none;
-			stroke: #fefefe;
-		}
-		
-		path.points {
-			fill: none;
-			stroke:#3580C3;
-			stroke-width: 3px;
-		}
-
-		#button {
-			float:right;
-			padding: 10px;
-			background-color: #3580C3;
-			color: #fefefe;
-			cursor: pointer;
-			font-family:'Open Sans', sans-serif;
-			height:100px;
-		}
-		
-		#backButton {
-			float:left;
-			padding: 10px;
-			background-color: #3580C3;
-			color: #fefefe;
-			cursor: pointer;
-			font-family:'Open Sans', sans-serif;
-			height: 100px;
-		}
-
-		path.states {
-			fill: none;
-			stroke: #FEFEFE;
-		}
-		
-		#headline {
-			font-family: 'Ruda', sans-serif;
-			font-size:18px;
-			color:#1A374D;
-		}
-
-		#text {
-			width:80%;
-			margin:auto;
-			font-family: 'Open Sans', sans-serif;
-			font-size: 14px;
-			line-height:17px;
-		}
-		
-		#time{
-			font-family:'Ruda', sans-serif;
-			font-size: 18px;
-			position: absolute;
-			top:0px;
-			right:0px;
-			background: #3580C3;
-			color: #FEFEFE;
-			z-index:100;
-			padding:10px;
-			margin-top:0px;
-			height: 100px;
-			width: 100px;
-			text-align:center;
-			
-		}
-		
-		#count{
-			margin:5px;
-			font-family:'Ruda', sans-serif;
-			font-size: 36px;
-		}
-		
-		/*.country.niger {
-			fill:#000;
-		}*/
-
-
-		</style>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="css/reset.css">
+		<link type="text/css" rel="stylesheet" href="css/process.css">
+		<link type="text/css" rel="stylesheet" href="css/global-styles.css">
 	</head>
-	<body>
-		<div id="map"></div>
-		<p id="button"></p>
-		<p id="backButton"></p>
-		<div id="time">Approx.<p id="count"></p>Days</div>
-		<div id="text">
-			<p id="headline"></p>
-			<p id="body"></p>
-		</div>
-		
 
+	<style>
+	.lake {fill:#f5f5f5; stroke:1px solid #fff;}
+	</style>
+	<body>
+	
+	<div id="process">
+		<h1>Graphic Headline DARLA TEST VERSION</h1>
+		<h3>Graphic subhead goes here. Blah blah blah more text here.</h3>
+		<div id="wrapper" class="clearfix">
+			<div id="map"></div>
+			
+			<div id="text">
+				<div class="nav" class="clearfix">
+					<p id="next"><img src="images/arrows-right.png"></img></p>
+					<p id="prev"><img src="images/arrows-left.png"></img></p>
+					<div id="steps" class="clearfix"></div>
+				</div>
+				<h4>Day:&nbsp;&nbsp;<span id="days"></span></h4>
+				<h2 id="headline"></h2>
+				<p id="location"></p>
+				<p id="body" class="body"></p>
+			</div>
+		</div>
+		<p id="source">Source information goes here.</p>
+	</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -133,85 +38,185 @@
 		<script src="data/process-text.js"></script>
 		<script src="data/path_points.js"></script>
 		<script>
-			
 
-			var counter = 0;
+			var counter = 0,
+				animating = false,
+				centered;
 			
-			var width = 1250,
+			var width = 900,
 				height = 500;
 
 			var projection = d3.geo.mercator()
-				.center([-52.871094, 25.349798])
-				.scale(600)
-				 
-				// .clipExtent([-109.667969, 47.417542], [21.289063, 4.243225])
-				//.rotate([50, 0])
+				.center([-12.949707, 26.358221])
+				.scale(310);
 
 			var pathFunc = d3.geo.path().projection(projection);
 
 			var svg = d3.select("#map").append("svg")
 				.attr("width", width)
-				.attr("height", height);
+				.attr("height", height)
+				.append('g');
 			
-			d3.json("data/world-us-topo.json", function(error, world) {
-			  	
-			  	//used this instead of mesh to add the country shapes. we can do the outlines directly w/ svg styles instead of adding them separately, i think.
+			d3.json("data/world-us-lakes-topo.json", function(error, world) {
 
-			  	svg.selectAll(".subunit")
-				      .data(topojson.feature(world, world.objects.subunits).features)
-				    .enter().append("path")
+			  	var subunits = topojson.feature(world, world.objects.subunits).features,
+			  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
+			  	states = topojson.feature(world, world.objects.states).features,
+				statesMesh = topojson.mesh(world, world.objects.states, function(a, b) { return a !== b; }),
+				lakes = topojson.feature(world, world.objects.lakes).features,
+				lakesMesh = topojson.mesh(world, world.objects.lakes, function(a, b) { return a !== b; });
+
+
+			    svg.selectAll(".subunit")
+				      .data(subunits)
+				      .enter().append("path")
 				      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+				      //.attr('title', function(d){return "title"})
 				      .attr("d", pathFunc);
-				  svg.selectAll(".states")
-				      .data(topojson.feature(world, world.objects['states-geo']).features)
-				    .enter().append("path")
+
+				svg.selectAll(".states")
+				      .data(states)
+				      .enter().append("path")
 				      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 				      .attr("d", pathFunc);
 
+				svg.selectAll(".lakes")
+				      .data(lakes)
+				      .enter().append("path")
+				      .attr("class", function(d) { return "lake " + convertToSlug(d.properties.name); })
+				      .attr("d", pathFunc);
 
-				drawLine();
+			    svg.append("path")
+			        .datum(subunitsMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+
+			    svg.append("path")
+			        .datum(statesMesh)
+			        .attr("class", "boundary")
+			        .attr("d", pathFunc);
+
+			    // svg.append("path")
+			    //     .datum(lakesMesh)
+			    //     .attr("class", "boundary")
+			    //     .attr("d", pathFunc);
+				writeText();
 			});
 
-			function drawLine() {
-				var path = svg.append('path')
-					.attr('class', 'points')
-					.attr('d', pathFunc(pathPoints[counter]));
+			function drawLine(direction) {
+				if (counter === 0) {
+					d3.selectAll('.points').remove();
+				} else {
+					animating = true;
 
-				animatePath(path);
-				//pathPoints = pathPoints.slice(1);
-				
-				writeText();
-				
-				counter += 1;
-				
-		//added to test day counter
-				document.getElementById('count').innerHTML = counter;
+					var path = svg.append('path')
+						.attr('class', 'points')
+						.attr('id', 'point-' + counter)
+						.attr('d', pathFunc(pathPoints[counter]));
+
+					var totalLength = path.node().getTotalLength();
+
+					if (direction === 'next') {
+						animatePath(path, totalLength, totalLength, 0);
+					} else {
+						animatePath(path, totalLength, 0, totalLength);
+					}
+					
+				}
 			}
 
-			var animatePath = function(obj) {
-				var totalLength = obj.node().getTotalLength();
-
-				obj.attr("stroke-dasharray", totalLength + " " + totalLength)
-				    .attr("stroke-dashoffset", totalLength)
+			var animatePath = function(obj, total, beginning, end) {
+				obj.attr("stroke-dasharray", total + " " + total)
+				    .attr("stroke-dashoffset", beginning)
 				    .transition()
 				    .duration(1000)
 				    .ease("linear")
-				    .attr("stroke-dashoffset", 0);
+				    .attr("stroke-dashoffset", end)
+				    .each('end', function() {
+				    	animating = false;
+				    });
 			};
 			
 			function writeText() {
 				$('#headline').text(process_text[counter].headline);
-				$('#body').text(process_text[counter].body);
+				// $('#body').text(process_text[counter].body);
+				$('#location').text(process_text[counter].location);
+				$('#days').text(process_text[counter].days);
+
+				var $body = $('#body');
+				$body.text('');
+				$.each(process_text[counter].body, function(i, sentence) {
+					var $sentence = $('<div class="body">');
+					$sentence.text(sentence);
+					$body.append($sentence);
+				});
 			}
 			
 			function timeLapsed() {
 				$('#time').text(counter);
 			}
 
-			$('#button').on('click', function() {
-				drawLine();
+			$('#next').on('click', function() {
+				if (animating) {
+					return;
+				}
+
+				if (counter === pathPoints.length - 1) {
+					counter = 0;
+				} else {
+					counter += 1;
+				}
+				
+				drawLine('next');
+				writeText();
 			});
 
+			$('#prev').on('click', function() {
+				if (animating) {
+					return;
+				}
+
+				$('#point-' + counter).remove();
+				drawLine('prev');
+				
+				writeText();
+
+				if (counter === 0) {
+					counter = pathPoints.length - 1;
+				} else {
+					counter -= 1;
+				}
+			});
+
+
+			function clicked(d) {
+			  var x, y, k;
+
+			  if (d && centered !== d) {
+			    // var centroid = pathFunc.centroid(d);
+			    var centroid = [87.976074, 80.733377];
+			    x = centroid[0];
+			    y = centroid[1];
+			    k = 10;
+			    centered = d;
+			  } else {
+			    x = width / 2;
+			    y = height / 2;
+			    k = 1;
+			    centered = null;
+			  }
+
+			  g.selectAll("path")
+			      .classed("active", centered && function(d) { return d === centered; });
+
+			  g.transition()
+			      .duration(750)
+			      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+			      .style("stroke-width", 1.5 / k + "px");
+
+			  d3.selectAll('path.points').style('stroke-width', 1 / k + 'px');
+			}
+			
 			function convertToSlug(Text)
 				{
 				    return Text
@@ -220,7 +225,16 @@
 				        .replace(/ +/g,'-')
 				        ;
 				}
-			
+
+			function makeCircles(){
+				var $steps = $('#steps');
+				$.each(process_text, function(i, dp) {
+					var $circle = $('<div class="circle">');
+					$steps.append($circle);
+				});
+			}
+			makeCircles();
+
 		</script>
 	</body>
 </html>
