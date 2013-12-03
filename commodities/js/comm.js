@@ -3,7 +3,7 @@
 
 var data,
 	years = d3.set(comm_data.map(function(v) { return v.year; } )).values(),
-	DUR = 500,
+	DUR = 1000,
 	svg,
 	yScale,
 	xScale;
@@ -43,7 +43,11 @@ data = years.map(function(year, i) {
 		values: vals
 	};
 
+	console.log(totals)
+
 });
+
+console.log(data)
 
 var year = 0,
 	curr_data;
