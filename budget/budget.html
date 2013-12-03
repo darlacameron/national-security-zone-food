@@ -30,13 +30,14 @@
       .posrel {position:relative;}
       .posabs {position:absolute;}
       p.text {top:300px; left:100px;}
+      .africa .bar {fill:#eee;}
 
 </style>
 <body>
   <h1>budget charts</h1>
   <div class='row posrel'>
     <p class="posabs text">haiti</p>
-    <div id='ton-africa' class='chart'></div>
+    <div id='ton-africa' class='chart africa'></div>
     <div id='ton-asia' class='chart'></div>
     <div id='ton-americas' class='chart'></div>
   </div>
@@ -113,7 +114,7 @@ function charts(country, id, max){
       .enter().append("rect")
         .attr("class", "bar")
         .attr('data-value', function(d){return d[country]})
-        .attr("x", function(d) { return x(d.year); })
+        .attr("x", function(d) { console.log(d[country], d.year); return x(d.year); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d[country]); })
         .attr("height", function(d) { return height - y(d[country]); });
