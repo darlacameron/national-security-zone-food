@@ -26,20 +26,31 @@
 }
 
       .row {width:100%; display:block;}
-      .chart {width:320px; height:100px; display:block; float:left; background-color:#eee; margin-right:10px;}
-
+      .chart {width:320px; height:100px; display:block; float:left; margin-right:10px;}
+      .posrel {position:relative;}
+      .posabs {position:absolute;}
+      p.text {top:300px; left:100px;}
 
 </style>
 <body>
-  <div class='row'>
-    <div id='ton-africa'></div>
-    <div id='ton-asia'></div>
-    <div id='ton-americas'></div>
+  <h1>budget charts</h1>
+  <div class='row posrel'>
+    <p class="posabs text">haiti</p>
+    <div id='ton-africa' class='chart'></div>
+    <div id='ton-asia' class='chart'></div>
+    <div id='ton-americas' class='chart'></div>
   </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-//var africa = "africa";
+//TO DO
+//1. get universal styles from kate or kennedy- so it looks like the others. and colors for regions
+//2. add the other sets of charts
+//3. add headlines and chatter and annotation
+//4. tooltips from kate
+
+//maximums for each chart set
+var tonMax = 2000;
 
 // recycleable vars
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -63,12 +74,13 @@ var yAxis = d3.svg.axis()
 
 
 //one of these for each country and each row
-tonCharts("africaCT", '#ton-africa');
-tonCharts("asiaCT", '#ton-asia');
-tonCharts("americasCT", '#ton-americas');
+charts("africaCT", '#ton-africa', tonMax);
+charts("asiaCT", '#ton-asia', tonMax);
+charts("americasCT", '#ton-americas', tonMax);
 
+//run chart function with specific max for each row
 
-function tonCharts(country, id){
+function charts(country, id, max){
   
   //specifying where to put it
   var svg = d3.select(id).append("svg")
@@ -79,7 +91,7 @@ function tonCharts(country, id){
 
   d3.tsv("data.tsv", type, function(error, data) {
     x.domain(data.map(function(d) { return d.year; })); //same for all
-    y.domain([0, d3.max(data, function(d) { return d[country]/1000000000; })]); //max for set, don't do d3 max but do the highest value for all 3 charts in this group
+    y.domain([0, max]); // var for max for set
 
     svg.append("g")
         .attr("class", "x axis")
@@ -100,10 +112,11 @@ function tonCharts(country, id){
         .data(data)
       .enter().append("rect")
         .attr("class", "bar")
+        .attr('data-value', function(d){return d[country]})
         .attr("x", function(d) { return x(d.year); })
         .attr("width", x.rangeBand())
-        .attr("y", function(d) { return y(d[country]/1000000000); })
-        .attr("height", function(d) { return height - y(d[country]/1000000000); });
+        .attr("y", function(d) { return y(d[country]); })
+        .attr("height", function(d) { return height - y(d[country]); });
 
   });
 }
