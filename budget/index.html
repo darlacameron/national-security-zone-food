@@ -15,9 +15,26 @@
 			.dot {
 			  stroke: #000;
 			}
+
+			.row {width:100%; display:block;}
+			.chart {width:320px; height:100px; display:block; float:left; background-color:#eee; margin-right:10px;}
+
 		</style>
 	</head>
 	<body>
+		<div class='row'>
+			<h2>Tons of food shipped</h2>
+			<div  class='chart'>
+				<p>Africa</p>
+				<div id='ton-africa'></div>
+			</div>
+			<div id='ton-asia' class='chart'>
+				<p>Asia</p>
+			</div>
+			<div id='ton-sa' class='chart'>
+				<p>South America</p>
+			</div>
+		</div>
 		<div id='chart'></div>
 		<p class='note'>*This does not include pre-positioned food aid, which is stored in warehouses in the U.S. for future shipment overseas.</p>
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
