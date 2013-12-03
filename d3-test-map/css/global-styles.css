@@ -87,6 +87,7 @@
 			font-family:'Gotham', 'Open Sans', sans-serif;
 			font-size:16px;
 			color: #1A374D;
+			line-height: 1.4em;
 		}
 
 		h5 {
@@ -121,12 +122,17 @@
 
 		}
 
-		p.tooltip {
-
-		}
-
-		p.button {
-
+		.tooltip {
+			width:135px;
+			height:80px;
+			background-color:#fff;
+			border:1px solid #D4D4D4;
+			z-index:1000;
+			box-shadow: 5px 5px 5px #D4D4D4;
+			position:absolute;
+			top:200px;
+			right:100px;
+			padding:15px;
 		}
 
 		/*Regions*/
