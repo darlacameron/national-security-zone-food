@@ -124,16 +124,38 @@ h1 {
 	left:-270px;
 }
 
-#tooltip{
-	width:200px;
-	height:150px;
-	background-color:#FEFEFE;
-	border:1px solid #3580C3;
+.tooltip{
+	width:135px;
+	height:80px;
+	background-color:#fff;
+	border:1px solid #D4D4D4;
 	z-index:1000;
 	box-shadow: 5px 5px 5px #D4D4D4;
 	position:absolute;
 	top:200px;
 	right:100px;
+	padding:15px;
+}
+
+#tooltip-header {
+	font-size: 15px;
+	font-family: 'Ruda', sans-serif;
+	line-height: 1.5em;
+	color:#1A374D;
+}
+
+#tooltip-lbs {
+	font-size: 13px;
+	font-family: 'Gotham', sans-serif;
+	line-height: 1.5em;
+	color:grey;
+}
+
+#tooltip-UN {
+	font-size: 13px;
+	font-family: 'Gotham', sans-serif;
+	line-height: 1.5em;
+	color:grey;
 }
 
 #key {
