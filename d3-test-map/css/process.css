@@ -74,13 +74,19 @@ path.states {
 	/*color:#3580C3;*/
 }
 
+#steps {
+	display: block;
+	width: 112px;
+	margin: 0 auto;
+}
+
 .circle {
 	float: left;
 	border-radius: 50%;
 	width: 10px;
-	height: 10px; 
-	margin: 0 2px;
-	background: #DCDCDC;
+	height: 10px;
+	margin: 17px 2px;
+	background:#DCDCDC;
 	/* width and height can be anything, as long as they're equal */
 }
 
@@ -118,7 +124,7 @@ path.states {
 }*/
 
 #headline {
-	margin: 10px 0 10px 0;
+	margin: 5px 0 5px 0;
 }
 
 #location {
@@ -134,6 +140,7 @@ path.states {
 	color: #1A374D;
 	text-align:center;
 	display:inline-block;
+	margin: 10px 0 5px 0;
 }
 
 .body {

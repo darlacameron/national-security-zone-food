@@ -76,8 +76,8 @@
 				.attr("width", width)
 				.attr("height", height);
 			
-			d3.json("data/world-topo.json", function(error, world) {
-			  	
+			d3.json("data/world-us-topo.json", function(error, world) {
+			  	console.log(world)
 			  	var subunits = topojson.feature(world, world.objects.subunits),
 			  		subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; });
 			  	// console.log(subunits);
