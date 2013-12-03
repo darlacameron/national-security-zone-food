@@ -128,3 +128,36 @@
 		p.button {
 
 		}
+
+		/*Regions*/
+
+		.asia {
+			fill: #1A374D;
+		}
+
+		.africa {
+			fill: #C96916;
+		}
+
+		.europe {
+			fill: #DAA520;
+		}
+
+		.sam {
+			fill: #A4B48C;
+		}
+
+		/*Axis styles*/
+
+		#chart .axis path {
+			fill: none;
+			stroke: #1A374D;
+			shape-rendering: crispEdges;
+		}
+
+		.axis text,
+		.slider-axis text {
+			fill: #1A374D;
+			font-size: 11px;
+			font-family: "Gotham", sans-serif;
+		}
