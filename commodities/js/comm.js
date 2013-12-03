@@ -71,7 +71,8 @@ var makeChart = function() {
 		perFormat = d3.format('%');
 
 	xScale = d3.scale.linear()
-		.domain([5, 77])
+		// .domain([5, 77])
+		.domain([0, 82])
 		.range([0, w]);
 
 	yScale = d3.scale.linear()
