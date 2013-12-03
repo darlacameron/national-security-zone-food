@@ -78,7 +78,7 @@ path.states {
 
 #steps {
 	display: block;
-	width: 112px;
+	width: 150px;
 	margin: 0 auto;
 }
 
@@ -87,7 +87,7 @@ path.states {
 	border-radius: 50%;
 	width: 10px;
 	height: 10px;
-	margin: 17px 2px;
+	margin: 13px 4px;
 	background:#DCDCDC;
 	/* width and height can be anything, as long as they're equal */
 }
