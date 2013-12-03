@@ -94,6 +94,47 @@ h1 {
 	line-height: 1.7em;
 }
 
+#xlabel{
+	font-size: 13px;
+	font-family: 'Gotham', sans-serif;
+	color:grey;
+	position:absolute;
+	top:645px;
+}
+
+#ylabel{
+	font-size: 13px;
+	font-family: 'Gotham', sans-serif;
+	text-align: center;
+	width:100px;
+	color:grey;
+	position:absolute;
+	top:245px;
+	left:-465px;
+}
+
+#five{
+	font-size: 11px;
+	font-family: 'Gotham', sans-serif;
+	line-height: 1.1em;
+	color:grey;
+	width:100px;
+	position:absolute;
+	top:645px;
+	left:-270px;
+}
+
+#tooltip{
+	width:200px;
+	height:150px;
+	background-color:#FEFEFE;
+	border:1px solid #3580C3;
+	z-index:1000;
+	box-shadow: 7px 7px 5px #D4D4D4;
+	position:absolute;
+	bottom:0px;
+}
+
 #key {
 	position: absolute;
 	right: 20px;
