@@ -109,7 +109,7 @@ h1 {
 	width:100px;
 	color:grey;
 	position:absolute;
-	top:245px;
+	top:0px;
 	left:-465px;
 }
 
@@ -141,7 +141,7 @@ h1 {
 	font-size: 15px;
 	font-family: 'Ruda', sans-serif;
 	line-height: 1.5em;
-	color:#1A374D;
+	color:#3580C3;
 }
 
 #tooltip-lbs {
