@@ -1,4 +1,4 @@
-var annotations = [
+var notes = [
 	{
 		country: "Russia",
 		year: "1993",
@@ -15,6 +15,12 @@ var annotations = [
 		country: "Ethiopia",
 		year: "2004",
 		text:"USAID has been assisting Ethiopia since its inception in 1961. Over the decades, aid goals have shifted from emergency drought relief to development programming throughout the region.",
+		source:""
+	},
+	{
+		country: "Eritrea",
+		year: "2005",
+		text:"In late 2005, the government of Eritrea expelled aid organizations, claiming that a policy of self-reliance was better for the country and its people.",
 		source:""
 	},
 	{
