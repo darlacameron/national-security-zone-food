@@ -2,6 +2,12 @@
 <meta charset="utf-8">
 <style>
 
+body {
+  width: 960px;
+  margin: 0 auto;
+}
+
+
 .bar {
   fill: #080524;
 }
@@ -25,8 +31,8 @@
   display: none;
 }
 
-      .row {width:100%; display:block;}
-      .chart {width:320px; height:100px; display:block; float:left; margin-right:10px;}
+      .row {width:100%; display:block; padding-bottom: 15px; }
+      .chart {width:300px; height:100px; display:block; float:left; margin-right:10px;}
       .posrel {position:relative;}
       .posabs {position:absolute;}
       p.text {top:300px; left:100px;}
@@ -36,11 +42,26 @@
 <body>
   <h1>budget charts</h1>
   <div class='row posrel'>
-    <p class="posabs text">haiti</p>
-    <div id='ton-africa' class='chart africa'></div>
-    <div id='ton-asia' class='chart'></div>
-    <div id='ton-americas' class='chart'></div>
+    <p class="posabs text"></p>
+    <div id='CTafrica' class='chart'></div>
+    <div id='CTasia' class='chart'></div>
+    <div id='CTamericas' class='chart'></div>
   </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <div class='row posrel'>
+    <p class="posabs text"></p>
+    <div id='RTafrica' class='chart'></div>
+    <div id='RTasia' class='chart'></div>
+    <div id='RTamericas' class='chart'></div>
+  </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <div class='row posrel'>
+    <p class="posabs text"></p>
+    <div id='CRafrica' class='chart'></div>
+    <div id='CRasia' class='chart'></div>
+    <div id='CRamericas' class='chart'></div>
+  </div>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
@@ -51,7 +72,9 @@
 //4. tooltips from kate
 
 //maximums for each chart set
-var tonMax = 2000;
+var costTonMax = 2000;
+var recipientTonMax = 150;
+var costRecipientMax = 140;
 
 // recycleable vars
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -71,17 +94,26 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10, "$");
+    .ticks(5, "$");
 
 
 //one of these for each country and each row
-charts("africaCT", '#ton-africa', tonMax);
-charts("asiaCT", '#ton-asia', tonMax);
-charts("americasCT", '#ton-americas', tonMax);
+charts("africaCT", '#CTafrica', costTonMax);
+charts("asiaCT", '#CTasia', costTonMax);
+charts("americasCT", '#CTamericas', costTonMax);
 
 //run chart function with specific max for each row
 
-function charts(country, id, max){
+charts("africaRT", '#RTafrica', recipientTonMax);
+charts("asiaRT", '#RTasia', recipientTonMax);
+charts("americasRT", '#RTamericas', recipientTonMax);
+
+charts("africaCR", '#CRafrica', costRecipientMax);
+charts("asiaCR", '#CRasia', costRecipientMax);
+charts("americasCR", '#CRamericas', costRecipientMax);
+
+
+function charts(region, id, max){
   
   //specifying where to put it
   var svg = d3.select(id).append("svg")
@@ -113,11 +145,11 @@ function charts(country, id, max){
         .data(data)
       .enter().append("rect")
         .attr("class", "bar")
-        .attr('data-value', function(d){return d[country]})
-        .attr("x", function(d) { console.log(d[country], d.year); return x(d.year); })
+        .attr('data-value', function(d){return d[region]})
+        .attr("x", function(d) { return x(d.year); })
         .attr("width", x.rangeBand())
-        .attr("y", function(d) { return y(d[country]); })
-        .attr("height", function(d) { return height - y(d[country]); });
+        .attr("y", function(d) { return y(d[region]); })
+        .attr("height", function(d) { return height - y(d[region]); });
 
   });
 }
