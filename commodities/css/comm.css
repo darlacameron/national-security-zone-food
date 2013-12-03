@@ -60,6 +60,8 @@ circle.sam {
 #chart-wrapper {
 	position: relative;
 	height: 650px;
+	height: 500px;
+	margin-bottom: 40px;
 }
 
 #chart,
@@ -100,6 +102,7 @@ h1 {
 	color:grey;
 	position:absolute;
 	top:645px;
+	top:500px;
 }
 
 #ylabel{
@@ -121,6 +124,7 @@ h1 {
 	width:100px;
 	position:absolute;
 	top:645px;
+	top:500px;
 	left:-270px;
 }
 
