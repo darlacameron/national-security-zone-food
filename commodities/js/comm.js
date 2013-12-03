@@ -63,7 +63,7 @@ var init = function() {
 var makeChart = function() {
 	var W = 900,
 		H = 500,
-		margin = {top: 20, right: 20, bottom: 20, left: 50},
+		margin = {top: 0, right: 20, bottom: 20, left: 40},
 		w = W - margin.left - margin.right,
 		h = H - margin.top - margin.bottom;
 

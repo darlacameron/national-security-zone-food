@@ -60,6 +60,7 @@ circle.sam {
 #chart-wrapper {
 	position: relative;
 	height: 500px;
+	margin-top: 20px;
 	margin-bottom: 40px;
 }
 
@@ -71,10 +72,7 @@ circle.sam {
 }
 
 #text {
-	width: 60%;
-	top: 20px;
-	left: auto;
-	right: 0;
+	width: 100%;
 	pointer-events: none;
 }
 
@@ -98,27 +96,32 @@ h1 {
 #xlabel{
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
-	color:grey;
+	color: #646464;
 	position:absolute;
-	top:500px;
+	top:520px;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
 }
 
 #ylabel{
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
-	text-align: center;
+	text-align: left;
+	line-height: 1.3em;
 	width:100px;
-	color:grey;
+	color: #646464;
 	position:absolute;
-	top:0px;
-	left:-465px;
+	top: 0;
+	left: 50px;
+	font-weight: bold;
 }
 
 #five{
 	font-size: 11px;
 	font-family: 'Gotham', sans-serif;
 	line-height: 1.1em;
-	color:grey;
+	color:#646464;
 	width:100px;
 	position:absolute;
 	top:500px;
@@ -149,18 +152,19 @@ h1 {
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
 	line-height: 1.5em;
-	color:grey;
+	color:#646464;
 }
 
 #tooltip-UN {
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
 	line-height: 1.5em;
-	color:grey;
+	color:#646464;
 }
 
 #key {
 	position: absolute;
+	top: 0;
 	right: 20px;
 	width: 200px;
 }
@@ -175,7 +179,7 @@ h1 {
 .key-row p {
 	position: absolute;
 	top: 4px;
-	left: -50px;
+	left: -58px;
 }
 
 .key-row span {
@@ -187,6 +191,28 @@ h1 {
 	color: #646464;
 	font-family: 'Gotham', sans-serif;
 	font-size: 10px;
+}
+
+/* nav */
+
+.nav {
+	position: relative;
+}
+
+#prev,
+#next {
+	position: absolute;
+	top: 25px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+#prev {
+	left: 180px;
+}
+
+#next {
+	left: 208px;
 }
 
 /* brush */
