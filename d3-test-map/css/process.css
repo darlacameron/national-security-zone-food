@@ -47,6 +47,8 @@ path.states {
 	stroke: #FEFEFE;
 }
 
+.lake {fill:#f5f5f5;}
+
 /* text area */
 
 #text {
