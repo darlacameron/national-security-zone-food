@@ -163,7 +163,16 @@ var yAxis = d3.svg.axis()
         .attr("x", function(d) { return x(d.year); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d[region]); })
-        .attr("height", function(d) { return height - y(d[region]); });
+        .attr("height", function(d) { return height - y(d[region]); })
+        //adding hover stuff here
+        .on('mouseover', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
+          d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+        })
+        .on('mouseout', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
+          d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}) //removes the stroke. 
+        });
 
   });
 }
