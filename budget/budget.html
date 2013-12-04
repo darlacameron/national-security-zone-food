@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.min.js"></script>
 
 <style>
 
@@ -31,6 +32,29 @@ body {
   display: none;
 }
 
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+ 
       .row {width:100%; height:300px; display:block; padding-bottom: 15px; }
       .chart {width:300px; height:100px; display:block; float:left; margin-right:20px;}
       .posrel {position:relative;}
@@ -52,7 +76,7 @@ body {
     <p class="posabs text"></p>
     <div id='CTafrica' class='chart africa'><label><input type="checkbox"> Sort values</label></div>
 
-    <div id='CTasia' class='chart asia'></div>
+    <div id='CTasia' class='chart asia'><label></div>
     <div id='CTamericas' class='chart americas'></div>
   </div>
 
@@ -130,12 +154,22 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .ticks(5, "$");
 
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Cost per ton of food:</strong> <span style='color:red'>" + d[region] + "</span>";
+  })
+
   //specifying where to put it
   var svg = d3.select(id).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
 
   d3.tsv("data.tsv", type, function(error, data) {
     x.domain(data.map(function(d) { return d.year; })); //same for all
@@ -165,6 +199,8 @@ var yAxis = d3.svg.axis()
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d[region]); })
         .attr("height", function(d) { return height - y(d[region]); })
+        //.on('mouseover', tip.show)
+        //.on('mouseout', tip.hide)
         //adding hover stuff here
         .on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
@@ -174,7 +210,9 @@ var yAxis = d3.svg.axis()
           var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
           d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}) //removes the stroke. 
         
-        d3.select("input").on("change", change);
+
+// Having a go at sorting from biggest to smallest vaue
+      d3.select("input").on("change", change);
 
       var sortTimeout = setTimeout(function() {
         d3.select("input").property("checked", true).each(change);
@@ -205,7 +243,7 @@ var yAxis = d3.svg.axis()
   }
     
 
-        });
+       });
 
       });
 
