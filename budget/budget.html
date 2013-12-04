@@ -12,9 +12,6 @@ body {
   fill: #080524;
 }
 
-.bar:hover {
-  fill: #D62404;
-}
 
 .axis {
   font: 11px tahoma;
@@ -32,34 +29,39 @@ body {
 }
 
       .row {width:100%; height:300px; display:block; padding-bottom: 15px; }
-      .chart {width:300px; height:100px; display:block; float:left; margin-right:10px;}
+      .chart {width:300px; height:100px; display:block; float:left; margin-right:20px;}
       .posrel {position:relative;}
       .posabs {position:absolute;}
       p.text {top:300px; left:100px;}
-      .africa .bar {fill:#eee;}
+      .africa .bar {fill: #C96916;}
+      .africa .bar:hover {fill: #DAA520;}
+      .asia .bar {fill: #1A374D;}
+      .asia .bar:hover {fill: #D62404;}
+      .americas .bar {fill: #A4B48C;}
+      .americas .bar:hover {fill: #646464;}
 
 </style>
 <body>
   <h1>budget charts</h1>
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='CTafrica' class='chart'></div>
-    <div id='CTasia' class='chart'></div>
-    <div id='CTamericas' class='chart'></div>
+    <div id='CTafrica' class='chart africa'></div>
+    <div id='CTasia' class='chart asia'></div>
+    <div id='CTamericas' class='chart americas'></div>
   </div>
 
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='RTafrica' class='chart'></div>
-    <div id='RTasia' class='chart'></div>
-    <div id='RTamericas' class='chart'></div>
+    <div id='RTafrica' class='chart africa'></div>
+    <div id='RTasia' class='chart asia'></div>
+    <div id='RTamericas' class='chart americas'></div>
   </div>
 
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='CRafrica' class='chart'></div>
-    <div id='CRasia' class='chart'></div>
-    <div id='CRamericas' class='chart'></div>
+    <div id='CRafrica' class='chart africa'></div>
+    <div id='CRasia' class='chart asia'></div>
+    <div id='CRamericas' class='chart americas'></div>
   </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -77,24 +79,11 @@ var recipientTonMax = 150;
 var costRecipientMax = 140;
 
 // recycleable vars
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 320 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(5, "$");
 
 
 //one of these for each country and each row
@@ -114,7 +103,22 @@ charts("americasCR", '#CRamericas', costRecipientMax);
 
 
 function charts(region, id, max){
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
   
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5, "$");
+
   //specifying where to put it
   var svg = d3.select(id).append("svg")
     .attr("width", width + margin.left + margin.right)
