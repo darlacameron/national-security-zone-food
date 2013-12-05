@@ -3,41 +3,26 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="../css/global-styles.css" charset="utf-8">
+<link type="text/css" rel="stylesheet" href="../css/reset.css">
 
 <link rel="stylesheet" type="text/css" href="css/budget.css">
-
 <style>
 
-html, body {
-  height: 100%;
-  max-width:960px;
-  margin:0 auto; /* this is what centers the content in the page */ 
-  color:#000;
-  text-align: justify;
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display:inline-block;
+  padding-right: 5px;
 }
 
 
-.bar {
-  fill: #080524;
-}
+</style>
 
-
-.axis {
-  font: 11px tahoma;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-/*
+<!--
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -62,44 +47,10 @@ html, body {
   text-align: center;
 }
 
-*/
-h1 { 
-  font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
-  font-weight: normal;
-  font-size: 1.75em;
-  letter-spacing: .2em;
-  line-height: 1.1em;
-  margin-top:10px;
-  text-align: center;
-  text-transform: uppercase;
-  padding-bottom:20px;
-  padding-top:20px;
-}
+-->
 
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
 
-.title {
-    text-shadow: 0px 1px 1px #4d4d4d;
-    font: 16px 'LeagueGothicRegular';
-}
 
-      .row {width:100%; height:235px; display:block; padding-bottom: 15px; }
-      .chart {width:300px; height:100px; display:block; float:left; margin-right:20px;}
-      .posrel {position:relative;}
-      .posabs {position:absolute;}
-      .africa .bar {fill: #C96916;}
-      .africa .bar:hover {fill: #DAA520;}
-      .asia .bar {fill: #1A374D;}
-      .asia .bar:hover {fill: #D62404;}
-      .americas .bar {fill: #A4B48C;}
-      .americas .bar:hover {fill: #646464;}
-
-     
-</style>
 <body>
 
 
@@ -111,6 +62,11 @@ h1 {
   <p>Unlike every other major food aid donor in the world, the U.S. government still insists on buying commodities here and shipping them thousands of miles across the seas on U.S. flagged vessels. Along the way, everyone from Fortune 500 agribusinesses to shipping companies corner a slice of the budget meant for some of the most vulnerable people in the world. By USAID’s own admission, only around 40 percent of the Food for Peace budget is spent on the food itself. The rest lines the pockets of the wealthy, none of whom happen to be hungry. Here, in these charts, we illustrate a decade in global hunger through the prism of an aid program that refuses to change with the times.</p>
 
 
+<a href="#cost-per-ton"><h3> How much food does your money buy? </h3><a>
+<a href="#recipients-per-ton"><h3> How many people get the food? </h3><a>
+<a href="#cost-per-recipient"><h3> How much it costs to reach one person? </h3><a>
+
+
   <div class='row posrel'>
     <p class="posabs text"></p>
     <div id='CTafrica' class='chart africa'><!--<label><input type="checkbox"> Sort values</label>--></div>
@@ -119,7 +75,7 @@ h1 {
     <div id='CTamericas' class='chart americas'></div>
   </div>
 
-  <h2>#Cost Per Ton</h2>
+  <h2 id="cost-per-ton">Cost Per Ton</h2>
   <p>The amount of money that USAID spends to ship a ton of food has steadily risen. The need to ship commodities on U.S. flagged vessels which are generally more expensive, increasing shipping costs due to entrenched monopolies and the global food price spike of 2008 have all resulted in USAID getting a poor bang for its buck. One U.S. dollar today nets less food and feeds far fewer people in comparison to 2003 levels.</p>
 
   <div class='row posrel'>
@@ -129,7 +85,7 @@ h1 {
     <div id='RTamericas' class='chart americas'></div>
   </div>
 
-  <h2>#Recipients per ton</h2>
+  <h2 id="recipients-per-ton">Recipients Per Ton</h2>
   <p>Africa gets the highest volume of U.S. food aid. Yet, the number of Africans reached per ton of aid is a fraction of the prevailing numbers in other parts of the world. Transportation costs to Africa are exceedingly high. In some cases, convoys of food need to move like an army unit in order to survive the journey. Ocean transportation takes months. For years, the consensus among the international aid community has been to adopt the shortest possible distance between food aid source and beneficiary. The U.S., however, still ships food from the Midwest to Mombasa. In the process, the people who most need aid bear the highest burden of systemic costs.</p>
 
   <div class='row posrel'>
@@ -139,7 +95,7 @@ h1 {
     <div id='CRamericas' class='chart americas'></div>
   </div>
 
-  <h2>#Cost per recipient</h2>
+  <h2 id="cost-per-recipient">Cost Per Recipient</h2>
   <p>Global food prices have skyrocketed since late 2008, precipitating food riots around the world and setting off the Arab spring. The ripples were felt by the U.S. aid program as well. The costs of delivering food to a person doubled in a short span. Food prices only made the effects of the program’s inherent inefficiencies worse. During the Darfur crisis in Sudan during the mid-2000s, for example, USAID was spending 70 percent of the program money on transportation. In other words, 70 cents of each U.S. taxpayer dollar went into the pockets of transportation companies and middlemen. On top of that, in-kind or in-commodity aid (unlike cash or vouchers) have the added problems of loss, theft, and spoilage. At the end of this road, what’s left for those truly in need is very little and often arrives very late.</p>
 
 
@@ -276,12 +232,15 @@ svg.call(tip);
         
 
 
-          var dataSum = d3.sum(data, function(d) { return d[region]; }); 
+          var dataSum = d3.sum(data, function(d) { return d[region]; });
+          var dataAvg = dataSum / data.length;
  
           var line = d3.svg.line()
           .x(function(d, i) { 
-            return x(i) + i; })
-          .y(function(d, i) { return y(dataSum/data.length); }); 
+            // return x(i) + i;
+            return x(i); 
+          })
+          .y(function(d, i) { return y(dataAvg); }); 
         
           svg.append("path")
               .datum(data)

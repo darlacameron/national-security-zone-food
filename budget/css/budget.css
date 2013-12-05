@@ -30,8 +30,62 @@
 			display: block;
 		}
 		body {
-			line-height: 1;
+			
 		}
+
+		html, body {
+	  height: 100%;
+	  max-width:960px;
+	  margin:0 auto; /* this is what centers the content in the page */ 
+	  color:#000;
+	  text-align: justify;
+	  line-height: 1;
+		}
+
+
+		.bar {
+		  fill: #080524;
+		}
+
+
+		.axis {
+		  font: 11px tahoma;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		.x.axis path {
+		  display: none;
+		}
+
+		.line {
+		  fill: none;
+		  stroke: steelblue;
+		  stroke-width: 1.5px;
+		}
+
+		.title {
+		    text-shadow: 0px 1px 1px #4d4d4d;
+		    font: 16px 'LeagueGothicRegular';
+		}
+
+      .row {width:100%; height:235px; display:block; padding-bottom: 15px; }
+      .chart {width:300px; height:100px; display:block; float:left; margin-right:20px;}
+      .posrel {position:relative;}
+      .posabs {position:absolute;}
+      .africa .bar {fill: #C96916;}
+      .africa .bar:hover {fill: #DAA520;}
+      .asia .bar {fill: #1A374D;}
+      .asia .bar:hover {fill: #D62404;}
+      .americas .bar {fill: #A4B48C;}
+      .americas .bar:hover {fill: #646464;}
+
+
 		ol, ul {
 			list-style: none;
 		}
@@ -55,13 +109,20 @@
 
 		}
 
-		h1 {
-			font-family:'Ruda', Helvetica, sans-serif;
-			font-size: 36px;
-			color: #1A374D;
-			font-weight: 700;
-			line-height: 1.2em;
+		h1 { 
+		  font-family: 'Ruda', Helvetica, sans-serif;
+		  font-weight: 700;
+		  font-size: 36px;
+		  color: #1A374D;
+		  letter-spacing: .2em;
+		  line-height: 1.2em;
+		  margin-top:10px;
+		  text-align: center;
+		  text-transform: uppercase;
+		  padding-bottom:20px;
+		  padding-top:20px;
 		}
+
 
 		h2 {
 			font-family:'Ruda', Helvetica, sans-serif;
