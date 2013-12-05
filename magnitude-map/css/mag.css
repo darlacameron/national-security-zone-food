@@ -20,3 +20,9 @@ path.boundary {
 .port {
 	fill: yellow;
 }
+
+.line {
+	fill:none;
+	stroke:#000;
+	stroke-width: 1px;
+}
