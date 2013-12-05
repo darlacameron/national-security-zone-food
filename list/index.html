@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+#container {
+  width: 960px;
+  height: 500px;
+  margin: 60px auto 0 auto;
+  color: #282828;
+}
 
-body {
-  font: 10px sans-serif;
+.chatter {
+margin-top: 10px;
+margin-bottom: 8px;
+font-size: 15px;
+font-family: 'Gotham', sans-serif;
+font-weight: lighter;
+line-height: 1.7em;
 }
 
 .axis path,
@@ -11,6 +22,12 @@ body {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+.axis text, .legend text {
+fill: grey;
+font-size: 11px;
+font-family: "Gotham", sans-serif;
 }
 
 .bar {
@@ -21,101 +38,27 @@ body {
   display: none;
 }
 
+
+.bulk-grains, .corncornmeal, .flour, .oil, .peaslentilsbeans {fill:#C86A28;}
+
+.emergency-pouches, .soy-preparationscornsoy-blend {fill:#A4B48C;}
+
+.nonfat-dry-milk, .odd-commodities {fill:#19374C;}
+ 
+
 </style>
+<link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="../css/reset.css" charset="utf-8">
+<link type="text/css" rel="stylesheet" href="../css/global-styles.css" charset="utf-8">
+
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
-
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .rangeRound([height, 0]);
-
-var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .tickFormat(d3.format(".2s"));
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.csv("data/data.csv", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Year"; }));
-
-  data.forEach(function(d) {
-    var y0 = 0;
-    d.commodities = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
-    d.total = d.commodities[d.commodities.length - 1].y1;
-  });
-
-  data.sort(function(a, b) { return b.total - a.total; });
-
-  x.domain(data.map(function(d) { return d.Year; }));
-  y.domain([0, d3.max(data, function(d) { return d.total; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Metric tons");
-
-  var state = svg.selectAll(".state")
-      .data(data)
-    .enter().append("g")
-      .attr("class", function(d){ console.log(d)/*return d.commodities*/})
-      .attr("transform", function(d) { return "translate(" + x(d.Year) + ",0)"; });
-
-  state.selectAll("rect")
-      .data(function(d) { return d.commodities; })
-    .enter().append("rect")
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.y1); })
-      .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-      .style("fill", function(d) { return color(d.name); });
-
-  var legend = svg.selectAll(".legend")
-      .data(color.domain().slice().reverse())
-    .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", color);
-
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { return d; });
-
-});
-
-</script>
+  <div id='container'>
+    <h1>What's on the food list</h1>
+    <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <div id='chart'></div>
+  </div>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src='js/chart.js'></script>
+</body>
+</html>
