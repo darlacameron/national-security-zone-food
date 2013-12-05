@@ -50,7 +50,7 @@ data = years.map(function(year, i) {
 console.log(data)
 
 var year = 0,
-	curr_data;
+	curr_data = data[year];
 
 // console.log(curr_data)
 
@@ -63,7 +63,7 @@ var init = function() {
 var makeChart = function() {
 	var W = 900,
 		H = 500,
-		margin = {top: 0, right: 20, bottom: 20, left: 40},
+		margin = {top: 0, right: 20, bottom: 20, left: 50},
 		w = W - margin.left - margin.right,
 		h = H - margin.top - margin.bottom;
 
@@ -186,10 +186,28 @@ var setKey = function() {
 };
 
 
-
-
 $('#next').on('click', function() {
-	year += 1;
+	// year += 1;
+
+	if (year === data.length - 1) {
+		year = 0;
+	} else {
+		year += 1;
+	}
+
+	$(this).find('span').text(curr_data.year);
+
+	drawCircles();
+});
+
+$('#prev').on('click', function() {
+	// year -= 1;
+
+	if (year === 0) {
+					year = data.length - 1;
+				} else {
+					year -= 1;
+				}
 
 	$(this).find('span').text(curr_data.year);
 
