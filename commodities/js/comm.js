@@ -148,7 +148,15 @@ var drawCircles = function() {
 		})
 		.attr('cx', 0).attr('cy', yScale(-20000000000))
 		.on('mouseover', function(d) {
-			console.log(d.country, d.pounds);
+			// console.log(d.country, d.pounds);
+			d3.select('.tooltip h2').text(d.country);
+			d3.select('.tooltip .pounds span').text(d.pounds);
+			d3.select('.tooltip .mal span').text(d.mal);
+
+			var mouse = d3.event;
+			console.log(mouse);
+			// d3.select('.tooltip').style({'left': mouse[0], 'top': mouse[1]});
+			positionTooltip(mouse);
 		});
 
 	circle.transition()
@@ -168,6 +176,10 @@ var drawCircles = function() {
 		.remove();
 
 	setKey();
+};
+
+var positionTooltip = function(coords){
+	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10})
 };
 
 var setKey = function() {
@@ -339,7 +351,10 @@ var addCommas = function(num) {
 d3.select('#chart').on('mouseover', function() {
 	console.log(d3.event)
 })
-
+$(document).mousemove(function(e) { 
+  // $('.tooltip').css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
+  	// console.log(e);
+});
 
 init();
 
