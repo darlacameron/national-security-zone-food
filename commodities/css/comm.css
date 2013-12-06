@@ -93,6 +93,11 @@ h1 {
 	line-height: 1.7em;
 }
 
+#notes > p{
+	position:absolute;
+	
+}
+
 #xlabel{
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
@@ -117,6 +122,15 @@ h1 {
 	font-weight: bold;
 }
 
+#annotation1{
+	height:200px;
+	width:300px;
+	border:1px solid;
+	position:absolute;
+	top:0px;
+	left:100px;
+}
+
 #five{
 	font-size: 11px;
 	font-family: 'Gotham', sans-serif;
@@ -137,29 +151,23 @@ h1 {
 	box-shadow: 5px 5px 5px #D4D4D4;
 	position:absolute;
 	top:200px;
-	right:100px;
+	left:100px;
 	padding:15px;
 /*	display:none;
 */}
 
-h2.tooltip {
+.tooltip h2{
 	font-size: 15px;
 	font-family: 'Ruda', sans-serif;
 	line-height: 1.5em;
 	color:#3580C3;
 }
 
-p.tooltip {
+.tooltip p{
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
 	line-height: 1.5em;
 	color:#646464;
-}
-
-#annotation{
-	height:200px;
-	width:300px;
-	border:1px solid;
 }
 
 #key {

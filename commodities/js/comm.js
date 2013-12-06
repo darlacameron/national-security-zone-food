@@ -145,7 +145,15 @@ var drawCircles = function() {
 		})
 		.attr('cx', 0).attr('cy', yScale(-20000000000))
 		.on('mouseover', function(d) {
-			console.log(d.country, d.pounds);
+			// console.log(d.country, d.pounds);
+			d3.select('.tooltip h2').text(d.country);
+			d3.select('.tooltip .pounds span').text(d.pounds);
+			d3.select('.tooltip .mal span').text(d.mal);
+
+			console.log(d3.mouse(this));
+			var mouse = d3.mouse(this);
+			// d3.select('.tooltip').style({'left': mouse[0], 'top': mouse[1]});
+			positionTooltip(mouse);
 		});
 
 	circle.transition()
@@ -165,6 +173,10 @@ var drawCircles = function() {
 		.remove();
 
 	setKey();
+};
+
+var positionTooltip = function(coords){
+	$('.tooltip').css({'top':coords[1], 'left':coords[0]})
 };
 
 var setKey = function() {
@@ -331,8 +343,10 @@ var addCommas = function(num) {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-
-
+$(document).mousemove(function(e) { 
+  // $('.tooltip').css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
+  	// console.log(e);
+});
 
 init();
 
