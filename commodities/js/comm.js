@@ -336,7 +336,9 @@ var addCommas = function(num) {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-
+d3.select('#chart').on('mouseover', function() {
+	console.log(d3.event)
+})
 
 
 init();
