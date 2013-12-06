@@ -158,3 +158,12 @@ path.states {
 	font-family: 'Gotham', sans-serif;
 	font-size: 10px;
 }
+
+/*progress*/
+
+/*.progress-bar {
+	position: relative;
+	height: 16px;
+	margin: 8px 0 0 50px;
+	background-color: #D4D4D4;
+}*/
