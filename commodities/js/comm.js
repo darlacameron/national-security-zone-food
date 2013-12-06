@@ -214,6 +214,10 @@ $('#prev').on('click', function() {
 	drawCircles();
 });
 
+function annotate() {
+	$('#annotation').text(notes[year].note);
+}
+			
 
 var makeSlider = function() {
 	var W = 400,
@@ -321,17 +325,11 @@ var makeSlider = function() {
 };
 
 
-
-
 /* helper functions */
 
 var addCommas = function(num) {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
-
-
-
-
 
 
 

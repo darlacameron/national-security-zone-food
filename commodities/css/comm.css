@@ -139,27 +139,27 @@ h1 {
 	top:200px;
 	right:100px;
 	padding:15px;
-}
+/*	display:none;
+*/}
 
-#tooltip-header {
+h2.tooltip {
 	font-size: 15px;
 	font-family: 'Ruda', sans-serif;
 	line-height: 1.5em;
 	color:#3580C3;
 }
 
-#tooltip-lbs {
+p.tooltip {
 	font-size: 13px;
 	font-family: 'Gotham', sans-serif;
 	line-height: 1.5em;
 	color:#646464;
 }
 
-#tooltip-UN {
-	font-size: 13px;
-	font-family: 'Gotham', sans-serif;
-	line-height: 1.5em;
-	color:#646464;
+#annotation{
+	height:200px;
+	width:300px;
+	border:1px solid;
 }
 
 #key {
