@@ -153,8 +153,8 @@ var drawCircles = function() {
 			d3.select('.tooltip .pounds span').text(d.pounds);
 			d3.select('.tooltip .mal span').text(d.mal);
 
-			console.log(d3.mouse(this));
-			var mouse = d3.mouse(this);
+			var mouse = d3.event;
+			console.log(mouse);
 			// d3.select('.tooltip').style({'left': mouse[0], 'top': mouse[1]});
 			positionTooltip(mouse);
 		});
@@ -179,7 +179,7 @@ var drawCircles = function() {
 };
 
 var positionTooltip = function(coords){
-	$('.tooltip').css({'top':coords[1], 'left':coords[0]})
+	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10})
 };
 
 var setKey = function() {
