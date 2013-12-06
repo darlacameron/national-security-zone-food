@@ -3,10 +3,13 @@
 
 var data,
 	years = d3.set(comm_data.map(function(v) { return v.year; } )).values(),
-	DUR = 1000,
+	DUR = 200,
 	svg,
 	yScale,
 	xScale;
+
+var xSlider,
+	handle;
 
 data = years.map(function(year, i) {
 	var vals = [],
@@ -174,11 +177,6 @@ var setKey = function() {
 		europe = (curr_data.europe / total) * 100,
 		sam = (curr_data.sam / total) * 100;
 
-	// $('.key-row .africa').css('width', africa + '%');
-	// $('.key-row .asia').css('width', asia + '%');
-	// $('.key-row .europe').css('width', europe + '%');
-	// $('.key-row .sam').css('width', sam + '%');
-
 	$('.key-row .africa').animate({'width': africa + '%'}, DUR);
 	$('.key-row .asia').animate({'width': asia + '%'}, DUR);
 	$('.key-row .europe').animate({'width': europe + '%'}, DUR);
@@ -191,9 +189,11 @@ var setKey = function() {
 $('#next').on('click', function() {
 	year += 1;
 
-	$(this).find('span').text(curr_data.year);
+	// $(this).find('span').text(curr_data.year);
 
 	drawCircles();
+
+	setBrush(curr_data.year);
 });
 
 
@@ -206,7 +206,7 @@ var makeSlider = function() {
 
 	var timeFormat = d3.format('0000');
 
-	var xSlider = d3.scale.linear()
+	xSlider = d3.scale.linear()
 	    .domain(d3.extent(years))
 	    .range([0, w])
 	    .clamp(true);
@@ -246,7 +246,7 @@ var makeSlider = function() {
 	slider.select('.background')
 	    .attr('height', h);
 
-	var handle = slider.append('circle')
+	handle = slider.append('circle')
 	    .attr('class', 'slider-handle')
 	    .attr('transform', 'translate(0,' + h / 2 + ')')
 	    .attr('r', 9);
@@ -289,7 +289,8 @@ var makeSlider = function() {
 			}
 		});
 
-		handle.attr('cx', xSlider(nearestYear));
+		// handle.attr('cx', xSlider(nearestYear));
+		setBrush(nearestYear);
 
 		if (sliderStarted) {
 			if (nearestYear.toString() !== data[year].year) {
@@ -300,6 +301,10 @@ var makeSlider = function() {
 
 		sliderStarted = true;
 	}
+};
+
+var setBrush = function(x) {
+	handle.attr('cx', xSlider(x));
 };
 
 
