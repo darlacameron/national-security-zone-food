@@ -10,8 +10,6 @@
 
 <link rel="stylesheet" type="text/css" href="css/budget.css">
 <style>
-
-
 h3 {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -54,19 +52,22 @@ h3 {
 <body>
 
 
-  <h1>Food Aid Inc.</h1>
+  <h1>The cost and effectiveness of food aid</h1>
 
   
-  <p class="dropcap">The U.S. government runs the world’s largest and longest-running food aid program. On an average year, U.S. taxpayers help feed over 30 million hungry and starving people. However, there are long-standing questions about the efficiency and effectiveness of this system, put in place originally by President Eisenhower in 1954.</p>
+  <!-- <p class="dropcap">The U.S. government runs the world’s largest and longest-running food aid program. On an average year, U.S. taxpayers help feed over 30 million hungry and starving people. However, there are long-standing questions about the efficiency and effectiveness of this system, put in place originally by President Eisenhower in 1954.</p> -->
 
-  <p>Unlike every other major food aid donor in the world, the U.S. government still insists on buying commodities here and shipping them thousands of miles across the seas on U.S. flagged vessels. Along the way, everyone from Fortune 500 agribusinesses to shipping companies corner a slice of the budget meant for some of the most vulnerable people in the world. By USAID’s own admission, only around 40 percent of the Food for Peace budget is spent on the food itself. The rest lines the pockets of the wealthy, none of whom happen to be hungry. Here, in these charts, we illustrate a decade in global hunger through the prism of an aid program that refuses to change with the times.</p>
+  <p>Unlike other countries' food aid programs, which send cash to buy food locally, the taxpayer-funded USAID Food for Peace program ships commodities grown stateside to famine-affected parts of the world. According to USAID, only 40 percent of the program's bduget is spent on food itself. The rest goes to U.S.-based processors, which are owned by agribusinesses, and shippers based at U.S. ports. Over the last 10 years the cost of food has risen even as fewer people benefit from food aid shipments.</p>
 
 
-<a href="#cost-per-ton"><h3> How much food does your money buy? </h3><a>
+<!-- <a href="#cost-per-ton"><h3> How much food does your money buy? </h3><a>
 <a href="#recipients-per-ton"><h3> How many people get the food? </h3><a>
 <a href="#cost-per-recipient"><h3> How much it costs to reach one person? </h3><a>
+ -->
 
-<h2 id="cost-per-ton"></h2>
+<!--  One U.S. dollar today purchases less food and feeds far fewer people in comparison to 2003 levels.
+ -->
+  <h2 id="cost-per-ton" class='mt20'>Cost per ton to ship food</h2>
   <div class='row posrel'>
     <p class="posabs text"></p>
     <div id='CTafrica' class='chart africa'><!--<label><input type="checkbox"> Sort values</label>--></div>
@@ -74,32 +75,26 @@ h3 {
     <div id='CTasia' class='chart asia'><label></div>
     <div id='CTamericas' class='chart americas'></div>
   </div>
+<p>The amount of money that USAID spends to ship a ton of food has steadily risen. Two factors have contributed to a rise in costs: a law that requires shippers to use expensive U.S.-flagged vessels and a spike in global food costs in 2008.</p>
+  
 
-  <h2>Cost Per Ton</h2>
-  <p>The amount of money that USAID spends to ship a ton of food has steadily risen. The need to ship commodities on U.S. flagged vessels which are generally more expensive, increasing shipping costs due to entrenched monopolies and the global food price spike of 2008 have all resulted in USAID getting a poor bang for its buck. One U.S. dollar today nets less food and feeds far fewer people in comparison to 2003 levels.</p>
-
-<h2 id="recipients-per-ton"></h2>
-
+  <h2 id="recipients-per-ton" class='mt20'>How many people a ton of food reaches</h2>
   <div class='row posrel'>
     <p class="posabs text"></p>
     <div id='RTafrica' class='chart africa'></div>
     <div id='RTasia' class='chart asia'></div>
     <div id='RTamericas' class='chart americas'></div>
-  </div>
+  </div>  
+  <p>Africa gets the highest volume of U.S. food aid, but a ton of food reaches fewer people in Africa than in other parts of the world because of high transportation costs and a complex transit network.</p>
 
-  <h2>Recipients Per Ton</h2>
-  <p>Africa gets the highest volume of U.S. food aid. Yet, the number of Africans reached per ton of aid is a fraction of the prevailing numbers in other parts of the world. Transportation costs to Africa are exceedingly high. In some cases, convoys of food need to move like an army unit in order to survive the journey. Ocean transportation takes months. For years, the consensus among the international aid community has been to adopt the shortest possible distance between food aid source and beneficiary. The U.S., however, still ships food from the Midwest to Mombasa. In the process, the people who most need aid bear the highest burden of systemic costs.</p>
-
-  <h2 id="cost-per-recipient"></h2>
+  <h2 id="cost-per-recipient" class='mt20'>Cost per aid recipient</h2>
   <div class='row posrel'>
     <p class="posabs text"></p>
     <div id='CRafrica' class='chart africa'></div>
     <div id='CRasia' class='chart asia'></div>
     <div id='CRamericas' class='chart americas'></div>
   </div>
-
-  <h2>Cost Per Recipient</h2>
-  <p>Global food prices have skyrocketed since late 2008, precipitating food riots around the world and setting off the Arab spring. The ripples were felt by the U.S. aid program as well. The costs of delivering food to a person doubled in a short span. Food prices only made the effects of the program’s inherent inefficiencies worse. During the Darfur crisis in Sudan during the mid-2000s, for example, USAID was spending 70 percent of the program money on transportation. In other words, 70 cents of each U.S. taxpayer dollar went into the pockets of transportation companies and middlemen. On top of that, in-kind or in-commodity aid (unlike cash or vouchers) have the added problems of loss, theft, and spoilage. At the end of this road, what’s left for those truly in need is very little and often arrives very late.</p>
+  <p>Due in part to rising food prices, the costs of delivering food to a person have doubled in the last decade. The program reaches fewer people for more money.</p>
 
 
 <script>
@@ -164,9 +159,12 @@ var x2 = d3.scale.ordinal()
 var y = d3.scale.linear()
     .range([height, 0]);
   
+var xFormat = d3.time.format('%y');
+
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+    .ticks(xFormat)
 
 var yAxis = d3.svg.axis()
     .scale(y)
