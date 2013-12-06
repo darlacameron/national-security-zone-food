@@ -23,6 +23,7 @@
 				<h2 id="headline"></h2>
 				<p id="location"></p>
 				<p id="body" class="body"></p>
+				<div id="progress-bar"><span></span></div>
 			</div>
 		</div>
 		<p id="source">Source: CMA-CGM, Save the Children, USDA. Credit: Darla Cameron, Laurel White, Kate Van Winkle & Kennedy Elliot</p>
@@ -141,13 +142,12 @@
 				});
 			}
 
-			// var progress = function() {
-			// var total = curr_data.total,
-			// 	africa = (curr_data.africa / total) * 100, ///(process-text[counter].days/total)*100
+			var progress = function() {
+			var total = 115,
+				width = (process-text[counter].days / total) * 100;
 
-
-			// 	$('.key-row .africa').animate({'width': africa + '%'}, DUR); //use this for progress bar
-			// };
+				$('#progress-bar').animate({'width': width + '%'}, 1000);
+			};
 
 			$('#next').on('click', function() {
 				if (animating) {
@@ -162,7 +162,7 @@
 				
 				drawLine('next');
 				writeText();
-
+				progress();
 			});
 
 			$('#prev').on('click', function() {
@@ -174,6 +174,7 @@
 				drawLine('prev');
 				
 				writeText();
+				progress();
 
 				if (counter === 0) {
 					counter = pathPoints.length - 1;
