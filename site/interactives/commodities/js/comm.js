@@ -23,6 +23,7 @@ data = years.map(function(year, i) {
 		if (y === year && typeof dp.mal !== 'undefined' && dp.pounds !== 'NA') {
 			dp.pounds = parseFloat(dp.pounds);
 			dp.mal = parseFloat(dp.mal);
+			dp.slug = convertToSlug(dp.country);
 			vals.push(dp);
 
 			if (typeof totals[region] === 'undefined') {
@@ -39,16 +40,29 @@ data = years.map(function(year, i) {
 		africa: totals.africa,
 		asia: totals.asia,
 		europe: totals.europe,
-		sam: totals.central,
+		sam: totals.americas,
 		total: totals.total,
 		values: vals
 	};
 
-	console.log(totals)
-
 });
 
 console.log(data)
+
+
+// // get mins and maxes
+// var vals = [];
+
+// for (var i = 0; i < data.length - 1; i += 1) {
+// 	vals.push(d3.max(data[i].values, function (d) {
+// 			return (d['mal']);
+// 		}))
+// }
+
+// console.log(d3.max(vals))
+
+
+
 
 var year = 0,
 	curr_data = data[year];
@@ -74,14 +88,16 @@ var makeChart = function() {
 
 	xScale = d3.scale.linear()
 		// .domain([5, 77])
+		// .domain([0, 82]) // old correct one
 		.domain([0, 82])
 		.range([0, w]);
 
 	yScale = d3.scale.linear()
 		// .domain([44090, 10731551758]) // with russia
-		.domain([44090, 2150829830])
+		// .domain([44090, 2150829830]) // old correct one
 		// .domain([44090, 3226244745])
 		// .domain([44090, 4301659660])
+		.domain([44090, 2150829830]) // with new 2013 mins and maxes
 		.range([h, 0]); //pixel output
 
 	var xAxis = d3.svg.axis()
@@ -129,7 +145,7 @@ var drawCircles = function() {
 	console.log(curr_data)
 
 	var circle = svg.selectAll('.circle')
-		.data(curr_data.values, function(d) { return d.country; })
+		.data(curr_data.values, function(d) { return d.slug; })
 
 	circle.enter()
 		.append('circle')
@@ -141,7 +157,7 @@ var drawCircles = function() {
 				return 'circle africa';
 			} else if (d.region === 'Europe') {
 				return 'circle europe';
-			} else if (d.region === 'Central/South America/Caribbean') {
+			} else if (d.region === 'Americas') {
 				return 'circle sam';
 			}
 		})
@@ -207,7 +223,7 @@ $('#next').on('click', function() {
 		year += 1;
 	}
 
-	$(this).find('span').text(curr_data.year);
+	// $(this).find('span').text(curr_data.year);
 
 	drawCircles();
 
@@ -218,10 +234,10 @@ $('#prev').on('click', function() {
 	// year -= 1;
 
 	if (year === 0) {
-					year = data.length - 1;
-				} else {
-					year -= 1;
-				}
+		year = data.length - 1;
+	} else {
+		year -= 1;
+	}
 
 	// $(this).find('span').text(curr_data.year);
 
@@ -347,13 +363,14 @@ var addCommas = function(num) {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-d3.select('#chart').on('mouseover', function() {
-	console.log(d3.event)
-})
-$(document).mousemove(function(e) { 
-  // $('.tooltip').css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
-  	// console.log(e);
-});
+function convertToSlug(Text) {
+	return Text
+	    .toLowerCase()
+	    .replace(/[^\w ]+/g,'')
+	    .replace(/ +/g,'-');
+}
+
+
 
 init();
 

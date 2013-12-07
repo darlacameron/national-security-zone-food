@@ -79,7 +79,7 @@
 <script type="text/javascript">
 
 
-// match comm data to mal data
+// // match comm data to mal data
 // comm_data_raw.forEach(function(dp, i) {
 // 	var country = dp.country,
 // 		year = dp.year;
@@ -99,16 +99,15 @@
 
 
 // find min and max of pounds and mal no
-// var mins = [];
+// var vals = [];
 
-// for (var i = 0; i < data.length - 1; i += 1) {
-// 	mins.push(d3.min(data[i].values, function (d) {
+// for (var i = 0; i < comm_data_raw.length - 1; i += 1) {
+// 	vals.push(d3.max(comm_data_raw, function (d) {
 // 			return (d['pounds']);
 // 		}))
 // }
 
-// console.log(d3.min(mins))
-
+// console.log(d3.max(vals))
 
 
 
