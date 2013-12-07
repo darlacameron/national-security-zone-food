@@ -97,7 +97,7 @@ path.states {
 }
 
 #headline {
-	margin: 40px 0 5px 0;
+	margin: 0px 0 5px 0;
 }
 
 #location {
@@ -127,8 +127,8 @@ path.states {
 /*progress bar*/
 
 #progress-bar {
-	position: absolute;
-	margin: 10px auto;
+	position: relative;
+	margin: 20px auto 10px auto;
 	width: 282px;
 	height:18px;
 	background-color: #D4D4D4;
@@ -136,7 +136,7 @@ path.states {
 
 #progress-bar #bar-fill {
 	position: absolute;
-	height: 18px;
+	height: 100%;
 	background-color: #3580C3;
 	display: block;
 	height: 100%;
