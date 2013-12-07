@@ -210,6 +210,8 @@ $('#next').on('click', function() {
 	$(this).find('span').text(curr_data.year);
 
 	drawCircles();
+
+	setBrush(curr_data.year);
 });
 
 $('#prev').on('click', function() {
