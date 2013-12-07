@@ -95,14 +95,15 @@ h1 {
 
 #notes > p{
 	position:absolute;
+	font-family: 'Lato', sans-serif;
 }
 
 .annotation{
 	width:300px;
-	font-family: 'Merriweather', serif;
+	/*font-family: 'Merriweather', serif;*/
 	font-weight: lighter;
 	color:#646464;
-	font-size:13px;
+	font-size:15px;
 	line-height: 1.3em;
 }
 
