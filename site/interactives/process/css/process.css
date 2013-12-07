@@ -57,22 +57,28 @@ path.states {
 	margin-left: 20px;
 }
 
+.nav {
+	margin: 20px 0;
+}
+
 #next,
 #prev {
 	cursor: pointer;
 }
 
 #next {
-	float:right;	
+	float:right;
+	margin-right: 30px;
 }
 
 #prev {
 	float:left;
+	margin-left: 30px;
 }
 
 #steps {
 	display: block;
-	width: 150px;
+	width: 132px;
 	margin: 0 auto;
 }
 
@@ -81,7 +87,7 @@ path.states {
 	border-radius: 50%;
 	width: 10px;
 	height: 10px;
-	margin: 13px 4px;
+	margin: 5px 3px;
 	background:#DCDCDC;
 	/* width and height can be anything, as long as they're equal */
 }
