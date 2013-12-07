@@ -6,7 +6,7 @@
 	font-weight: lighter;
 }
 
-#chart .axis path {
+/*#chart .axis path {
 	fill: none;
 	stroke: grey;
 	shape-rendering: crispEdges;
@@ -17,7 +17,7 @@
 	fill: grey;
 	font-size: 11px;
 	font-family: "Merriweather", serif;
-}
+}*/
 
 /*#chart circle {
 	fill: #ff00ff;
@@ -97,37 +97,11 @@ h1 {
 	position:absolute;
 }
 
-#xlabel{
-	font-size: 13px;
-	font-family: 'Merriweather', serif;
-	font-weight: lighter;
-	color: #646464;
-	position:absolute;
-	top:520px;
-	font-weight: bold;
-	text-align: center;
-	width: 100%;
-}
-
-#ylabel{
-	font-size: 13px;
-	font-family: 'Merriweather', serif;
-	font-weight:lighter;
-	text-align: left;
-	line-height: 1.3em;
-	width:100px;
-	color: #646464;
-	position:absolute;
-	top: 0;
-	left: 60px;
-	font-weight: bold;
-}
-
 .annotation{
 	width:300px;
 	font-family: 'Merriweather', serif;
 	font-weight: lighter;
-	color:grey;
+	color:#646464;
 	font-size:13px;
 	line-height: 1.3em;
 }
@@ -138,13 +112,13 @@ h1 {
 	left:0px;
 }
 
-#Rus1 img{
+/*#Rus1 img{
 	height:30px;
 	width:30px;
 	position:absolute;
 	top:2px;
 	left:292px;
-}
+}*/
 
 #Rus2{
 	display:none;
@@ -152,27 +126,27 @@ h1 {
 	left:0px;
 }
 
-#Rus2 img{
+/*#Rus2 img{
 	height:30px;
 	width:30px;
 	position:absolute;
 	top:2px;
 	left:292px;
-}
+}*/
 
 #Eth{
-	/*display:none;*/
+	display:none;
 	top:70px;
 	left:280px;
 }
 
-#Eth img{
+/*#Eth img{
 	height:30px;
 	width:30px;
 	position:absolute;
 	top:1px;
 	left:315px;
-}
+}*/
 
 #Eri{
 	display:none;
@@ -180,13 +154,13 @@ h1 {
 	left:500px;
 }
 
-#Eri img{
+/*#Eri img{
 	height:30px;
 	width:30px;
 	position:absolute;
 	top:2px;
 	left:292px;
-}
+}*/
 
 /*#NK{
 	display:none;
@@ -204,30 +178,22 @@ h1 {
 
 #Eur{
 	display:none;
-	top:0px;
-	left:0px;
+	top:150px;
+	left:600px;
 }
 
-#Eur img{
+/*#Eur img{
 	height:30px;
 	width:30px;
 	position:absolute;
 	top:2px;
 	left:292px;
-}
+}*/
 
 #Bur{
 	display:none;
-	top:0px;
-	left:0px;
-}
-
-#Bur img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
+	top:320px;
+	left:600px;
 }
 
 /*#five{
@@ -240,33 +206,6 @@ h1 {
 	position:absolute;
 	top:500px;
 	left:-270px;
-}*/
-
-/*.tooltip{
-	background-color:#fff;
-	border:1px solid #D4D4D4;
-	z-index:1000;
-	box-shadow: 5px 5px 5px #D4D4D4;
-	position:absolute;
-	top:200px;
-	left:100px;
-	padding:10px 15px;
-}
-
-.tooltip h2{
-	font-size: 17px;
-	font-family: 'Lato', sans-serif;
-	font-weight: lighter;
-	line-height: 1.5em;
-	color:#3580C3;
-}
-
-.tooltip p{
-	font-size: 13px;
-	font-family: 'Merriweather', serif;
-	font-weight: lighter;
-	line-height: 1.5em;
-	color:#646464;
 }*/
 
 #key {
@@ -284,6 +223,7 @@ h1 {
 }
 
 .key-row p {
+	color:#646464;
 	position: absolute;
 	top: 4px;
 	left: -58px;
@@ -292,12 +232,6 @@ h1 {
 .key-row span {
 	display: block;
 	height: 100%;
-}
-
-#source {
-	color: #646464;
-	font-family: 'Merriweather', serif;
-	font-size: 10px;
 }
 
 /* nav */
@@ -346,7 +280,7 @@ h1 {
 
 .slider-axis .slider-halo {
 	fill: none;
-	stroke: #ddd;
+	stroke: #D4D4D4;
 	stroke-width: 8px;
 	stroke-linecap: round;
 }

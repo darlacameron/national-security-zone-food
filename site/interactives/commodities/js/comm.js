@@ -58,6 +58,7 @@ var year = 0,
 // console.log(curr_data)
 
 var init = function() {
+	$('.tooltip').hide();
 	makeChart();
 	makeSlider();
 	drawCircles();
@@ -66,7 +67,7 @@ var init = function() {
 var makeChart = function() {
 	var W = 900,
 		H = 500,
-		margin = {top: 0, right: 20, bottom: 20, left: 50},
+		margin = {top: 0, right: 20, bottom: 30, left: 50},
 		w = W - margin.left - margin.right,
 		h = H - margin.top - margin.bottom;
 
@@ -157,6 +158,9 @@ var drawCircles = function() {
 			console.log(mouse);
 			// d3.select('.tooltip').style({'left': mouse[0], 'top': mouse[1]});
 			positionTooltip(mouse);
+		})
+		.on('mouseout', function(d){
+			$('.tooltip').hide()
 		});
 
 	circle.transition()
@@ -179,7 +183,7 @@ var drawCircles = function() {
 };
 
 var positionTooltip = function(coords){
-	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10})
+	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
 };
 
 var setKey = function() {

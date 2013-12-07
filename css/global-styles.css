@@ -127,18 +127,20 @@
 		}
 
 		p.source {
-
+			color: #646464;
+			font-family: 'Merriweather', serif;
+			font-size: 10px;
 		}
 
 		.tooltip{
 			background-color:#fff;
-			border:1px solid #D4D4D4;
+			border:1px solid #646464;
 			z-index:1000;
-			box-shadow: 5px 5px 5px #D4D4D4;
+			box-shadow: 5px 5px 5px #646464;
 			position:absolute;
 			top:200px;
 			left:100px;
-			padding:15px;
+			padding:10px 15px;
 		}
 
 		.tooltip h2{
@@ -178,13 +180,38 @@
 
 		#chart .axis path {
 			fill: none;
-			stroke: grey;
+			stroke: #646464;
 			shape-rendering: crispEdges;
 		}
 
 		.axis text,
 		.slider-axis text {
-			fill: grey;
+			fill: #646464;
 			font-size: 11px;
-			font-family: "Gotham", sans-serif;
+			font-family: "Lato", sans-serif;
+		}
+		#xlabel{
+			font-size: 12px;
+			font-family: 'Merriweather', serif;
+			font-weight: lighter;
+			color: #646464;
+			position:absolute;
+			top:520px;
+			font-weight: bold;
+			text-align: center;
+			width: 100%;
+		}
+
+		#ylabel{
+			font-size: 12px;
+			font-family: 'Merriweather', serif;
+			font-weight:lighter;
+			text-align: left;
+			line-height: 1.3em;
+			width:100px;
+			color: #646464;
+			position:absolute;
+			top: 0;
+			left: 60px;
+			font-weight: bold;
 		}
