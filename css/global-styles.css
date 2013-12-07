@@ -59,15 +59,17 @@
 		}
 
 		h1 {
-			font-family:'Ruda', Helvetica, sans-serif;
+			font-family:'Lato', sans-serif;
+			font-weight:lighter;
 			font-size: 36px;
 			color: #1A374D;
 			font-weight: 700;
-			line-height: 1.2em;
+			line-height: 1.3em;
 		}
 
 		h2 {
-			font-family:'Ruda', Helvetica, sans-serif;
+			font-family:'Lato', sans-serif;
+			font-weight:lighter;
 			font-size: 26px;
 			color: #1A374D;
 			font-weight: 500;
@@ -75,7 +77,8 @@
 		}
 
 		h3 {
-			font-family:'Gotham', Helvetica, sans-serif;
+			font-family:'Lato', sans-serif;
+			font-weight:lighter;
 			font-size: 18px;
 			color: #1A374D;
 			margin:5px;
@@ -84,9 +87,11 @@
 		}
 
 		h4 {
-			font-family:'Gotham', 'Open Sans', sans-serif;
+			font-family:'Lato', sans-serif;
+			font-weight:lighter;
 			font-size:16px;
 			color: #1A374D;
+			line-height: 1.4em;
 		}
 
 		h5 {
@@ -98,11 +103,15 @@
 		}
 
 		p {
-			font-family: 'Gotham', sans-serif;
+			font-family: 'Merriweather', serif;
+			font-weight:lighter;
 		}
 
-		p.leadin /*subhead*/{
-
+		p.chatter /*subhead*/{
+			font-size: 15px;
+			font-family: 'Merriweather', serif;
+			font-weight: lighter;
+			line-height: 1.7em;
 		}
 
 		p.blockquote {
@@ -118,13 +127,91 @@
 		}
 
 		p.source {
-
+			color: #646464;
+			font-family: 'Merriweather', serif;
+			font-size: 10px;
 		}
 
-		p.tooltip {
-
+		.tooltip{
+			background-color:#fff;
+			border:1px solid #646464;
+			z-index:1000;
+			box-shadow: 5px 5px 5px #646464;
+			position:absolute;
+			top:200px;
+			left:100px;
+			padding:10px 15px;
 		}
 
-		p.button {
+		.tooltip h2{
+			font-size: 17px;
+			font-family: 'Lato', sans-serif;
+			font-weight: lighter;
+			line-height: 1.5em;
+			color:#3580C3;
+		}
 
+		.tooltip p{
+			font-size: 13px;
+			font-family: 'Merriweather', serif;
+			line-height: 1.5em;
+			color:#646464;
+		}
+
+		/*Regions*/
+
+		.asia {
+			fill: #1A374D;
+		}
+
+		.africa {
+			fill: #C96916;
+		}
+
+		.europe {
+			fill: #DAA520;
+		}
+
+		.sam {
+			fill: #A4B48C;
+		}
+
+		/*Axis styles*/
+
+		#chart .axis path {
+			fill: none;
+			stroke: #646464;
+			shape-rendering: crispEdges;
+		}
+
+		.axis text,
+		.slider-axis text {
+			fill: #646464;
+			font-size: 11px;
+			font-family: "Lato", sans-serif;
+		}
+		#xlabel{
+			font-size: 12px;
+			font-family: 'Merriweather', serif;
+			font-weight: lighter;
+			color: #646464;
+			position:absolute;
+			top:520px;
+			font-weight: bold;
+			text-align: center;
+			width: 100%;
+		}
+
+		#ylabel{
+			font-size: 12px;
+			font-family: 'Merriweather', serif;
+			font-weight:lighter;
+			text-align: left;
+			line-height: 1.3em;
+			width:100px;
+			color: #646464;
+			position:absolute;
+			top: 0;
+			left: 60px;
+			font-weight: bold;
 		}
