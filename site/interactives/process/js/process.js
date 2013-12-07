@@ -175,6 +175,7 @@ var progress = function() {
 
 	$('#progress-bar #bar-fill').animate({'width': width + '%'}, 1000);
 	$('#days').text(process_text[counter].days);
+	
 };
 
 

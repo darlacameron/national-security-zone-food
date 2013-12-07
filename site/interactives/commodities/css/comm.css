@@ -113,27 +113,11 @@ h1 {
 	left:0px;
 }
 
-/*#Rus1 img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
-}*/
-
 #Rus2{
 	display:none;
 	top:0px;
 	left:0px;
 }
-
-/*#Rus2 img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
-}*/
 
 #Eth{
 	display:none;
@@ -141,55 +125,17 @@ h1 {
 	left:280px;
 }
 
-/*#Eth img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:1px;
-	left:315px;
-}*/
-
 #Eri{
 	display:none;
 	top:300px;
 	left:500px;
 }
 
-/*#Eri img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
-}*/
-
-/*#NK{
-	display:none;
-	top:0px;
-	left:0px;
-}
-
-#NK img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
-}*/
-
 #Eur{
 	display:none;
 	top:150px;
 	left:600px;
 }
-
-/*#Eur img{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:2px;
-	left:292px;
-}*/
 
 #Bur{
 	display:none;
