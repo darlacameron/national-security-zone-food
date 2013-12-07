@@ -110,7 +110,7 @@ path.states {
 .body {
 	margin-bottom: 8px;
 	font-size: 13px;
-	font-family: 'Merriweather', serif;
+	font-family: 'Lato', sans-serif;
 	font-weight: lighter;
 	line-height: 1.65em;
 }
@@ -133,11 +133,10 @@ path.states {
 	background-color: lightgrey;
 }
 
-.progress-bar span {
+#progress-bar span {
 	position: absolute;
 	height: 16px;
-	margin: 8px 0 0 50px;
-	background-color: blue;
+	background-color: #ff0000;
 	display: block;
 	height: 100%;
 }

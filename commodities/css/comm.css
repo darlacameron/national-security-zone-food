@@ -95,7 +95,6 @@ h1 {
 
 #notes > p{
 	position:absolute;
-	
 }
 
 #xlabel{
@@ -124,15 +123,114 @@ h1 {
 	font-weight: bold;
 }
 
-#annotation1{
-	height:200px;
+.annotation{
 	width:300px;
-	position:absolute;
-	top:0px;
-	left:100px;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
+	color:grey;
+	font-size:13px;
+	line-height: 1.3em;
 }
 
-#five{
+#Rus1{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Rus1 img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Rus2{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Rus2 img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Eth{
+	/*display:none;*/
+	top:70px;
+	left:280px;
+}
+
+#Eth img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:1px;
+	left:315px;
+}
+
+#Eri{
+	display:none;
+	top:300px;
+	left:500px;
+}
+
+#Eri img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+/*#NK{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#NK img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}*/
+
+#Eur{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Eur img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Bur{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Bur img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+/*#five{
 	font-size: 11px;
 	font-family: 'Merriweather', serif;
 	font-weight:lighter;
@@ -142,7 +240,7 @@ h1 {
 	position:absolute;
 	top:500px;
 	left:-270px;
-}
+}*/
 
 /*.tooltip{
 	background-color:#fff;

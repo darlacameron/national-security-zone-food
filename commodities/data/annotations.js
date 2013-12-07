@@ -13,7 +13,7 @@ var notes = [
 	},
 		{
 		country: "Ethiopia",
-		year: "2004",
+		year: "2000",
 		note:"USAID has been assisting Ethiopia since its inception in 1961. Over the decades, aid goals have shifted from emergency drought relief to development programming throughout the region.",
 		source:""
 	},
@@ -38,7 +38,7 @@ var notes = [
 	{
 		country: "Burundi",
 		year: "2011",
-		note:"The U.S. contributes approximately 23 percent of the 44,000 metric tons of food aid that World Food Program distributes in Burundi. The country has long been plagued by drought, poverty and conflict, which contribute to high levels of malnourishment in a rapidly growing population.”",
+		note:"The U.S. contributes approximately 23 percent of the 44,000 metric tons of food aid that World Food Program distributes in Burundi. The country has long been plagued by drought, poverty and conflict, which contribute to high levels of malnourishment in a rapidly growing population.",
 		source:""
 	}
 ];
