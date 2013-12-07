@@ -42,6 +42,10 @@ path.points {
 	stroke-linecap: round;
 }
 
+path.points.point-grey {
+	stroke: #505050;
+}
+
 path.states {
 	fill: none;
 	stroke: #FEFEFE;
@@ -57,6 +61,10 @@ path.states {
 	margin-left: 20px;
 }
 
+.nav {
+	margin: 20px 0;
+}
+
 #next,
 #prev {
 	font-family: "Ruda", sans-serif;
@@ -65,20 +73,18 @@ path.states {
 }
 
 #next {
-	float:right;	
-	/*font-size:24px;*/
-	/*color:#3580C3;*/
+	float:right;
+	margin-right: 30px;
 }
 
 #prev {
 	float:left;
-	/*font-size:24px;*/
-	/*color:#3580C3;*/
+	margin-left: 30px;
 }
 
 #steps {
 	display: block;
-	width: 150px;
+	width: 132px;
 	margin: 0 auto;
 }
 
@@ -87,43 +93,14 @@ path.states {
 	border-radius: 50%;
 	width: 10px;
 	height: 10px;
-	margin: 13px 4px;
-	background:#DCDCDC;
+	margin: 5px 3px;
+	background:#C0C0C0;
 	/* width and height can be anything, as long as they're equal */
 }
 
-/*h1 {
-	font-size: 36px;
-	font-family: 'Ruda', sans-serif;
-	font-weight: 400;
-	line-height: 1.2em;
-	/*color: #1A374D;*/
-	/*margin-bottom:15px;*/
-/*}*/
-
-/*h2 {
-	font-size: 20px;
-	font-family:'Ruda', sans-serif;
-	font-weight: 900;
-	line-height: 1.2em;
-	/*font-size:26px;*/
-	/*line-height:28px;*/
-	/*color:#1A374D;*/
-	/*margin-bottom:10px;
-}*/
-
-/*h3 {
-	font-size: 16px;
-	font-family:'Gotham', sans-serif;
-	color: #1A374D;
-	margin:5px;
-	font-weight: 500;
-}*/
-
-/*h4 {
-	font-family:'Ruda', sans-serif;
-	color: #1A374D;
-}*/
+.step-active {
+	background-color: #3580C3;
+}
 
 #headline {
 	margin: 5px 0 5px 0;
