@@ -126,7 +126,7 @@ var progress = function() {
 		width = (process_text[counter].days / total) * 100;
 
 	$('#progress-bar #bar-fill').animate({'width': width + '%'}, 1000);
-	// $('#days').text(process_text[counter].days);
+	$('#days').text(process_text[counter].days);
 };
 
 $('#next').on('click', function() {
