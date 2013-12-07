@@ -1,4 +1,7 @@
 #wrapper {
-	margin: 10px 0;
+	width: 960px;
+	height: 500px;
+	margin: 60px auto 0 auto;
+	color: #282828;
 }
 .fourth {display:block; width:24%; float:left; margin-left:10px;}

@@ -32,8 +32,6 @@ data = years.map(function(year, i) {
 			totals[region] += dp.pounds;
 			totals.total += dp.pounds
 		}
-
-		
 	});
 
 	return {
