@@ -134,9 +134,9 @@
 
 		.tooltip{
 			background-color:#fff;
-			border:1px solid #646464;
+			border:1px solid #D4D4D4;
 			z-index:1000;
-			box-shadow: 5px 5px 5px #646464;
+			box-shadow: 5px 5px 5px #D4D4D4;
 			position:absolute;
 			top:200px;
 			left:100px;
