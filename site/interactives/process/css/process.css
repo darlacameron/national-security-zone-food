@@ -87,7 +87,7 @@ path.states {
 }
 
 #headline {
-	margin: 5px 0 5px 0;
+	margin: 40px 0 5px 0;
 }
 
 #location {
@@ -109,7 +109,7 @@ path.states {
 
 .body {
 	margin-bottom: 8px;
-	font-size: 13px;
+	font-size: 14px;
 	font-family: 'Lato', sans-serif;
 	font-weight: lighter;
 	line-height: 1.65em;
@@ -119,17 +119,23 @@ path.states {
 
 #progress-bar {
 	position: absolute;
-	top: 0;
-	right: 20px;
-	width: 200px;
-	height:16px;
+	margin: 10px auto;
+	width: 282px;
+	height:18px;
 	background-color: #D4D4D4;
 }
 
-#progress-bar span {
+#progress-bar #bar-fill {
 	position: absolute;
-	height: 16px;
+	height: 18px;
 	background-color: #3580C3;
 	display: block;
 	height: 100%;
+}
+
+#progress-bar #bar-fill #days{
+	float:right;
+	color:#fff;
+	padding: 2px 5px 0 0;
+	font-size:13px;
 }
