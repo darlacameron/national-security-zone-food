@@ -78,13 +78,14 @@ $('#next').on('click', function() {
 
 	if (counter === pathPoints.length - 1) {
 		counter = 0;
+		d3.selectAll('.points').remove();
 	} else {
 		counter += 1;
+		drawLine(counter);
+		animatePath('next');
 	}
-	
+
 	highlightStep();
-	drawLine(counter);
-	animatePath('next');
 	writeText();
 	progress();
 });
@@ -95,12 +96,13 @@ $('#prev').on('click', function() {
 	}
 
 	if (counter === 0) {
-		// var days = d3.range(pathPoints.length);
-		// days.forEach(function(day, i) {
-		// 	drawLine()
-		// });
-
 		counter = pathPoints.length - 1;
+		var last = pathPoints.length - 1;
+		for (var i = 0; i < last; i +=1) {
+			drawLine(i);
+		}
+		drawLine(last);
+		animatePath('next');
 	} else {
 		$('#point-' + counter).remove();
 
@@ -189,7 +191,7 @@ function convertToSlug(Text)
 
 
 
-
+startUp();
 
 
 
