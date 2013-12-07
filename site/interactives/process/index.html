@@ -1,15 +1,18 @@
 <html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Merriweather:300,300italic' rel='stylesheet' type='text/css'>
+
 		<link type="text/css" rel="stylesheet" href="../../../css/reset.css">
 		<link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
 		<link type="text/css" rel="stylesheet" href="css/process.css">
+
 	</head>
 	<body>
 	
 	<div id="process">
 		<h1>Not-so-fast food</h1>
-		<h4>It takes, on average, about four months (or 120 days) for a shipment of international food aid to make its way from America to hungry people overseas. Follow this shipment, an order of corn soy blend for a Save the Children aid program in Niger, on its nearly 6,000 mile journey.</h4>
+		<p class="chatter">It takes, on average, about four months (or 120 days) for a shipment of international food aid to make its way from America to hungry people overseas. Follow this shipment, an order of corn soy blend for a Save the Children aid program in Niger, on its nearly 6,000 mile journey.</p>
 		<div id="wrapper" class="clearfix">
 			<div id="map"></div>
 			
@@ -19,7 +22,7 @@
 					<p id="prev"><img src="images/arrow-button-left.png" width="35px"></img></p>
 					<div id="steps" class="clearfix"></div>
 				</div>
-				<h4>Day:&nbsp;&nbsp;<span id="days"></span></h4>
+				<!-- <h4>Day:&nbsp;&nbsp;<span id="days"></span></h4> -->
 				<h2 id="headline"></h2>
 				<p id="location"></p>
 				<p id="body" class="body"></p>
@@ -148,7 +151,7 @@
 			var total = 115,
 				width = (process_text[counter].days / total) * 100;
 
-				$('#progress-bar').animate({'width': width + '%'}, 1000);
+				$('#progress-bar span').animate({'width': width + '%'}, 1000);
 
 			};
 

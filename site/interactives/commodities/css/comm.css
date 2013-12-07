@@ -2,7 +2,7 @@
 	width: 900px;
 	margin: 80px auto;
 	font-size: 12px;
-	font-family: 'Ruda', Helvetica, Arial;
+	font-family: 'Lato', sans-serif;
 	font-weight: lighter;
 }
 
@@ -16,7 +16,7 @@
 .slider-axis text {
 	fill: grey;
 	font-size: 11px;
-	font-family: "Gotham", sans-serif;
+	font-family: "Merriweather", serif;
 }
 
 /*#chart circle {
@@ -77,10 +77,10 @@ circle.sam {
 }
 
 h1 {
-	font-family:'Ruda', Helvetica, sans-serif;
+	font-family:'Lato', sans-serif;
 	font-size: 36px;
 	color: #1A374D;
-	font-weight: 700;
+	font-weight: lighter;
 	line-height: 1.2em;
 }
 
@@ -88,19 +88,19 @@ h1 {
 	margin-top: 10px;
 	margin-bottom: 8px;
 	font-size: 15px;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
 	font-weight: lighter;
 	line-height: 1.7em;
 }
 
 #notes > p{
 	position:absolute;
-	
 }
 
 #xlabel{
 	font-size: 13px;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
 	color: #646464;
 	position:absolute;
 	top:520px;
@@ -111,7 +111,8 @@ h1 {
 
 #ylabel{
 	font-size: 13px;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
+	font-weight:lighter;
 	text-align: left;
 	line-height: 1.3em;
 	width:100px;
@@ -122,26 +123,126 @@ h1 {
 	font-weight: bold;
 }
 
-#annotation1{
-	height:200px;
+.annotation{
 	width:300px;
-	position:absolute;
-	top:0px;
-	left:100px;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
+	color:grey;
+	font-size:13px;
+	line-height: 1.3em;
 }
 
-#five{
+#Rus1{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Rus1 img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Rus2{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Rus2 img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Eth{
+	/*display:none;*/
+	top:70px;
+	left:280px;
+}
+
+#Eth img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:1px;
+	left:315px;
+}
+
+#Eri{
+	display:none;
+	top:300px;
+	left:500px;
+}
+
+#Eri img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+/*#NK{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#NK img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}*/
+
+#Eur{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Eur img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+#Bur{
+	display:none;
+	top:0px;
+	left:0px;
+}
+
+#Bur img{
+	height:30px;
+	width:30px;
+	position:absolute;
+	top:2px;
+	left:292px;
+}
+
+/*#five{
 	font-size: 11px;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
+	font-weight:lighter;
 	line-height: 1.1em;
 	color:#646464;
 	width:100px;
 	position:absolute;
 	top:500px;
 	left:-270px;
-}
+}*/
 
-.tooltip{
+/*.tooltip{
 	background-color:#fff;
 	border:1px solid #D4D4D4;
 	z-index:1000;
@@ -153,18 +254,20 @@ h1 {
 }
 
 .tooltip h2{
-	font-size: 15px;
-	font-family: 'Ruda', sans-serif;
+	font-size: 17px;
+	font-family: 'Lato', sans-serif;
+	font-weight: lighter;
 	line-height: 1.5em;
 	color:#3580C3;
 }
 
 .tooltip p{
 	font-size: 13px;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
 	line-height: 1.5em;
 	color:#646464;
-}
+}*/
 
 #key {
 	position: absolute;
@@ -193,7 +296,7 @@ h1 {
 
 #source {
 	color: #646464;
-	font-family: 'Gotham', sans-serif;
+	font-family: 'Merriweather', serif;
 	font-size: 10px;
 }
 
