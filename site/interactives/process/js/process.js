@@ -16,73 +16,109 @@ var svg = d3.select("#map").append("svg")
 	.attr("height", height)
 	.append('g');
 
-d3.json("data/world-us-lakes-topo.json", function(error, world) {
-  	
-  	var subunits = topojson.feature(world, world.objects.subunits).features,
-	  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
-	  	states = topojson.feature(world, world.objects.states).features,
-		statesMesh = topojson.mesh(world, world.objects.states, function(a, b) { return a !== b; }),
-		lakes = topojson.feature(world, world.objects.lakes).features;
-
-
-    svg.selectAll(".subunit")
-	      .data(subunits)
-	      .enter().append("path")
-	      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
-	      .attr("d", pathFunc);
-
-	svg.selectAll(".states")
-	      .data(states)
-	      .enter().append("path")
-	      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
-	      .attr("d", pathFunc);
-
-	svg.selectAll(".lakes")
-	      .data(lakes)
-	      .enter().append("path")
-	      .attr("class", function(d) { return "lake " + convertToSlug(d.properties.name); })
-	      .attr("d", pathFunc);
-
-    svg.append("path")
-        .datum(subunitsMesh)
-        .attr("class", "boundary")
-        .attr("d", pathFunc);
-
-    svg.append("path")
-        .datum(statesMesh)
-        .attr("class", "boundary")
-        .attr("d", pathFunc);
-
-    highlightStep();
+var startUp = function() {
+	makeMap();
+	makeCircles();
+	highlightStep();
 	writeText();
-});
+}
 
-var highlightStep = function() {
-	$('.step-active').removeClass('step-active');
-	$('.step-' + counter).addClass('step-active');
+function makeMap() {
+	d3.json("data/world-us-lakes-topo.json", function(error, world) {
+	  	var subunits = topojson.feature(world, world.objects.subunits).features,
+		  	subunitsMesh = topojson.mesh(world, world.objects.subunits, function(a, b) { return a !== b; }),
+		  	states = topojson.feature(world, world.objects.states).features,
+			statesMesh = topojson.mesh(world, world.objects.states, function(a, b) { return a !== b; }),
+			lakes = topojson.feature(world, world.objects.lakes).features;
+
+
+	    svg.selectAll(".subunit")
+		      .data(subunits)
+		      .enter().append("path")
+		      .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+		      .attr("d", pathFunc);
+
+		svg.selectAll(".states")
+		      .data(states)
+		      .enter().append("path")
+		      .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
+		      .attr("d", pathFunc);
+
+		svg.selectAll(".lakes")
+		      .data(lakes)
+		      .enter().append("path")
+		      .attr("class", function(d) { return "lake " + convertToSlug(d.properties.name); })
+		      .attr("d", pathFunc);
+
+	    svg.append("path")
+	        .datum(subunitsMesh)
+	        .attr("class", "boundary")
+	        .attr("d", pathFunc);
+
+	    svg.append("path")
+	        .datum(statesMesh)
+	        .attr("class", "boundary")
+	        .attr("d", pathFunc);
+	});
 };
 
-// function drawLine(direction) {
-// 	if (counter === 0) {
-// 		d3.selectAll('.points').remove();
-// 	} else {
-// 		animating = true;
+function makeCircles(){
+	var $steps = $('#steps');
 
-// 		var path = svg.append('path')
-// 			.attr('class', 'points')
-// 			.attr('id', 'point-' + counter)
-// 			.attr('d', pathFunc(pathPoints[counter]));
+	$.each(process_text, function(i, dp) {
+		var $circle = $('<div class="circle step-' + i + '">');
+		$steps.append($circle);
+	});
+}
 
-// 		var totalLength = path.node().getTotalLength();
+$('#next').on('click', function() {
+	if (animating) {
+		return;
+	}
 
-// 		if (direction === 'next') {
-// 			animatePath(path, totalLength, totalLength, 0);
-// 		} else {
-// 			animatePath(path, totalLength, 0, totalLength);
-// 		}
-		
-// 	}
-// }
+	if (counter === pathPoints.length - 1) {
+		counter = 0;
+	} else {
+		counter += 1;
+	}
+	
+	highlightStep();
+	drawLine(counter);
+	animatePath('next');
+	writeText();
+	progress();
+});
+
+$('#prev').on('click', function() {
+	if (animating) {
+		return;
+	}
+
+	if (counter === 0) {
+		// var days = d3.range(pathPoints.length);
+		// days.forEach(function(day, i) {
+		// 	drawLine()
+		// });
+
+		counter = pathPoints.length - 1;
+	} else {
+		$('#point-' + counter).remove();
+
+		drawLine(counter);
+		animatePath('prev');
+
+		counter -= 1;
+	}
+
+	highlightStep();
+	writeText();
+	progress();
+});
+
+function highlightStep() {
+	$('.step-active').removeClass('step-active');
+	$('.step-' + counter).addClass('step-active');
+}
 
 function drawLine(index) {
 	path = svg.append('path')
@@ -91,21 +127,31 @@ function drawLine(index) {
 		.attr('d', pathFunc(pathPoints[index]));
 }
 
-var animatePath = function() {
+function animatePath(direction) {
 	animating = true;
 
-	var totalLength = path.node().getTotalLength();
+	var totalLength = path.node().getTotalLength(),
+		beginning,
+		end;
+
+	if (direction === 'next') {
+		beginning = totalLength;
+		end = 0;
+	} else {
+		beginning = 0;
+		end = totalLength;
+	}
 
 	path.attr("stroke-dasharray", totalLength + " " + totalLength)
-	    .attr("stroke-dashoffset", totalLength)
+	    .attr("stroke-dashoffset", beginning)
 	    .transition()
 	    .duration(1000)
 	    .ease("linear")
-	    .attr("stroke-dashoffset", 0)
+	    .attr("stroke-dashoffset", end)
 	    .each('end', function() {
 	    	animating = false;
 	    });
-};
+}
 
 function writeText() {
 	$('#headline').text(process_text[counter].headline);
@@ -129,48 +175,7 @@ var progress = function() {
 	$('#days').text(process_text[counter].days);
 };
 
-$('#next').on('click', function() {
-	if (animating) {
-		return;
-	}
 
-	if (counter === pathPoints.length - 1) {
-		counter = 0;
-	} else {
-		counter += 1;
-	}
-	
-	highlightStep();
-	drawLine(counter);
-	animatePath();
-	writeText();
-	progress();
-});
-
-$('#prev').on('click', function() {
-	if (animating) {
-		return;
-	}
-
-		
-
-	if (counter === 0) {
-		// var days = d3.range(pathPoints.length);
-		// days.forEach(function(day, i) {
-		// 	drawLine()
-		// });
-
-		counter = pathPoints.length - 1;
-	} else {
-		$('#point-' + counter).remove();
-		drawLine('prev');
-		counter -= 1;
-	}
-
-	highlightStep();
-	writeText();
-	progress();
-});
 
 function convertToSlug(Text)
 	{
@@ -181,15 +186,7 @@ function convertToSlug(Text)
         ;
 	}
 
-function makeCircles(){
-	var $steps = $('#steps');
 
-	$.each(process_text, function(i, dp) {
-		var $circle = $('<div class="circle step-' + i + '">');
-		$steps.append($circle);
-	});
-}
-makeCircles();
 
 
 
