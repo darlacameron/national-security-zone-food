@@ -164,13 +164,12 @@ var drawCircles = function() {
 		.attr('cx', 0).attr('cy', yScale(-20000000000))
 		.on('mouseover', function(d) {
 			// console.log(d.country, d.pounds);
+			var pounds = roundAddCommas(d.pounds);
 			d3.select('.tooltip h2').text(d.country);
-			d3.select('.tooltip .pounds span').text(d.pounds);
+			d3.select('.tooltip .pounds span').text(pounds);
 			d3.select('.tooltip .mal span').text(d.mal);
 
 			var mouse = d3.event;
-			console.log(mouse);
-			// d3.select('.tooltip').style({'left': mouse[0], 'top': mouse[1]});
 			positionTooltip(mouse);
 		})
 		.on('mouseout', function(d){
@@ -361,6 +360,11 @@ var setBrush = function(x) {
 
 var addCommas = function(num) {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+var roundAddCommas = function(num) {
+	var n = Math.round(num / 100000) / 10;
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' million';
 };
 
 function convertToSlug(Text) {
