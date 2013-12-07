@@ -125,7 +125,6 @@ h1 {
 #annotation1{
 	height:200px;
 	width:300px;
-	border:1px solid;
 	position:absolute;
 	top:0px;
 	left:100px;
@@ -143,8 +142,6 @@ h1 {
 }
 
 .tooltip{
-	width:135px;
-	height:80px;
 	background-color:#fff;
 	border:1px solid #D4D4D4;
 	z-index:1000;
@@ -152,9 +149,8 @@ h1 {
 	position:absolute;
 	top:200px;
 	left:100px;
-	padding:15px;
-/*	display:none;
-*/}
+	padding:10px 15px;
+}
 
 .tooltip h2{
 	font-size: 15px;

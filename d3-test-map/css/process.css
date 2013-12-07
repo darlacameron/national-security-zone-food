@@ -159,22 +159,22 @@ path.states {
 	font-size: 10px;
 }
 
-/*progress*/
+/*progress bar*/
 
 #progress-bar {
 	position: absolute;
 	top: 0;
-	right: 20px;
-	width: 200px;
+	left: 20px;
+	width: 100%;
 	height:16px;
-	background-color: lightgrey;
+	background-color: grey;
 }
 
 .progress-bar span {
 	position: absolute;
 	height: 16px;
 	margin: 8px 0 0 50px;
-	background-color: ;
+	background-color: blue;
 	display: block;
 	height: 100%;
 }

@@ -224,12 +224,7 @@ $('#prev').on('click', function() {
 	drawCircles();
 
 	setBrush(curr_data.year);
-});
-
-function annotate() {
-	$('#annotation').text(notes[year].note);
-}
-			
+});			
 
 var makeSlider = function() {
 	var W = 400,
