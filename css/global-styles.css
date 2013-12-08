@@ -168,6 +168,18 @@ p.source {
 	z-index: 5;
 }
 
+.nav-content {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 18px;
+}
+
+.nav-content p {
+	color: #ffffff;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+}
+
 .header {
 	position: relative;
 	width: 100%;
