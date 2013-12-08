@@ -1,16 +1,23 @@
 h1 {
+	position: absolute;
+	right: 20px;
+	bottom: 60px;
+	width: 600px;
 	font-family:'Lato', sans-serif;
 	font-weight:lighter;
-	font-size: 36px;
-	color: #1A374D;
+	font-size: 56px;
+	color: rgba(255,255,255, 1);
 	font-weight: 700;
-	/*line-height: 1.3em;*/
+	text-transform: uppercase;
+	text-align: right;
+	line-height: 1.1em;
+	text-shadow: 1px 1px 3px #000000;
 }
 
 h2 {
-	margin-bottom: 14px;
+	margin-bottom: 18px;
 	font-family:'Lato', sans-serif;
-	font-size: 26px;
+	font-size: 34px;
 	color: #1A374D;
 	font-weight: 700;
 	/*line-height: 1.2em;*/
@@ -49,20 +56,6 @@ p.chatter /*subhead*/{
 	font-size: 15px;
 	font-family: 'Merriweather', serif;
 	margin-bottom: 20px;
-	line-height: 1.8em;
-}
-
-span.blockquote {
-	display: block;
-	float: right;
-	margin-right: -100px;
-	width: 300px;
-	padding: 30px 0 30px 50px;
-	color: #8c8c8c;
-	font-size: 22px;
-	font-family:'Lato', sans-serif;
-	font-weight: 500;
-	font-style: italic;
 	line-height: 1.8em;
 }
 
@@ -187,6 +180,7 @@ p.source {
 .main {
 	padding: 80px 0;
 	background-color: #ffffff;
+	background: url('../img/background4.png') repeat;
 }
 
 .main-content {
@@ -203,9 +197,9 @@ p.source {
 	width: 100%;
 	margin: 40px 0;
 	padding: 40px 0;
-	border-top: 1px solid #dcdcdc;
-	border-bottom: 1px solid #dcdcdc;
-	background-color: #fafafa;
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+	background-color: #ffffff;
 }
 
 .inner-module {
@@ -222,10 +216,70 @@ p.source {
 
 .gallery img {
 	display: inline-block;
-	/*float: left;*/
 	width: 650px;
 	height: auto;
 }
+
+span.blockquote {
+	display: block;
+	float: right;
+	margin-right: -100px;
+	width: 300px;
+	padding: 30px 0 30px 50px;
+	color: #8c8c8c;
+	font-size: 22px;
+	font-family:'Lato', sans-serif;
+	font-weight: 500;
+	font-style: italic;
+	line-height: 1.8em;
+}
+
+.embed-pic {
+	float: right;
+	margin-right: -200px;
+	width: 470px;
+	padding: 30px 30px 30px 30px;
+}
+
+.embed-pic .img-wrapper {
+	padding: 10px;
+	background-color: #ffffff;
+	cursor: pointer;
+}
+
+.embed-pic .mask-wrapper {
+	position: relative;
+}
+
+.embed-pic .img-mask {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,.3);
+	pointer-events: none;
+}
+
+.embed-pic .img-mask.mask-hidden {
+	visibility: hidden;
+}
+
+.embed-pic img {
+	width: 390px;
+	height: auto;
+	/*border: 3px solid #dcdcdc;*/
+}
+
+.embed-pic .embed-caption {
+	margin: 8px 0 0 0;
+	font-size: 12px;
+	line-height: 1.5em;
+}
+
+
+
 
 
 
