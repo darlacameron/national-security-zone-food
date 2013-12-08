@@ -20,25 +20,21 @@ var svg = d3.select("#map").append("svg")
 
 d3.json("data/combined-topo.json", function(error, us) {
   	
-  	console.log(us);
   	var states = topojson.feature(us, us.objects['states-geo']).features,
 		statesMesh = topojson.mesh(us, us.objects['states-geo'], function(a, b) { return a !== b; });
 
 	var lines = topojson.feature(us, us.objects['lines-geo']).features,
 		ports = topojson.feature(us, us.objects['ports-geo']).features;
 	
-	//console.log(lines,ports)
 
     svg.selectAll(".state")
 	    .data(states)
 	    .enter().append("path")
-	    //.attr('class', 'state')
 	    .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 	    .attr("d", pathFunc);
 
 	svg.append('path')
 	    .datum(statesMesh)
-	    // .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 	    .attr('class', 'boundary')
 	    .attr("d", pathFunc);
 
@@ -54,20 +50,10 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .enter().append("path")
 	    .attr('class', 'port')
 	    .attr('data-total', function(d){ return d.properties['Total payments']})
+	    .attr('data-pct', function(d){  })
+	    .attr('data-largest', function(d){ })
 	    .attr("d", pathFunc);
 
-	
-			var proj = projection(d);
-			// if (proj[0] === null) {
-			// 	proj[0] = 0;
-			// }
-
-			if (proj === null) {
-				return projection([0,0]);
-			} else {
-				return proj[0];
-			}
-			
 		});
 		
 //});
