@@ -3,3 +3,5 @@ $('.img-wrapper').on('mouseover', function() {
 }).on('mouseout', function() {
 	$('.img-mask', $(this)).addClass('mask-hidden');
 });
+
+$('.module').style('width', $(window).width());

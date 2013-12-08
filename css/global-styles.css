@@ -1,3 +1,8 @@
+/*
+ Theme Name:     Twenty Thirteen Child
+ Template:       twentythirteen
+*/
+
 h1 {
 	position: absolute;
 	right: 20px;
@@ -196,7 +201,7 @@ p.source {
 .main {
 	padding: 80px 0;
 	background-color: #ffffff;
-	background: url('../img/background4.png') repeat;
+	/*background: url('../img/background4.png') repeat;*/
 }
 
 .main-content {
@@ -204,18 +209,24 @@ p.source {
 	width: 620px;
 }
 
-.main-content p {
+.main-content > p {
 	margin-bottom: 20px;
 	line-height: 2em;
 }
 
 .module {
+	/*position: absolute;
+	left: 0;
+	right: 0;*/
 	width: 100%;
 	margin: 40px 0;
 	padding: 40px 0;
+	background-color: #ffffff;
+}
+
+.module-border {
 	border-top: 1px solid #e6e6e6;
 	border-bottom: 1px solid #e6e6e6;
-	background-color: #ffffff;
 }
 
 .inner-module {
@@ -224,9 +235,10 @@ p.source {
 }
 
 .gallery {
-	width: 100%;
-	margin: 80px 0;
+	/*width: 620px;
+	margin: 0 auto;*/
 	overflow-x: scroll;
+	overflow-y: visible;
 	white-space: nowrap;
 }
 
