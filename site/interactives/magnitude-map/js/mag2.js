@@ -1,5 +1,6 @@
 (function($) {
 	'use strict';
+	//var d;
 
 var init = function() {
 
@@ -31,8 +32,8 @@ d3.json("data/combined-topo.json", function(error, us) {
     svg.selectAll(".state")
 	    .data(states)
 	    .enter().append("path")
-	    .attr('class', 'state')
-	    // .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+	    //.attr('class', 'state')
+	    .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 	    .attr("d", pathFunc);
 
 	svg.append('path')
@@ -45,14 +46,14 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .data(lines)
 	    .enter().append("path")
 	    .attr('class', 'line')
-	    //.attr("class", function(d) { console.log(d); /*return "line " + convertToSlug(d.properties.name);*/ })
+	    .attr("class", function(d) { return "line " + convertToSlug(d.properties.vendor); })
 	    .attr("d", pathFunc);
 
 	svg.selectAll(".port")
 	    .data(ports)
 	    .enter().append("path")
 	    .attr('class', 'port')
-	    // .attr("class", function(d) { return "country " + convertToSlug(d.properties.name); })
+	    .attr('data-total', function(d){ return d.properties['Total payments']})
 	    .attr("d", pathFunc);
 
 	

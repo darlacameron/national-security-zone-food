@@ -18,11 +18,12 @@ path.boundary {
 }
 
 .port {
-	fill: yellow;
+	fill: black;
 }
 
 .line {
 	fill:none;
-	stroke:#000;
+	stroke:gray;
 	stroke-width: 1px;
 }
+.line.cal-western, .line.arthurdanielsmidland, .line.didion, .line.bunge {stroke:#C96916;}
