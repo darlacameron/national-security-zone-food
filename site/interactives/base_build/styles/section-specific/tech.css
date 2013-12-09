@@ -1,0 +1,14 @@
+.outter-wrap:before {content:""; border-color:rgb(250, 102, 0);}
+.credits_btn:hover {background: url('../../graphics/btns/info-btn/tech.png');}
+
+
+/*TABLE BORDER*/
+.table-wrap-530 {border-top: 10px solid rgb(250, 102, 0);}
+
+
+/*MODAL STYLES*/
+#credits_modal ul.credits li {background: url('../../graphics/bullet/tech.png') no-repeat 0 4px; white-space: nowrap;}
+
+
+/*TOOLTIP STYLES*/
+.pointer-wrap h4 {color: rgb(252,102,33)}

@@ -2,15 +2,29 @@
 <meta charset="utf-8">
 <style>
 
-.chart rect {
-  fill: steelblue;
-}
-
-.chart text {
+body {
   font: 10px sans-serif;
 }
 
-.axis path {
+#container {
+  width: 650px;
+  height: 450px;
+  margin: 60px auto 0 auto;
+  color: #282828;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.y.axis path {
   display: none;
 }
 
@@ -20,46 +34,106 @@
   shape-rendering: crispEdges;
 }
 
+
 </style>
-<svg class="chart"></svg>
+<body>
+<div id ="container">
+<div id="producers"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+</div>
+</body>
 <script>
 
-var data = [64.4,35.6];
-
-var margin = {top: 30, right: 20, bottom: 20, left: 30},
-    width = 320,
-    barHeight = 30,
-    height = barHeight * data.length;
+var margin = {top: 20, right: 20, bottom: 30, left: 75},
+    width = 450 - margin.left - margin.right,
+    height = 150 - margin.top - margin.bottom;
+    //barHeight = 20,
+    //height = barHeight * data.length;
+    
 
 var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, width]);
+    .rangeRound([0, width]);
+
+var y = d3.scale.ordinal()
+    .rangeRoundBands([0, height], 0.025);
+
+var color = d3.scale.category20c();
+              //.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("top")
-    .tickSize(-height);
+    .ticks(4)
+    .innerTickSize(-height)
+    .outerTickSize(0);
 
-var chart = d3.select(".chart")
+/*var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+*/
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("#producers").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-chart.append("g")
-    .attr("class", "bars")
-  .selectAll("rect")
-    .data(data)
-  .enter().append("rect")
-    .attr("y", function(d, i) { return i * barHeight; })
-    .attr("height", barHeight - 1)
-    .attr("width", x);
+d3.tsv("data/processors.tsv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Processors"; }));
 
-chart.append("g")
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.companies = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.companies[d.companies.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  y.domain(data.map(function(d) { return d.Processors; }));
+  x.domain([0, d3.max(data, function(d) { return 100/*d.total*/; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0,0)")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  var state = svg.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("transform", function(d) { return "translate(0, " + y(d.Processors) + ")"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.companies; })
+    .enter().append("rect")
+      .attr("class", function(d){ return "bar" + convertToSlug(d.name)})
+      .attr("height", y.rangeBand())
+      .attr("x", function(d) { return x(d.y0); })
+      .attr("width", function(d) { return x(d.y1) - x(d.y0); })
+      .style("fill", function(d) { return color(d.name); })
+
+  svg.append("g")
     .attr("class", "axis")
     .call(xAxis)
   .select(".tick line")
     .style("stroke", "#000");
+
+});
+
+function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+}
 
 </script>

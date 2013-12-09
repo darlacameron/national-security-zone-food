@@ -3,7 +3,7 @@
 	//var d;
 
 var init = function() {
-
+	$('.tooltip').hide();
 };
 
 
@@ -20,25 +20,21 @@ var svg = d3.select("#map").append("svg")
 
 d3.json("data/combined-topo.json", function(error, us) {
   	
-  	console.log(us);
   	var states = topojson.feature(us, us.objects['states-geo']).features,
 		statesMesh = topojson.mesh(us, us.objects['states-geo'], function(a, b) { return a !== b; });
 
 	var lines = topojson.feature(us, us.objects['lines-geo']).features,
 		ports = topojson.feature(us, us.objects['ports-geo']).features;
 	
-	//console.log(lines,ports)
 
     svg.selectAll(".state")
 	    .data(states)
 	    .enter().append("path")
-	    //.attr('class', 'state')
 	    .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 	    .attr("d", pathFunc);
 
 	svg.append('path')
 	    .datum(statesMesh)
-	    // .attr("class", function(d) { return "state " + convertToSlug(d.properties.name); })
 	    .attr('class', 'boundary')
 	    .attr("d", pathFunc);
 
@@ -54,32 +50,34 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .enter().append("path")
 	    .attr('class', 'port')
 	    .attr('data-total', function(d){ return d.properties['Total payments']})
-	    .attr("d", pathFunc);
+	    .attr('data-pct', function(d){ /*NEED TO MAKE THIS RETURN PERCENT MAJOR SHIPPERS, WRITE FUNCTION*/  })
+	    .attr('data-largest', function(d){ })
+	    .attr("d", pathFunc)
+	    .on('mouseover', function(d){
+	    	console.log(d.properties)
+			d3.select('.tooltip h2').text(d.properties.Ports);
+			d3.select('.tooltip .total span').text(d.properties['Total payments']);
+			// d3.select('.tooltip .mal span').text(d.mal);
 
-	
-			var proj = projection(d);
-			// if (proj[0] === null) {
-			// 	proj[0] = 0;
-			// }
-
-			if (proj === null) {
-				return projection([0,0]);
-			} else {
-				return proj[0];
-			}
-			
+			var mouse = d3.event;
+			positionTooltip(mouse);
+		})
+		.on('mouseout', function(d){
+			$('.tooltip').hide();
 		});
 		
-//});
+});
 
-function convertToSlug(Text)
-{
+function convertToSlug(Text){
     return Text
         .toLowerCase()
         .replace(/[^\w ]+/g,'')
-        .replace(/ +/g,'-')
-        ;
-}
+        .replace(/ +/g,'-');
+};
+
+var positionTooltip = function(coords){
+	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+};
 
 
 
