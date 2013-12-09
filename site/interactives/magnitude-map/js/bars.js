@@ -73,6 +73,14 @@ d3.tsv("data/processors.tsv", function(error, data) {
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
       .style("fill", function(d) { return color1(d.name); })
+      .on('mouseover', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
+          d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+        })
+      .on('mouseout', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
+          d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
+        });
 
   chart1.append("g")
     .attr("class", "axis")
@@ -125,6 +133,15 @@ d3.tsv("data/shippers.tsv", function(error, data) {
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
       .style("fill", function(d) { return color2(d.name); })
+      .on('mouseover', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
+          d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+        })
+      .on('mouseout', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
+          d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
+        });
+     
 
   chart2.append("g")
     .attr("class", "axis")
