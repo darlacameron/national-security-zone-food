@@ -46,7 +46,7 @@ body {
 
 var margin = {top: 20, right: 20, bottom: 30, left: 75},
     width = 450 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = 150 - margin.top - margin.bottom;
     //barHeight = 20,
     //height = barHeight * data.length;
     
@@ -55,7 +55,7 @@ var x = d3.scale.linear()
     .rangeRound([0, width]);
 
 var y = d3.scale.ordinal()
-    .rangeRoundBands([2, height], 0.1);
+    .rangeRoundBands([0, height], 0.025);
 
 var color = d3.scale.category20c();
               //.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
@@ -63,8 +63,9 @@ var color = d3.scale.category20c();
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("top")
-    .ticks(4);
-    //.tickSize(-height);
+    .ticks(4)
+    .innerTickSize(-height)
+    .outerTickSize(0);
 
 /*var xAxis = d3.svg.axis()
     .scale(x)
@@ -81,7 +82,7 @@ var svg = d3.select("#producers").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.tsv("data/processors.tsv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Processors"; }));
 
   data.forEach(function(d) {
@@ -93,7 +94,7 @@ d3.tsv("data.tsv", function(error, data) {
   data.sort(function(a, b) { return b.total - a.total; });
 
   y.domain(data.map(function(d) { return d.Processors; }));
-  x.domain([0, d3.max(data, function(d) { return d.total; })]);
+  x.domain([0, d3.max(data, function(d) { return 100/*d.total*/; })]);
 
   svg.append("g")
       .attr("class", "x axis")
