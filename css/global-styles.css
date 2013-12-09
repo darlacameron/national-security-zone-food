@@ -1,14 +1,5 @@
-/*
- Theme Name:     Twenty Thirteen Child
- Template:       twentythirteen
-*/
-
-#page {
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-}
-
-h1.main-page {
+/*KATE, I MADE THIS MORE SPECIFIC TO THE INDEX PAGE H1- IT WAS APPLYING TO ALL THE GRAPHICS - DARLA*/
+h1.main-page { 
 	position: absolute;
 	right: 20px;
 	bottom: 60px;
@@ -188,57 +179,13 @@ p.source {
 .nav-content {
 	width: 1000px;
 	margin: 0 auto;
-}
-
-.nav-content a {
-	text-decoration: none;
-}
-
-.nav-content h1 {
-	display: inline-block;
-	padding: 18px 0;
-	color: #ffffff;
-	font-size: 14px;
-}
-
-.nav-content h1:hover {
-	color: #8c8c8c;
+	padding-top: 18px;
 }
 
 .nav-content p {
 	color: #ffffff;
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
-}
-
-.nav-menu {
-	float: right;
-}
-
-div.nav-menu ul {
-	display: inline-block;
-	margin-right: -15px;
-	padding: 0;
-}
-
-.nav-menu ul li {
-	text-align: right;
-}
-
-.nav-menu li a {
-	padding: 18px 15px 18px 15px;
-	color: #ffffff;
-	font-size: 14px;
-	text-decoration: none;
-}
-
-.nav-menu li a:hover {
-	color: #8c8c8c;
-}
-
-.nav-menu .current_page_item a {
-	color: #8c8c8c;
-	font-style: normal;
 }
 
 .header {
@@ -257,7 +204,7 @@ div.nav-menu ul {
 .main {
 	padding: 80px 0;
 	background-color: #ffffff;
-	/*background: url('../img/background4.png') repeat;*/
+	background: url('../img/background4.png') repeat;
 }
 
 .main-content {
@@ -265,20 +212,8 @@ div.nav-menu ul {
 	width: 620px;
 }
 
-.main-content > p {
+.main-content p {
 	margin-bottom: 20px;
-	line-height: 2em;
-}
-
-.sidebar{
-	width:20%;
-	position:absolute;
-	right:0px;
-	top:4964px;
-}
-
-.sidebar-content p {
-	margin-right: 10px;
 	line-height: 2em;
 }
 
@@ -286,12 +221,9 @@ div.nav-menu ul {
 	width: 100%;
 	margin: 40px 0;
 	padding: 40px 0;
-	background-color: #ffffff;
-}
-
-.module-border {
 	border-top: 1px solid #e6e6e6;
 	border-bottom: 1px solid #e6e6e6;
+	background-color: #ffffff;
 }
 
 .inner-module {
@@ -300,8 +232,9 @@ div.nav-menu ul {
 }
 
 .gallery {
+	width: 100%;
+	margin: 80px 0;
 	overflow-x: scroll;
-	overflow-y: hidden;
 	white-space: nowrap;
 }
 
