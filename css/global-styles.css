@@ -270,6 +270,18 @@ div.nav-menu ul {
 	line-height: 2em;
 }
 
+.sidebar{
+	width:20%;
+	position:absolute;
+	right:0px;
+	top:4964px;
+}
+
+.sidebar-content p {
+	margin-right: 10px;
+	line-height: 2em;
+}
+
 .module {
 	width: 100%;
 	margin: 40px 0;
