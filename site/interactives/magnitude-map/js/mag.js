@@ -50,7 +50,7 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .enter().append("path")
 	    .attr('class', 'port')
 	    .attr('data-total', function(d){ return d.properties['Total payments']})
-	    .attr('data-pct', function(d){  })
+	    .attr('data-pct', function(d){ /*NEED TO MAKE THIS RETURN PERCENT MAJOR SHIPPERS, WRITE FUNCTION*/  })
 	    .attr('data-largest', function(d){ })
 	    .attr("d", pathFunc)
 	    .on('mouseover', function(d){
