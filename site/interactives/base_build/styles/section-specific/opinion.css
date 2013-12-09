@@ -1,0 +1,14 @@
+.outter-wrap:before {content:""; border-color:rgb(102, 102, 102);}
+.footer-wrap a.credits_btn:hover {background: url('../../graphics/btns/info-btn/opinion.png');}
+
+
+/*TABLE BORDER*/
+.table-wrap-530 {border-top: 10px solid rgb(102, 102, 102);}
+
+
+/*MODAL STYLES*/
+#credits_modal ul.credits li {background: url('../../graphics/bullet/opinion.png') no-repeat 0 4px; white-space: nowrap;}
+
+
+/*TOOLTIP STYLES*/
+.pointer-wrap h4 {color: rgb(102,102,102)}

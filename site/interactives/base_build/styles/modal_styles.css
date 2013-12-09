@@ -1,0 +1,102 @@
+/*  --------------------------------------------------
+Reveal Modals
+-------------------------------------------------- */
+.reveal-modal-bg {position: fixed; height: 100%; width: 100%; background: #fff; background: rgba(255,255,255,.8); z-index: 2147483646; display: none; top: 0; left: 0;}
+
+.reveal-modal {
+    visibility: hidden;
+    top: 10px;
+    left: 53px;
+    width: 800px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    background: #eee url('http://i.usatoday.net/news/_common/images/elections_12/modal-gloss.png') no-repeat -200px -80px;
+    position: absolute;
+    z-index: 2147483647;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+    -box-shadow: 0 0 10px rgba(0,0,0,.4);
+    border: 3px solid rgba(85, 85, 85, 0.8);
+
+    -moz-background-clip: border;     /* Firefox 3.6 */
+    -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
+    background-clip: border-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+    -moz-background-clip: padding;     /* Firefox 3.6 */
+    -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+    background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+    -moz-background-clip: content;     /* Firefox 3.6 */
+    -webkit-background-clip: content;  /* Safari 4? Chrome 6? */
+    background-clip: content-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+}
+
+
+
+/*  --------------------------------------------------
+MODAL WINDOW
+-------------------------------- */
+.reveal-modal.small { width: 200px; margin-left: -140px;}
+.reveal-modal.medium { width: 400px; margin-left: -240px;}
+.reveal-modal.large { width: 600px; margin-left: -340px;}
+.reveal-modal.xlarge { width: 800px; margin-left: -440px;}
+
+.reveal-modal .close-reveal-modal {position: absolute; top: -23px; right: -27px; cursor: pointer; background: url('../graphics/modal-close-btn.png'); display: block; height: 50px; width: 50px;}
+.reveal-modal .close-reveal-modal:hover {background-position: 50px 50px;}
+
+
+.reveal-modal_header { padding: 13px 20px 13px 20px; background:#dedede;}
+.reveal-modal_header h3 {font-size: 24px; font-weight:700; color:#444; margin: 0; padding: 11px 0; text-transform: uppercase; float:left; text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.8);}
+.reveal-modal_header p { margin: 5px 0 0 10px; color: #555; width:740px; float:left; border-left: 1px solid #999; padding: 5px 0 5px 10px; width:525px; font-size:12px;}
+
+.reveal-modal_header .cand-ans-left { width:358px; margin: 5px 0 0 0; float:left;}
+.reveal-modal_header .cand-ans-left h4 { font-size: 12px; font-weight:700; color:#444; padding: 0; margin: 0;}
+.reveal-modal_header .cand-ans-right { width:358px; margin: 5px 0 0 0; float:right; padding: 0 0 0 10px;}
+.reveal-modal_header .cand-ans-right h4 { font-size: 12px; font-weight:700; color:#444; padding: 0; margin: 0;}
+
+.reveal-modal_statement {margin: 0; padding: 0;}
+.reveal-modal_statement h4 {font-size: 20px; font-weight:700; color:#444;}
+
+.reveal-modal_inner p {font: normal 12px/1.6 Helvetica Neue, Helvetica, Arial, sans-serif; color: #707070; margin: 5px 0 0 0; padding: 0; text-transform: none;}
+.reveal-modal h6 {margin:10px 0 0; padding:0 0 15px; color: #707070; border-bottom: 1px solid #ccc; font-size: 13px; line-height:18px;}
+
+.reveal-modal_inner {padding: 0 20px 20px; border-top:1px solid #b2b2b2;}
+.reveal-modal h4 {font-weight:700; font-size:14px; color:#444; margin: 0; padding: 0 0 20px; background: url('http://i.usatoday.net/news/_common/images/elections_12/cmg-2/dotted_bg.png') 0 25px repeat-x;}
+
+.reveal-modal cite, .reveal-modal cite a {font: italic normal 11px/1.6 Helvetica Neue, Helvetica, Arial, sans-serif; margin: 0 0 10px; color: #707070; padding:0; float: right; text-decoration:none;}
+.reveal-modal cite a {color:#066081;}
+.reveal-modal cite a:hover {text-decoration:underline;}
+
+.reveal-modal .left_rail, .reveal-modal .right_rail {width:358px; margin: 20px 0 0;}
+.reveal-modal .left_rail p, .reveal-modal .right_rail p {border: none;}
+.reveal-modal .left_rail {float:left; border-right: 1px solid #ccc; padding: 0 20px 0 0;}
+.reveal-modal .right_rail {float:right; padding: 0 0 0 20px;}
+
+
+/*  --------------------------------------------------
+CREDITS MODAL WINDOW
+-------------------------------- */
+#credits_modal {width: 500px; top: 100px; left: 210px;}
+#credits_modal h5 { margin:10px 20px 10px; padding:0 0 5px; font-size:24px; font-weight:700; color:#555; border-bottom: 1px solid #ccc;}
+#credits_modal p {margin: 10px 20px 10px; font-size: 12px; font-weight: normal; color: #555; line-height: 1.5;}
+#credits_modal ul.credits { margin: 5px 22px 50px;} 
+#credits_modal ul.credits li {font-size:12px; color: #363636; display:inline; padding: 0 3px 0 11px; margin: 0; line-height: 22px; background: url('http://i.usatoday.net/_common/data-vis/global-library/images/credits_bullet.png') no-repeat 0 4px; white-space: nowrap;}
+#credits_modal ul.credits li a { color: #7d7d7d; text-decoration:none; font-weight:normal;}
+#credits_modal ul.credits li a:hover { color: #6497c7; text-decoration:underline;}
+#credits_modal ul.credits li.first { font-weight:normal; background:none; padding: 0 2px 0 0; margin: 0;}
+
+
+
+/* Landscape phones */
+@media (max-width: 480px) {
+    #credits_modal {top:5px}
+    #credits_modal {margin: 0 0 0 -170px; width: 400px;}
+    #credits_modal .inner-wrap h4, #credits_modal .inner-wrap h5 {color: rgb(102,102,102); font-size: 14px; font-weight: 700;}
+}
+
+/* Portrait phones and down */
+@media (max-width : 320px) {
+    #credits_modal {margin: 0 0 0 -140px; width: 260px;}
+    #credits_modal .inner-wrap {margin: 0 10px 0;}
+}
+

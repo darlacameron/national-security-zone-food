@@ -1,0 +1,14 @@
+.outter-wrap:before {content:""; border-color:rgb(0, 155, 255);}
+.footer-wrap a.credits_btn:hover {background: url('../../graphics/btns/info-btn/news.png');}
+
+
+/*TABLE BORDER*/
+.table-wrap-530 {border-top: 10px solid rgb(0, 155, 255);}
+
+
+/*MODAL STYLES*/
+#credits_modal ul.credits li {background: url('../../graphics/bullet/news.png') no-repeat 0 4px; white-space: nowrap;}
+
+
+/*TOOLTIP STYLES*/
+.pointer-wrap h4 {color: rgb(27,158,252)}

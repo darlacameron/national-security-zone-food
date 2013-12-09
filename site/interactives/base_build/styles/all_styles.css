@@ -1,0 +1,21 @@
+@import url('base.css');
+
+/* =============================================================================
+   CALL IN STYLES FOR OTHER MODULES | COMMENT OUT WHAT YOU DON'T NEED
+   ========================================================================== */
+@import url('table.css');
+@import url('modal_styles.css');
+@import url('tool_tip.css');
+
+
+/* =============================================================================
+   CHOOSE SECTION
+   ========================================================================== */
+@import url('section-specific/news.css');
+/*@import url('section-specific/sports.css');*/
+/*@import url('section-specific/life.css');*/
+/*@import url('section-specific/money.css');*/
+/*@import url('section-specific/tech.css');*/
+/*@import url('section-specific/travel.css');*/
+/*@import url('section-specific/opinion.css');*/
+/*@import url('section-specific/weather.css');*/
