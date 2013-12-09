@@ -17,6 +17,34 @@
 	}
 	.half {float:left; width:48%; margin-right:20px;}
 	.half.last {margin-right:0px;}
+	#processors #shippers {
+		width: 480px;
+        height: 250px;
+        margin: 60px auto 0 auto;
+        display: block;
+        color: #282828;
+	}
+	.axis path,
+	.axis line {
+  	  fill: none;
+      stroke: #000;
+  	  shape-rendering: crispEdges;
+	}
+
+	.bar {
+	  fill: steelblue;
+	}
+
+	.axis path {
+	  display: none;
+	}
+
+	.axis line {
+	  stroke: #fff;
+	  stroke-opacity: .5;
+	  shape-rendering: crispEdges;
+	}
+
 	</style>
 
 </head>
@@ -33,7 +61,7 @@
 	<div class='charts'>
 		<div class='half'>
 			<h3>Food aid producers</h3>
-			<div id='producers'></div>
+			<div id='processors'></div>
 		</div>
 		<div class='half'>
 			<h3>Shippers</h3>
@@ -53,5 +81,6 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="js/mag.js"></script>
+<script src="js/bars.js"></script>
 </body>
 </html>

@@ -1,52 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-#container {
-  width: 650px;
-  height: 450px;
-  margin: 60px auto 0 auto;
-  color: #282828;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: steelblue;
-}
-
-.axis path {
-  display: none;
-}
-
-.axis line {
-  stroke: #fff;
-  stroke-opacity: .5;
-  shape-rendering: crispEdges;
-}
-
-
-</style>
-<body>
-<div id ="container">
-<div id="processors"></div>
-<div id="shippers"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-</div>
-</body>
-<script>
-
-
-
 
 var margin = {top: 20, right: 20, bottom: 30, left: 75},
     width = 450 - margin.left - margin.right,
@@ -191,5 +142,3 @@ function convertToSlug(Text)
         .replace(/ +/g,'-')
         ;
 }
-
-</script>
