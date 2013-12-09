@@ -3,7 +3,7 @@
 	//var d;
 
 var init = function() {
-
+	$('.tooltip').hide();
 };
 
 
@@ -52,20 +52,32 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .attr('data-total', function(d){ return d.properties['Total payments']})
 	    .attr('data-pct', function(d){  })
 	    .attr('data-largest', function(d){ })
-	    .attr("d", pathFunc);
+	    .attr("d", pathFunc)
+	    .on('mouseover', function(d){
+	    	console.log(d.properties)
+			d3.select('.tooltip h2').text(d.properties.Ports);
+			d3.select('.tooltip .total span').text(d.properties['Total payments']);
+			// d3.select('.tooltip .mal span').text(d.mal);
 
+			var mouse = d3.event;
+			positionTooltip(mouse);
+		})
+		.on('mouseout', function(d){
+			$('.tooltip').hide();
 		});
 		
-//});
+});
 
-function convertToSlug(Text)
-{
+function convertToSlug(Text){
     return Text
         .toLowerCase()
         .replace(/[^\w ]+/g,'')
-        .replace(/ +/g,'-')
-        ;
-}
+        .replace(/ +/g,'-');
+};
+
+var positionTooltip = function(coords){
+	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+};
 
 
 
