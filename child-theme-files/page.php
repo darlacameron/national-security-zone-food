@@ -22,13 +22,13 @@ get_header(); ?>
 				<article id="post-<?php the_ID(); ?>">
 
 
-					<div class="header header-1">
+					<!-- <div class="header header-1">
 						<img src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/headers/header-1.jpg" />
 						<h1 class="main-page entry-title"><?php the_title(); ?></h1>
 					</div>
 
 					<div class="main">
-						<div class="main-content">
+						<div class="main-content"> -->
 
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
