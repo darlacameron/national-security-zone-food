@@ -89,7 +89,7 @@ p.byline {
 }
 
 p.source {
-	color: #646464;
+	color: #838383;
 	font-family: 'Merriweather', serif;
 	font-size: 10px;
 }
@@ -163,7 +163,7 @@ p.source {
 .slider-axis text {
 	fill: #646464;
 	font-size: 11px;
-	font-family: "Lato", sans-serif;
+	font-family: "Oswald", sans-serif;
 }
 
 #xlabel{

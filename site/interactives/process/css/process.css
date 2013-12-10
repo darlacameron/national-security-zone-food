@@ -4,7 +4,7 @@
 	width: 960px;
 	height: 500px;
 	margin: 60px auto 0 auto;
-	color: #282828;
+	color: #1A374D;
 }
 
 #wrapper {
@@ -23,28 +23,28 @@
 }
 
 path {
-	fill: #C0C0C0;
+	fill: #C1C1C1;
 }
 
-.country, .state {stroke:#FEFEFE;}
-path .highlight {fill:#B6BEA9;}
-.country.niger {fill:#B6BEA9;}
+.country, .state {stroke:#fff;}
+path .highlight {fill:#A4B48C;}
+.country.niger {fill:#A4B48C;}
 
 path.boundary {
 	fill: none;
-	stroke: #fefefe;
+	stroke: #fff;
 }
 
 path.points {
 	fill: none;
-	stroke: #3580C3;
+	stroke: #5B9AC3;
 	stroke-width: 3px;
 	stroke-linecap: round;
 }
 
 path.states {
 	fill: none;
-	stroke: #FEFEFE;
+	stroke: #fff;
 }
 
 .lake {fill:#f5f5f5;}
@@ -88,12 +88,12 @@ path.states {
 	width: 10px;
 	height: 10px;
 	margin: 5px 3px;
-	background:#DCDCDC;
+	background:#C1C1C1;
 	/* width and height can be anything, as long as they're equal */
 }
 
 .step-active {
-	background-color: #a0a0a0;
+	background-color: #646464;
 }
 
 #headline {
@@ -101,7 +101,7 @@ path.states {
 }
 
 #location {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	font-weight: lighter;
 	font-size: 16px;
 	color: #1A374D;
@@ -109,18 +109,11 @@ path.states {
 	line-height: 1.3em;
 }
 
-/*#days {
-	font-family:'Ruda', sans-serif;
-	color: #1A374D;
-	text-align:center;
-	display:inline-block;
-	margin: 10px 0 5px 0;
-}*/
-
 .body {
 	margin-bottom: 8px;
-	font-size: 14px;
-	font-family: 'Lato', sans-serif;
+	font-size: 13px;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
 	line-height: 1.65em;
 }
 
@@ -131,14 +124,14 @@ path.states {
 	margin: 20px auto 10px auto;
 	width: 282px;
 	height:18px;
-	background-color: #D4D4D4;
+	background-color: #C1C1C1;
 	border-radius:8px;
 }
 
 #progress-bar #bar-fill {
 	position: absolute;
 	height: 100%;
-	background-color: #A0A0A0;
+	background-color: #646464;
 	display: block;
 	height: 100%;
 	border-radius: 8px;
@@ -150,5 +143,6 @@ path.states {
 	right: 5px;
 	color:#fff;
 	font-size:13px;
-	font-family:"Lato", sans-serif;
+	font-family:"Oswald", sans-serif;
+	font-weight: lighter;
 }
