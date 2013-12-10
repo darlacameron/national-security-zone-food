@@ -76,7 +76,7 @@ function convertToSlug(Text){
 };
 
 var positionTooltip = function(coords){
-	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+	$('.map.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
 };
 
 

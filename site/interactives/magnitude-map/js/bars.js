@@ -1,4 +1,6 @@
 
+$('.tooltip').hide();
+
 var margin = {top: 20, right: 20, bottom: 30, left: 75},
     width = 450 - margin.left - margin.right,
     height = 130 - margin.top - margin.bottom;
@@ -68,7 +70,7 @@ d3.tsv("data/processors.tsv", function(error, data) {
   state.selectAll("rect")
       .data(function(d) { return d.companies; })
     .enter().append("rect")
-      .attr("class", function(d){ return "bar" + convertToSlug(d.name)})
+      .attr("class", function(d){ return "bar " + convertToSlug(d.name)})
       .attr("height", y.rangeBand())
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
@@ -76,10 +78,20 @@ d3.tsv("data/processors.tsv", function(error, data) {
       .on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
           d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+          d3.selectAll('.bar').style({'opacity': '.5'})
+          d3.select('.'+classes).style({'opacity': '1'})
+          console.log(d)
+          d3.select('.tooltip h2').text(d['name']);
+          d3.select('.tooltip .pct span').text(d.Processors);
+          // d3.select('.tooltip .mal span').text(d.mal);
+
+          var mouse = d3.event;
+          positionTooltip(mouse);
         })
       .on('mouseout', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
           d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
+          d3.select('.bar').style({'opacity': '1'})
         });
 
   chart1.append("g")
@@ -150,6 +162,13 @@ d3.tsv("data/shippers.tsv", function(error, data) {
     .style("stroke", "#000");
 
 });
+
+
+var positionTooltip = function(coords){
+  $('.chart.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+};
+
+
 
 function convertToSlug(Text)
 {
