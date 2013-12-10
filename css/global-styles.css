@@ -369,16 +369,35 @@ span.blockquote {
 	line-height: 1.5em;
 }
 
+.lightbox{
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+   	background:url(../img/opacity.png) repeat; /*because rgba isn't supported in all browsers apparently?*/
+    text-align:center;
+}
+.lightbox-content {
+ 	margin:auto;
+ 	margin-top:70px;
+}
 
+#close {
+	background:url(../img/arrow-button-right.png); /*Using the arrow as filler until I make a close button*/
+	height:20px;
+	width:20px;
+	/*how do I position this so it moves with the lightbox when the window chnages size?*/
+}
 
-
-
-
-
-
-
-
-
+.lightbox img{
+	width:60%;
+	margin:auto;
+	background:white;
+ 	border:1px black solid;
+ 	border-radius: 5px;
+ 	padding:30px;
+}
 
 
 
