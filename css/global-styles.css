@@ -194,6 +194,7 @@ p.source {
 
 /* structures */
 
+/* nav */
 #nav {
 	position: fixed;
 	width: 100%;
@@ -331,6 +332,8 @@ span.blockquote {
 	background:url(../img/greenquotes.png) no-repeat;
 }
 
+/*sidebar images */
+
 .embed-pic {
 	float: right;
 	margin-right: -200px;
@@ -377,6 +380,8 @@ span.blockquote {
 	font-weight: lighter;
 }
 
+/*Lightbox*/
+
 .lightbox{
 	display:none;
     position:fixed; /* keeps the lightbox window in the current viewport */
@@ -396,7 +401,7 @@ span.blockquote {
 	background:url(../img/arrow-button-right.png); /*Using the arrow as filler until I make a close button*/
 	height:20px;
 	width:20px;
-	/*how do I position this so it moves with the lightbox when the window chnages size?*/
+	/*how do I position this so it moves with the lightbox when the window changes size?*/
 }
 
 .lightbox img{
@@ -428,3 +433,17 @@ span.blockquote {
 	width:100%;
 }
 
+/*sidebar*/
+
+.sidebar {
+	display: block;
+	float: right;
+	margin-right: -300px;
+	width: 220px;
+/*	padding: 30px 0 30px 50px;*/
+	color: #1A374D;
+	font-size: 13px;
+	font-family:'Merriweather', serif;
+	font-weight: 300;
+	line-height: 1.4em;
+}
