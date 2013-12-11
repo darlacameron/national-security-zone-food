@@ -29,7 +29,7 @@
 
 			<div class="site-info">
 				<?php do_action( 'twentythirteen_credits' ); ?>
-			</div><!-- .site-info -->
+			</div><!- .site-info -->
 		<!-- </footer> --><!-- #colophon --> -->
 	</div><!-- #page -->
 

@@ -77,7 +77,7 @@ var init = function() {
 };
 
 var makeChart = function() {
-	var W = 900,
+	var W = 960,
 		H = 500,
 		margin = {top: 0, right: 20, bottom: 30, left: 50},
 		w = W - margin.left - margin.right,

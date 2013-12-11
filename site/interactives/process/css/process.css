@@ -142,7 +142,17 @@ path.states {
 	top: 2px;
 	right: 5px;
 	color:#fff;
-	font-size:13px;
+	font-size:14px;
 	font-family:"Oswald", sans-serif;
-	font-weight: lighter;
+	font-weight: 300;
+}
+
+#progress-bar #zero-days{
+	position:absolute;
+	top: 2px;
+	left: 5px;
+	color:#fff;
+	font-size:14px;
+	font-family:"Oswald", sans-serif;
+	font-weight: 300;
 }
