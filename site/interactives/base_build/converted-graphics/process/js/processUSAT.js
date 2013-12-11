@@ -5,8 +5,8 @@ var width = 900,
 	height = 500;
 
 var projection = d3.geo.mercator()
-	.center([-12.949707, 26.358221])
-	.scale(310);
+	.center([-8, 20])
+	.scale(290);
 
 var pathFunc = d3.geo.path().projection(projection),
 	path;
