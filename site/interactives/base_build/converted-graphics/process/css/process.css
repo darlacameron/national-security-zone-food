@@ -1,0 +1,148 @@
+/* interactive */
+
+#process {
+	width: 960px;
+	height: 500px;
+	margin: 60px auto 0 auto;
+	color: #1A374D;
+}
+
+#wrapper {
+	margin: 10px 0;
+}
+
+/* map stuff */
+
+#map {
+	float: left;
+	width: 650px;
+	height: 500px;
+	border: 2px solid #646464;
+	background: #f5f5f5;
+	overflow: hidden;
+}
+
+path {
+	fill: #C1C1C1;
+}
+
+.country, .state {stroke:#fff;}
+path .highlight {fill:#A4B48C;}
+.country.niger {fill:#A4B48C;}
+
+path.boundary {
+	fill: none;
+	stroke: #fff;
+}
+
+path.points {
+	fill: none;
+	stroke: #5B9AC3;
+	stroke-width: 3px;
+	stroke-linecap: round;
+}
+
+path.states {
+	fill: none;
+	stroke: #fff;
+}
+
+.lake {fill:#f5f5f5;}
+
+/* text area */
+
+#text {
+	float: left;
+	width: 282px;
+	margin-left: 20px;
+}
+
+.nav {
+	margin: 20px 0;
+}
+
+#next,
+#prev {
+	cursor: pointer;
+}
+
+#next {
+	float:right;
+	margin-right: 30px;
+}
+
+#prev {
+	float:left;
+	margin-left: 30px;
+}
+
+#steps {
+	display: block;
+	width: 132px;
+	margin: 0 auto;
+}
+
+.circle {
+	float: left;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	margin: 5px 3px;
+	background:#C1C1C1;
+	/* width and height can be anything, as long as they're equal */
+}
+
+.step-active {
+	background-color: #646464;
+}
+
+#headline {
+	margin: 0px 0 5px 0;
+}
+
+#location {
+	font-family: 'Oswald', sans-serif;
+	font-weight: lighter;
+	font-size: 16px;
+	color: #1A374D;
+	margin-bottom: 14px;
+	line-height: 1.3em;
+}
+
+.body {
+	margin-bottom: 8px;
+	font-size: 13px;
+	font-family: 'Merriweather', serif;
+	font-weight: lighter;
+	line-height: 1.65em;
+}
+
+/*progress bar*/
+
+#progress-bar {
+	position: relative;
+	margin: 20px auto 10px auto;
+	width: 282px;
+	height:18px;
+	background-color: #C1C1C1;
+	border-radius:8px;
+}
+
+#progress-bar #bar-fill {
+	position: absolute;
+	height: 100%;
+	background-color: #646464;
+	display: block;
+	height: 100%;
+	border-radius: 8px;
+}
+
+#progress-bar #bar-fill #days{
+	position:absolute;
+	top: 2px;
+	right: 5px;
+	color:#fff;
+	font-size:13px;
+	font-family:"Oswald", sans-serif;
+	font-weight: lighter;
+}
