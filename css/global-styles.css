@@ -384,26 +384,26 @@ span.blockquote {
 
 /*Lightbox*/
 
-.lightbox{
-	display:none;
-    position:fixed; /* keeps the lightbox window in the current viewport */
+/*.lightbox{
+    position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-   	background:url(../img/opacity.png) repeat; /*because rgba isn't supported in all browsers apparently?*/
+   	background:url(../img/opacity.png) repeat;
     text-align:center;
 }
 .lightbox-content {
  	margin:auto;
  	margin-top:70px;
+ 	width:;
+ 	height;
 }
 
 #close {
-	background:url(../img/arrow-button-right.png); /*Using the arrow as filler until I make a close button*/
+	background:url(../img/arrow-button-right.png);
 	height:20px;
 	width:20px;
-	/*how do I position this so it moves with the lightbox when the window changes size?*/
 }
 
 .lightbox img{
@@ -413,7 +413,7 @@ span.blockquote {
  	border:1px black solid;
  	border-radius: 5px;
  	padding:30px;
-}
+}*/
 
 /*footer */
 #footer{
