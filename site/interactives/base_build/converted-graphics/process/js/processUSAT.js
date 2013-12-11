@@ -175,7 +175,15 @@ var progress = function() {
 
 	$('#progress-bar #bar-fill').animate({'width': width + '%'}, 1000);
 	$('#days').text(process_text[counter].days);
-	
+
+	if (counter === 0 || counter === 1) {
+		$('#zero-days').show()
+		$('#days').hide()
+	} else {
+		$('#zero-days').hide()
+		$('#days').show()
+	}
+
 };
 
 
