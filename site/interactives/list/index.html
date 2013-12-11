@@ -54,6 +54,8 @@ font-family: "Gotham", sans-serif;
 
 rect {stroke-width:1px; stroke: #8f8f8f;}
 
+.stacked {position:relative;}
+
 form {
   float: right;
 }
@@ -67,11 +69,14 @@ form {
 <body>
   <div id='container'>
     <h1>What's on the food list</h1>
-    <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists.</p>
     <form>
   <label><input type="radio" name="mode" value="multiples" checked> Multiples</label>
   <label><input type="radio" name="mode" value="stacked"> Stacked</label>
     </form>
+    <!-- <div class='stacked'>
+      <p class='chatter sub'> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    </div> -->
     <div id='chart'></div>
   </div>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
