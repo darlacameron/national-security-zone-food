@@ -11,13 +11,26 @@
 ?>
 
 		</div><!-- #main -->
-		<footer id="colophon" class="site-footer" role="contentinfo">
+
+	<div class="module module-border clearfix">
+		<h3>See the stories...</h3>
+		<div id="footer">
+			<div class= "footer-element"><img class="footer-img" src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/gallery-1/photo-4.jpg"/><p class="footer-text">Chapter Number:</br> Title goes here</p></div>
+			<div class= "footer-element"><img class="footer-img" src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/gallery-1/photo-4.jpg"/><p class="footer-text">Chapter Number:</br>  Title goes here</p></div>
+			<div class= "footer-element"><img class="footer-img" src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/gallery-1/photo-4.jpg"/><p class="footer-text">Chapter Number:</br>  Title goes here</p></div>
+			<div class= "footer-element"><img class="footer-img" src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/gallery-1/photo-4.jpg"/><p class="footer-text">Chapter Number:</br>  Title goes here</p></div>
+			<div class= "footer-element"><img class="footer-img" src="http://foodaid.nationalsecurityzone.org//wp-content/themes/twentythirteen-child/photo/gallery-1/photo-4.jpg"/><p class="footer-text">Chapter Number:</br>  Title goes here</p></div>
+		</div>
+	</div>
+
+
+		<!-- <footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
 
 			<div class="site-info">
 				<?php do_action( 'twentythirteen_credits' ); ?>
 			</div><!-- .site-info -->
-		</footer><!-- #colophon -->
+		<!-- </footer> --><!-- #colophon --> -->
 	</div><!-- #page -->
 
 	<?php wp_footer(); ?>
