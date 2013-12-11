@@ -95,22 +95,19 @@ p.source {
 	background: rgba(0,0,0,.65);
 	color: #fff;
     border-radius: 5px;
-    z-index:98;
-	box-shadow: 5px 5px 5px #D4D4D4;
+    box-shadow: 5px 5px 5px #D4D4D4;
 	position:absolute;
-	top:200px;
-	left:100px;
 	padding:10px 15px;
 }
 
-.tooltip:hover:before{
-    border: solid;
-    border-color: #333 transparent;
-    border-width: 6px 6px 0 6px;
-    top: 50%;
-    left: 98px;
-    position: absolute;
-    z-index: 99;
+.tooltip:before {
+	border-bottom-color: #fff;  /* arrow color */
+
+	/* positioning */
+	position: absolute;
+	top: -19px;
+	left: 255px;
+	z-index: 2;
 }
 
 .tooltip h2{

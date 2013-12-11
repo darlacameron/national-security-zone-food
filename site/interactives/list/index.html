@@ -3,7 +3,7 @@
 <style>
 #container {
   width: 960px;
-  height: 500px;
+  height: 600px;
   margin: 60px auto 0 auto;
   color: #282828;
 }
@@ -45,6 +45,16 @@ font-family: "Gotham", sans-serif;
 
 .nonfat-dry-milk, .odd-commodities {fill:#19374C;}
  
+ .label {
+  font-family:'Lato', sans-serif; /*using h4 from global */
+  font-size:16px;
+  color: #1A374D;
+  text-anchor: end;
+}
+
+form {
+  float: right;
+}
 
 </style>
 <link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
@@ -55,10 +65,15 @@ font-family: "Gotham", sans-serif;
   <div id='container'>
     <h1>What's on the food list</h1>
     <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <form>
+  <label><input type="radio" name="mode" value="multiples" checked> Multiples</label>
+  <label><input type="radio" name="mode" value="stacked"> Stacked</label>
+    </form>
     <div id='chart'></div>
   </div>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src='js/chart.js'></script>
+  <!-- <script src='js/chart.js'></script> -->
+  <script src='js/group.js'></script>
 </body>
 </html>
