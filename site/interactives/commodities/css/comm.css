@@ -2,7 +2,7 @@
 	width: 900px;
 	margin: 80px auto;
 	font-size: 12px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	font-weight: lighter;
 }
 
@@ -77,7 +77,7 @@ circle.sam {
 }
 
 h1 {
-	font-family:'Lato', sans-serif;
+	font-family:'Oswald', sans-serif;
 	font-size: 36px;
 	color: #1A374D;
 	font-weight: lighter;
@@ -95,7 +95,8 @@ h1 {
 
 #notes > p{
 	position:absolute;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
+	font-weight:lighter;
 }
 
 .annotation{
@@ -166,7 +167,7 @@ h1 {
 	position: relative;
 	height: 16px;
 	margin: 8px 0 0 50px;
-	background-color: #D4D4D4;
+	background-color: #C1C1C1;
 }
 
 .key-row p {
@@ -227,7 +228,7 @@ h1 {
 
 .slider-axis .slider-halo {
 	fill: none;
-	stroke: #D4D4D4;
+	stroke: #C1C1C1;
 	stroke-width: 8px;
 	stroke-linecap: round;
 }
