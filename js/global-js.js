@@ -10,10 +10,9 @@ $(document).ready(function() {
 		$('.img-mask', $(this)).addClass('mask-hidden');
 	});
 
-	$( ".img-wrapper" ).click(function() {
-  		alert( "Testing" );
-		// $('.img-mask', $(this)).removeClass('hidden');
-	});
+	// $( ".img-wrapper" ).on('click', function() {
+	// 	$('.lightbox').removeClass('hidden');
+	// });
 
 	$('.module').css({
 		'width': windowWidth,

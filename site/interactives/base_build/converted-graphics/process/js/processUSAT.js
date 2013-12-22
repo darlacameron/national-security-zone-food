@@ -1,12 +1,12 @@
 var counter = 0,
 	animating = false;
 
-var width = 960,
+var width = 900,
 	height = 500;
 
 var projection = d3.geo.mercator()
-	.center([-12.949707, 26.358221])
-	.scale(310);
+	.center([-8, 20])
+	.scale(290);
 
 var pathFunc = d3.geo.path().projection(projection),
 	path;
@@ -158,7 +158,7 @@ function animatePath(direction) {
 function writeText() {
 	$('#headline').text(process_text[counter].headline);
 	$('#location').text(process_text[counter].location);
-	// $('#days').text(process_text[counter].days);
+	$('#days').text(process_text[counter].days);
 
 	var $body = $('#body');
 	$body.text('');
@@ -183,7 +183,7 @@ var progress = function() {
 		$('#zero-days').hide()
 		$('#days').show()
 	}
-	
+
 };
 
 

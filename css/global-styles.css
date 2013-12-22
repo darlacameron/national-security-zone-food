@@ -40,10 +40,6 @@ h2 {
 	/*line-height: 1.2em;*/
 }
 
-h2.nav-content{
-	color:#fff;
-}
-
 h3 {
 	margin-bottom: 12px;
 	padding-top: 10px;
@@ -72,11 +68,13 @@ h6 {
 p {
 	font-family: 'Merriweather', serif;
 	color:#4B4B4B;
+	font-weight:300;
 }
 
 p.chatter /*subhead*/{
 	font-size: 15px;
 	font-family: 'Merriweather', serif;
+	font-weight:300;
 	margin-bottom: 20px;
 	line-height: 1.8em;
 }
@@ -164,13 +162,13 @@ p.source {
 .slider-axis text {
 	fill: #646464;
 	font-size: 11px;
-	font-family: "Oswald", sans-serif;
+	font-family: "Merriweather Sans", sans-serif;
 }
 
 #xlabel{
-	font-size: 12px;
-	font-family: 'Merriweather', serif;
-	font-weight: lighter;
+	font-size: 11px;
+	font-family: 'Merriweather Sans', serif;
+	font-weight: 300;
 	color: #646464;
 	position:absolute;
 	top:520px;
@@ -180,9 +178,9 @@ p.source {
 }
 
 #ylabel{
-	font-size: 12px;
-	font-family: 'Merriweather', serif;
-	font-weight:lighter;
+	font-size: 11px;
+	font-family: 'Merriweather Sans', serif;
+	font-weight:300;
 	text-align: left;
 	line-height: 1.3em;
 	width:100px;
@@ -384,26 +382,26 @@ span.blockquote {
 
 /*Lightbox*/
 
-.lightbox{
-	display:none;
-    position:fixed; /* keeps the lightbox window in the current viewport */
+/*.lightbox{
+    position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-   	background:url(../img/opacity.png) repeat; /*because rgba isn't supported in all browsers apparently?*/
+   	background:url(../img/opacity.png) repeat;
     text-align:center;
 }
 .lightbox-content {
  	margin:auto;
  	margin-top:70px;
+ 	width:;
+ 	height;
 }
 
 #close {
-	background:url(../img/arrow-button-right.png); /*Using the arrow as filler until I make a close button*/
+	background:url(../img/arrow-button-right.png);
 	height:20px;
 	width:20px;
-	/*how do I position this so it moves with the lightbox when the window changes size?*/
 }
 
 .lightbox img{
@@ -413,7 +411,7 @@ span.blockquote {
  	border:1px black solid;
  	border-radius: 5px;
  	padding:30px;
-}
+}*/
 
 /*footer */
 #footer{

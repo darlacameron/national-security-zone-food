@@ -37,7 +37,7 @@
 		<!-- <header id="masthead" class="site-header" role="banner"> -->
 		<div id="nav">
 			<div class="nav-content">
-				<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<a class="main-page" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<h1><?php bloginfo( 'name' ); ?></h1>
 					<!-- <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2> -->
 				</a>
