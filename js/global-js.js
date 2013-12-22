@@ -10,6 +10,11 @@ $(document).ready(function() {
 		$('.img-mask', $(this)).addClass('mask-hidden');
 	});
 
+	$( ".img-wrapper" ).click(function() {
+  		alert( "Testing" );
+		// $('.img-mask', $(this)).removeClass('hidden');
+	});
+
 	$('.module').css({
 		'width': windowWidth,
 		'margin-left': windowLeft

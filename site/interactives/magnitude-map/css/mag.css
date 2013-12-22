@@ -27,3 +27,5 @@ path.boundary {
 	stroke-width: 1px;
 }
 .line.cal-western, .line.arthurdanielsmidland, .line.didion, .line.bunge {stroke:#C96916;}
+
+.cal-western:hover {stroke:black;	};

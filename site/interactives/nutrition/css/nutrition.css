@@ -5,3 +5,22 @@
 	color: #282828;
 }
 .fourth {display:block; width:24%; float:left; margin-left:10px;}
+
+#graphic {margin-bottom:20px;}
+#graphic img {width:85%; margin-left:15%;}
+
+
+td {padding:7px; width:21%; border-bottom:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
+td.label {width:10%;}
+td.end {border-right:none;}
+
+tr.nutrition {background-color:#F5F5F5;}
+tr.nutrition td {font-size:14px; font-family: "Oswald", sans-serif; text-align:right;}
+
+p.body {
+margin-bottom: 8px;
+font-size: 13px;
+font-family: 'Merriweather', serif;
+font-weight: lighter;
+line-height: 1.65em;
+}

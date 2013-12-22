@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
     <title>Title goes here</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Ruda' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Merriweather:300,300italic' rel='stylesheet' type='text/css'>
     	<link type="text/css" rel="stylesheet" href="../../../css/reset.css">
 		<link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
     <link type="text/css" rel="stylesheet" href="css/mag.css">
@@ -15,8 +15,40 @@
 	  margin: 60px auto 0 auto;
 	  color: #282828;
 	}
-	.half {float:left; width:48%; margin-right:20px;}
+	.half {float:left; width:460px; margin-right:20px; display: block;}
 	.half.last {margin-right:0px;}
+	#processors #shippers {
+		width: 480px;
+        height: 250px;
+        margin: 60px auto 0 auto;
+        display: block;
+        color: #282828;
+	}
+	.axis path,
+	.axis line {
+  	  fill: none;
+      stroke: #000;
+  	  shape-rendering: crispEdges;
+	}
+
+	.bar {
+	  fill: steelblue;
+	}
+
+	.axis path {
+	  display: none;
+	}
+
+	.axis line {
+	  stroke: #fff;
+	  stroke-opacity: .5;
+	  shape-rendering: crispEdges;
+	}
+
+	.m75 {
+		margin-left: 75px
+	}
+
 	</style>
 
 </head>
@@ -32,26 +64,34 @@
 	<p class='chatter'>There were 1,075 aid shipments in fiscal year 2013.</p>
 	<div class='charts'>
 		<div class='half'>
-			<h3>Food aid producers</h3>
-			<div id='producers'></div>
+			<h3 class='m75'>Food processors</h3>
+			<div id='processors'></div>
 		</div>
 		<div class='half'>
-			<h3>Shippers</h3>
+			<h3 class='m75'>Shippers</h3>
 			<div id='shippers'></div>
 		</div>
 	</div>
-	<div class="tooltip">
+	<div class="map tooltip">
 		<h2></h2>
-		<p class="total">$<span></span> million</p>
+		<p class="total">$<span></span></p>
 		<p class="mal"><span></span>% major shippers</p>
 	</div>
+
+	<div class="chart tooltip">
+		<h2></h2>
+		<p class="pct"><span></span> %</p>
+	</div>
+
 </div>
 
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="js/mag.js"></script>
+<script src="js/bars.js"></script>
 </body>
 </html>

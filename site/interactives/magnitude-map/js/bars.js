@@ -1,52 +1,5 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
 
-body {
-  font: 10px sans-serif;
-}
-
-#container {
-  width: 650px;
-  height: 450px;
-  margin: 60px auto 0 auto;
-  color: #282828;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: steelblue;
-}
-
-.axis path {
-  display: none;
-}
-
-.axis line {
-  stroke: #fff;
-  stroke-opacity: .5;
-  shape-rendering: crispEdges;
-}
-
-
-</style>
-<body>
-<div id ="container">
-<div id="processors"></div>
-<div id="shippers"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-</div>
-</body>
-<script>
-
-
-
+$('.tooltip').hide();
 
 var margin = {top: 20, right: 20, bottom: 30, left: 75},
     width = 450 - margin.left - margin.right,
@@ -117,11 +70,29 @@ d3.tsv("data/processors.tsv", function(error, data) {
   state.selectAll("rect")
       .data(function(d) { return d.companies; })
     .enter().append("rect")
-      .attr("class", function(d){ return "bar" + convertToSlug(d.name)})
+      .attr("class", function(d){ return "bar " + convertToSlug(d.name)})
       .attr("height", y.rangeBand())
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
       .style("fill", function(d) { return color1(d.name); })
+      .on('mouseover', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
+          d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+          d3.selectAll('.bar').style({'opacity': '.5'})
+          d3.select('.'+classes).style({'opacity': '1'})
+          console.log(d)
+          d3.select('.tooltip h2').text(d['name']);
+          d3.select('.tooltip .pct span').text(d.Processors);
+          // d3.select('.tooltip .mal span').text(d.mal);
+
+          var mouse = d3.event;
+          positionTooltip(mouse);
+        })
+      .on('mouseout', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
+          d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
+          d3.select('.bar').style({'opacity': '1'})
+        });
 
   chart1.append("g")
     .attr("class", "axis")
@@ -174,6 +145,15 @@ d3.tsv("data/shippers.tsv", function(error, data) {
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
       .style("fill", function(d) { return color2(d.name); })
+      .on('mouseover', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
+          d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+        })
+      .on('mouseout', function(d){
+          var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
+          d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
+        });
+     
 
   chart2.append("g")
     .attr("class", "axis")
@@ -183,6 +163,13 @@ d3.tsv("data/shippers.tsv", function(error, data) {
 
 });
 
+
+var positionTooltip = function(coords){
+  $('.chart.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+};
+
+
+
 function convertToSlug(Text)
 {
     return Text
@@ -191,5 +178,3 @@ function convertToSlug(Text)
         .replace(/ +/g,'-')
         ;
 }
-
-</script>
