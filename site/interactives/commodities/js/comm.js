@@ -47,7 +47,7 @@ data = years.map(function(year, i) {
 
 });
 
-console.log(data)
+// console.log(data)
 
 
 // // get mins and maxes
@@ -67,8 +67,6 @@ console.log(data)
 var year = 0,
 	curr_data = data[year];
 
-// console.log(curr_data)
-
 var init = function() {
 	$('.tooltip').hide();
 	makeChart();
@@ -79,7 +77,7 @@ var init = function() {
 var makeChart = function() {
 	var W = 960,
 		H = 500,
-		margin = {top: 0, right: 20, bottom: 30, left: 50},
+		margin = {top: 20, right: 20, bottom: 30, left: 50},
 		w = W - margin.left - margin.right,
 		h = H - margin.top - margin.bottom;
 
@@ -114,8 +112,8 @@ var makeChart = function() {
 		.scale(yScale)
 		.orient('left')
 		.tickFormat(function (d) {
-	        d = addCommas(d / 1000000);
-	      return d;
+	      	d = addCommas(d / 100000);
+	      	return d;
 	    })
 	    .tickSize(0)
 	    .tickPadding(12);
@@ -141,8 +139,6 @@ var makeChart = function() {
 
 var drawCircles = function() {
 	curr_data = data[year];
-
-	console.log(curr_data)
 
 	var circle = svg.selectAll('.circle')
 		.data(curr_data.values, function(d) { return d.slug; })
@@ -193,6 +189,7 @@ var drawCircles = function() {
 		.remove();
 
 	setKey();
+	showAnnotation();
 };
 
 var positionTooltip = function(coords){
@@ -212,17 +209,32 @@ var setKey = function() {
 	$('.key-row .sam').animate({'width': sam + '%'}, DUR);
 };
 
+var showAnnotation = function() {
+	var currYear = curr_data.year;
+	$('.annotation').fadeOut();
+
+	if (currYear === '1993') {
+		$('#Rus1').fadeIn();
+	} else if (currYear === '1999') {
+		$('#Rus2').fadeIn();
+	} else if (currYear === '2003') {
+		$('#Eth').fadeIn();
+	} else if (currYear === '2005') {
+		$('#Eri').fadeIn();
+	} else if (currYear === '2006') {
+		$('#Eur').fadeIn();
+	} else if (currYear === '2010') {
+		$('#Bur').fadeIn();
+	}
+};
+
 
 $('#next').on('click', function() {
-	// year += 1;
-
 	if (year === data.length - 1) {
 		year = 0;
 	} else {
 		year += 1;
 	}
-
-	// $(this).find('span').text(curr_data.year);
 
 	drawCircles();
 
@@ -230,15 +242,11 @@ $('#next').on('click', function() {
 });
 
 $('#prev').on('click', function() {
-	// year -= 1;
-
 	if (year === 0) {
 		year = data.length - 1;
 	} else {
 		year -= 1;
 	}
-
-	// $(this).find('span').text(curr_data.year);
 
 	drawCircles();
 
@@ -276,7 +284,6 @@ var makeSlider = function() {
 	    .call(d3.svg.axis()
 	      .scale(xSlider)
 	      .orient("bottom")
-	      // .tickValues(years)
 	      .tickSize(0)
 	      .tickFormat(timeFormat)
 	      .tickPadding(12))
@@ -299,30 +306,16 @@ var makeSlider = function() {
 	    .attr('transform', 'translate(0,' + h / 2 + ')')
 	    .attr('r', 9);
 
-	var starter = 2009;
-
-	// slider
-	//     .call(brush.event)
-	//   	.transition() // gratuitous intro!
-	//     .duration(750)
-	//     .call(brush.extent([starter, starter]))
-	//     .call(brush.event);
-
-	var sliderStarted = false;
+	var starter = 2009,
+		sliderStarted = false;
 
 	function brushed() {
 		var value = brush.extent()[0];
 
-		// console.log(d3.mouse(this))
-
-		if (d3.event.sourceEvent) { // not a programmatic event
+		if (d3.event.sourceEvent) {
 			value = xSlider.invert(d3.mouse(this)[0]);
-			// value = (d3.mouse(this)[0]);
 			brush.extent([value, value]);
 		}
-
-		// handle.attr('cx', xSlider(value));
-		// console.log(value)
 
 		var diff = 1,
 			nearestYear = value;
@@ -337,7 +330,6 @@ var makeSlider = function() {
 			}
 		});
 
-		// handle.attr('cx', xSlider(nearestYear));
 		setBrush(nearestYear);
 
 		if (sliderStarted) {

@@ -6,23 +6,6 @@
 	font-weight: lighter;
 }
 
-/*#chart .axis path {
-	fill: none;
-	stroke: grey;
-	shape-rendering: crispEdges;
-}
-
-.axis text,
-.slider-axis text {
-	fill: grey;
-	font-size: 11px;
-	font-family: "Merriweather", serif;
-}*/
-
-/*#chart circle {
-	fill: #ff00ff;
-}*/
-
 circle.asia {
 	fill: #1A374D;
 }
@@ -101,7 +84,6 @@ h1 {
 
 .annotation{
 	width:300px;
-	/*font-family: 'Merriweather', serif;*/
 	font-weight: lighter;
 	color:#646464;
 	font-size:15px;
