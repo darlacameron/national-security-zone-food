@@ -193,7 +193,30 @@ var drawCircles = function() {
 };
 
 var positionTooltip = function(coords){
-	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
+	var mouseX = coords.pageX;
+    var mouseY = coords.pageY;
+	var screenWidth = $(window).width();
+    var screenHeight = $(window).height();
+
+    var top;
+    var left;
+
+    if (mouseX > (screenWidth/2)) {
+    	left = mouseX - 195;
+    }
+    else {
+    	left = mouseX + 10;
+    }
+    if (mouseY > (screenHeight/2)) {
+    	top = mouseY - 100;
+    }
+    else {
+    	top = mouseY - 10;
+    }
+    
+    $('.tooltip').css({'top':top, 'left':left}).show()
+
+//	$('.tooltip').css({'top':coords.pageY - 10, 'left':coords.pageX + 10}).show()
 };
 
 var setKey = function() {

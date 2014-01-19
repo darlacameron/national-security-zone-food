@@ -127,7 +127,7 @@ p.source {
 .tooltip p{
 	font-size: 13px;
 	font-family: 'Merriweather', serif;
-	font-weight:lighter;
+	font-weight:normal;
 	line-height: 1.5em;
 	color:grey;
 }
