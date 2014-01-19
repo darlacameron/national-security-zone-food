@@ -3,11 +3,10 @@
 
 
 var init = function() {
-  $('.tooltip').hide();
-//  makeChart();
+  // showAnnotation();
 };
 
-var margin = {top: 0, right: 50, bottom: 10, left: 200},
+var margin = {top: 0, right: 50, bottom: 30, left: 200},
     width = 960 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -33,7 +32,7 @@ var stack = d3.layout.stack()
     .y(function(d) { return d.metricTon; })
     .out(function(d, y0) { d.valueOffset = y0; });
 
-var color = d3.scale.category10();
+//var color = d3.scale.category10();
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -71,10 +70,11 @@ d3.tsv("data/data.tsv", function(error, data) {
   group.selectAll("rect")
       .data(function(d) { return d.values; })
     .enter().append("rect")
-      .style("fill", function(d) { return color(d.commodity); })
+      //.style("fill", function(d) { return color(d.commodity); })
       .attr("x", function(d) { return x(d.year); })
       .attr("y", function(d) { return y1(d.metricTon); })
       .attr("width", x.rangeBand())
+      .attr("class", function(d){ return "bar " + convertToSlug(d.commodity)})
       .attr("height", function(d) { return y0.rangeBand() - y1(d.metricTon); });
 
   group.filter(function(d, i) { return !i; }).append("g")
@@ -99,6 +99,7 @@ d3.tsv("data/data.tsv", function(error, data) {
     g.selectAll("rect").attr("y", function(d) { return y1(d.metricTon); });
     g.select(".label")//.attr("y", function(d) { return y1(d.values[0].metricTon / 2); })
                       .style({'opacity': '0.8'});
+     hideAnnotation();
   }
 
   function transitionStacked() {
@@ -107,8 +108,27 @@ d3.tsv("data/data.tsv", function(error, data) {
     g.selectAll("rect").attr("y", function(d) { return y1(d.metricTon + d.valueOffset); });
     g.select(".label")//.attr("y", function(d) { return y1(d.values[0].metricTon / 2 + d.values[0].valueOffset); })
                       .style({'opacity': '0'});
+     showAnnotation();
   }
 });
+
+
+var showAnnotation = function() {
+  $('#annotation').fadeIn("1000");
+};
+
+var hideAnnotation = function () {
+  $('#annotation').fadeOut("750");
+};
+
+function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+}
 
 init();
 
