@@ -70,10 +70,11 @@ h3 {
   <h3 id="cost-per-ton" class='mt20'>Cost per ton to ship food</h3>
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='CTafrica' class='chart africa'><!--<label><input type="checkbox"> Sort values</label>--></div>
-
-    <div id='CTasia' class='chart asia'><label></div>
-    <div id='CTamericas' class='chart americas'></div>
+    <div id='CTafrica' class='chart africa'>
+      <h4 class='center'>Africa</h4>
+    </div>
+    <div id='CTasia' class='chart asia'><label><h4 class='center'>Asia</h4></div>
+    <div id='CTamericas' class='chart americas'><h4 class='center'>Americas</h4></div>
   </div>
 <p class='chatter'>The amount of money that USAID spends to ship a ton of food has steadily risen. Two factors have contributed to a rise in costs: a law that requires shippers to use expensive U.S.-flagged vessels and a spike in global food costs in 2008.</p>
   
@@ -81,18 +82,18 @@ h3 {
   <h3 id="recipients-per-ton" class='mt20'>How many people a ton of food reaches</h3>
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='RTafrica' class='chart africa'></div>
-    <div id='RTasia' class='chart asia'></div>
-    <div id='RTamericas' class='chart americas'></div>
+    <div id='RTafrica' class='chart africa'><h4 class='center'>Africa</h4></div>
+    <div id='RTasia' class='chart asia'><h4 class='center'>Asia</h4></div>
+    <div id='RTamericas' class='chart americas'><h4 class='center'>Americas</h4></div>
   </div>  
   <p class='chatter'>Africa gets the highest volume of U.S. food aid, but a ton of food reaches fewer people in Africa than in other parts of the world because of high transportation costs and a complex transit network.</p>
 
   <h3 id="cost-per-recipient" class='mt20'>Cost per aid recipient</h3>
   <div class='row posrel'>
     <p class="posabs text"></p>
-    <div id='CRafrica' class='chart africa'></div>
-    <div id='CRasia' class='chart asia'></div>
-    <div id='CRamericas' class='chart americas'></div>
+    <div id='CRafrica' class='chart africa'><h4 class='center'>Africa</h4></div>
+    <div id='CRasia' class='chart asia'><h4 class='center'>Asia</h4></div>
+    <div id='CRamericas' class='chart americas'><h4 class='center'>Americas</h4></div>
   </div>
   <p class='chatter'>Due in part to rising food prices, the costs of delivering food to a person have doubled in the last decade. The program reaches fewer people for more money.</p>
 
@@ -159,7 +160,7 @@ var x2 = d3.scale.ordinal()
 var y = d3.scale.linear()
     .range([height, 0]);
   
-var xFormat = d3.time.format('%y');
+var xFormat = d3.time.format('%m');
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -207,11 +208,11 @@ var yAxis = d3.svg.axis()
         .style("text-anchor", "end")
         .text(label);
 
-    svg.append("text")
-        .attr("x", width - 65)             
-        .attr("y", 12)
-        .attr("class", "title")  
-        .text(title);
+    // svg.append("text")
+    //     .attr("x", width - 65)             
+    //     .attr("y", 12)
+    //     .attr("class", "title")  
+    //     .text(title);
 
 
     svg.selectAll(".bar")
