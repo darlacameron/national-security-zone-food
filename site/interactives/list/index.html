@@ -57,8 +57,15 @@ font-family: "Gotham", sans-serif;
   display: none;
 }
 
+#arrowup {
+  position:absolute;
+  top: 25px;
+  left: 810px;
+  width: 50px;
+  height: 60px;
+}
+
 #arrowleft {
-  
   position:absolute;
   top: 175px;
   left: 285px;
@@ -75,16 +82,25 @@ font-family: "Gotham", sans-serif;
   height: 100px;
 }
 
-#text {
+.text {
   width:300px;
   position:absolute;
   font-family: 'Merriweather Sans', sans-serif;
-  font-weight: lighter;
   color:#646464;
   font-size:14px;
   line-height: 1.3em;
+}
+
+#annotation-text {
+  font-weight: lighter;
   top:160px;
   left:400px;
+}
+
+#radio-text {
+  font-weight: bold;
+  top: 66px;
+  left: 728px;
 }
 
 form {
@@ -112,9 +128,11 @@ form {
   
     <div id='chart'>
       <div id="annotation">
-    <img src="images/leftarrow.png" id="arrowleft"></img>
-    <p id='text'> Due to rising costs, the amount of food the U.S. sends as aid has dropped dramatically </p>
-    <img src="images/rightarrow.png" id="arrowright"></img>
+        <img src="images/uparrow.png" id="arrowup"></img>
+        <img src="images/leftarrow.png" id="arrowleft"></img>
+        <p class='text' id='annotation-text'> Due to rising costs, the amount of food the U.S. sends as aid has dropped dramatically </p>
+        <p class='text' id='radio-text'> Dig deeper </p>
+        <img src="images/rightarrow.png" id="arrowright"></img>
        </div>
     </div>
   </div> 
