@@ -97,24 +97,24 @@ p.source {
 }
 
 .tooltip{
-	background: #333;
-	background: rgba(0,0,0,.65);
+	background: white;
 	color: #fff;
+	opacity: 0.8;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #D4D4D4;
 	position:absolute;
 	padding:10px 15px;
 }
 
-.tooltip:before {
+/* .tooltip:before {
 	border-bottom-color: #fff;  /* arrow color */
 
-	/* positioning */
+	/* positioning *//*
 	position: absolute;
 	top: -19px;
 	left: 255px;
 	z-index: 2;
-}
+} */
 
 .tooltip h2{
 	font-size: 20px;
@@ -129,7 +129,7 @@ p.source {
 	font-family: 'Merriweather', serif;
 	font-weight:lighter;
 	line-height: 1.5em;
-	color:#fff;
+	color:grey;
 }
 
 /*Regions*/
