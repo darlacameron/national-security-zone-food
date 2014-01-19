@@ -94,7 +94,7 @@ d3.tsv("data/data.tsv", function(error, data) {
   }
 
   function transitionMultiples() {
-    var t = svg.transition().duration(750),
+    var t = svg.transition().duration(750).ease("bounce").duration(1500),
         g = t.selectAll(".group").attr("transform", function(d) { return "translate(0," + y0(d.key) + ")"; });
     g.selectAll("rect").attr("y", function(d) { return y1(d.metricTon); });
     g.select(".label")//.attr("y", function(d) { return y1(d.values[0].metricTon / 2); })
@@ -114,11 +114,11 @@ d3.tsv("data/data.tsv", function(error, data) {
 
 
 var showAnnotation = function() {
-  $('#annotation').fadeIn("1000");
+  $('#annotation').fadeIn(1000);
 };
 
 var hideAnnotation = function () {
-  $('#annotation').fadeOut("750");
+  $('#annotation').fadeOut(200);
 };
 
 function convertToSlug(Text)
