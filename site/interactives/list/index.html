@@ -8,15 +8,6 @@
   color: #282828;
 }
 
-.chatter {
-margin-top: 10px;
-margin-bottom: 8px;
-font-size: 15px;
-font-family: 'Gotham', sans-serif;
-font-weight: lighter;
-line-height: 1.7em;
-}
-
 .axis path,
 .axis line {
   fill: none;
@@ -30,39 +21,71 @@ font-size: 11px;
 font-family: "Gotham", sans-serif;
 }
 
-.bar {
-  fill: steelblue;
-}
-
 .x.axis path {
   display: none;
 }
-
-
-.bulk-grains, .corncornmeal, .flour, .oil, .peaslentilsbeans {fill:#C86A28;}
-
-.emergency-pouches, .soy-preparationscornsoy-blend {fill:#A4B48C;}
-
-.nonfat-dry-milk, .odd-commodities {fill:#19374C;}
  
- .label {
+.label {
   font-family:'Lato', sans-serif; /*using h4 from global */
   font-size:16px;
   color: #1A374D;
   text-anchor: end;
 }
 
-h1 {
-  font-family:'Oswald', sans-serif;
-  font-size: 44px;
-  line-height: 1.1em;
-  margin-bottom:10px;
-  font-weight: 400;
-}
+.bar {stroke-width:0.5px; stroke: #8f8f8f;}
 
-rect {stroke-width:1px; stroke: #8f8f8f;}
+.bulk-grains {fill: #5B9AC3;}
+.corncornmeal {fill: #DAA520;}
+.emergency-pouches {fill: #6b486b;}
+.flour {fill: #19374C;}
+.nonfat-dry-milk {fill: #7b6888;}
+.odd-commodities {fill: #C86A28;}
+.oil {fill: #D48745;}
+.peaslentilsbeans {fill: #A4B48C;}
+.soy-preparations {fill: #98abc5;}
 
 .stacked {position:relative;}
+
+#chart-wrapper {
+  position: relative;
+  height: 400px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#annotation {
+  display: none;
+}
+
+#arrowleft {
+  
+  position:absolute;
+  top: 175px;
+  left: 285px;
+  width: 70px;
+  height: 100px;
+}
+
+#arrowright {
+  /* display: none; */
+  position:absolute;
+  top: 175px;
+  left: 740px;
+  width: 70px;
+  height: 100px;
+}
+
+#text {
+  width:300px;
+  position:absolute;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: lighter;
+  color:#646464;
+  font-size:14px;
+  line-height: 1.3em;
+  top:160px;
+  left:400px;
+}
 
 form {
   float: right;
@@ -71,22 +94,33 @@ form {
 </style>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Merriweather:300,300italic' rel='stylesheet' type='text/css'>
-    <link type="text/css" rel="stylesheet" href="../../../../css/reset.css">
-    <link type="text/css" rel="stylesheet" href="../../../../css/global-styles.css">
+    <link type="text/css" rel="stylesheet" href="../../../css/reset.css">
+    <link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
 
 <body>
   <div id='container'>
     <h1>What's on the food list</h1>
     <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists.</p>
+      <!-- <div class='stacked'>
+      <p class='chatter sub'> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    </div> -->
+  <div id="chart-wrapper">
     <form>
   <label><input type="radio" name="mode" value="multiples" checked> Multiples</label>
   <label><input type="radio" name="mode" value="stacked"> Stacked</label>
     </form>
-    <!-- <div class='stacked'>
-      <p class='chatter sub'> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-    </div> -->
-    <div id='chart'></div>
-  </div>
+  
+    <div id='chart'>
+      <div id="annotation">
+    <img src="images/leftarrow.png" id="arrowleft"></img>
+    <p id='text'> Due to rising costs, the amount of food the U.S. sends as aid has dropped dramatically </p>
+    <img src="images/rightarrow.png" id="arrowright"></img>
+       </div>
+    </div>
+  </div> 
+  
+    <p class="source">Source: United States Department of Agriculture. Credit: Ajai Sreevatsan, Darla Cameron, Kate Van Winkle & Kennedy Elliott.</p>
+
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <!-- <script src='js/chart.js'></script> -->
