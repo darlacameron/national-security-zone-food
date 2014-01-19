@@ -74,24 +74,22 @@ d3.tsv("data/processors.tsv", function(error, data) {
       .attr("height", y.rangeBand())
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
-      .style("fill", function(d) { return color1(d.name); })
+      //.style("fill", function(d) { return color1(d.name); })
       .on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
           d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
-          d3.selectAll('.bar').style({'opacity': '.5'})
-          d3.select('.'+classes).style({'opacity': '1'})
-          console.log(d)
-          d3.select('.tooltip h2').text(d['name']);
+          //d3.selectAll('.bar').style({'opacity': '.5'})
+          //d3.select('.'+classes).style({'opacity': '1'})
+          /*d3.select('.tooltip h2').text(d['name']);
           d3.select('.tooltip .pct span').text(d.Processors);
-          // d3.select('.tooltip .mal span').text(d.mal);
-
+          d3.select('.tooltip .mal span').text(d.mal);
           var mouse = d3.event;
-          positionTooltip(mouse);
+          positionTooltip(mouse); */   //tooltip stuff
         })
       .on('mouseout', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
           d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}); //removes the stroke.
-          d3.select('.bar').style({'opacity': '1'})
+          //d3.select('.bar').style({'opacity': '1'})
         });
 
   chart1.append("g")
@@ -140,11 +138,11 @@ d3.tsv("data/shippers.tsv", function(error, data) {
   state.selectAll("rect")
       .data(function(d) { return d.companies; })
     .enter().append("rect")
-      .attr("class", function(d){ return "bar" + convertToSlug(d.name)})
+      .attr("class", function(d){ return "bar " + convertToSlug(d.name)})
       .attr("height", y.rangeBand())
       .attr("x", function(d) { return x(d.y0); })
       .attr("width", function(d) { return x(d.y1) - x(d.y0); })
-      .style("fill", function(d) { return color2(d.name); })
+      //.style("fill", function(d) { return color2(d.name); })
       .on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
           d3.selectAll('.'+classes).style({'stroke': 'black', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
