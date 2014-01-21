@@ -11,14 +11,14 @@
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  /*stroke: #000;*/
   shape-rendering: crispEdges;
 }
 
 .axis text, .legend text {
 fill: grey;
-font-size: 11px;
-font-family: "Gotham", sans-serif;
+/*font-size: 11px;
+font-family: "Gotham", sans-serif;*/
 }
 
 .x.axis path {
@@ -109,7 +109,7 @@ form {
 
 </style>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Merriweather:300,300italic' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
     <link type="text/css" rel="stylesheet" href="../../../css/reset.css">
     <link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
 
@@ -122,8 +122,8 @@ form {
     </div> -->
   <div id="chart-wrapper">
     <form>
-  <label><input type="radio" name="mode" value="multiples" checked> Multiples</label>
-  <label><input type="radio" name="mode" value="stacked"> Stacked</label>
+  <label><input type="radio" name="mode" value="multiples" checked> <span class='label'>Aid by commodity type</span></label>
+  <label><input type="radio" name="mode" value="stacked"> <span class='label'>Overall aid sent</span></label>
     </form>
   
     <div id='chart'>
@@ -137,7 +137,7 @@ form {
     </div>
   </div> 
   
-    <p class="source">Source: United States Department of Agriculture. Credit: Ajai Sreevatsan, Darla Cameron, Kate Van Winkle & Kennedy Elliott.</p>
+    <p class="source">Source: United States Department of Agriculture. Credit: Ajai Sreevatsan and Kate Van Winkle.</p>
 
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>

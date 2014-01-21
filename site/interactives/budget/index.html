@@ -4,7 +4,8 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Merriweather:300,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
+
     <link type="text/css" rel="stylesheet" href="../../../css/reset.css">
     <link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
 
@@ -100,11 +101,6 @@ h3 {
 
 <script>
 
-//TO DO
-//1. get universal styles from kate or kennedy- so it looks like the others. and colors for regions
-//2. add the other sets of charts
-//3. add headlines and chatter and annotation
-//4. tooltips from kate
 
 //maximums for each chart set
 var costTonMax = 2100;
@@ -160,17 +156,21 @@ var x2 = d3.scale.ordinal()
 var y = d3.scale.linear()
     .range([height, 0]);
   
-var xFormat = d3.time.format('%m');
+var xFormat = d3.time.format('%y');
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom")
-    .ticks(xFormat)
-
+    .tickFormat(function(d) {
+      var z = d.toString();
+      var a = z.split("");
+      return "'"+a[2]+a[3];
+    })
+    .orient("bottom");
+    
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(5, "$");
+    .ticks(5);
 
 // writing a tooltip
 /*var tip = d3.tip()
@@ -189,7 +189,7 @@ var yAxis = d3.svg.axis()
 
 
   d3.tsv("data/data.tsv", type, function(error, data) {
-    x.domain(data.map(function(d) { return d.year; })); //same for all
+    x.domain(data.map(function(d) { return +d.year})); //same for all
     x2.domain(data.map(function(d) { return 200; }));
     y.domain([0, max]); // var for max for set
 
@@ -218,7 +218,7 @@ var yAxis = d3.svg.axis()
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
-        .attr("class", function(d){return "bar y" + d.year})
+        .attr("class", function(d){return "bar y" + d.year;})
         .attr('data-value', function(d){return d[region]})
         .attr("x", function(d) { return x(d.year); })
         .attr("width", x.rangeBand())

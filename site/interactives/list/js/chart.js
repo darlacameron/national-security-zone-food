@@ -12,7 +12,8 @@ var color = d3.scale.range(["#19374C", "#A4B48C", "#C86A28", "#C86A28", "#C86A28
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+    .tickSize(0);
 
 var yAxis = d3.svg.axis()
     .scale(y)

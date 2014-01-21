@@ -26,9 +26,11 @@
 		  stroke: #000;
 		  shape-rendering: crispEdges;
 		}
+		path.domain {stroke:#000;}
+		.axis .tick line {stroke:#fff;}
 
 		.x.axis path {
-		  display: none;
+		  /*display: none;*/
 		}
 
 		/*.line {
