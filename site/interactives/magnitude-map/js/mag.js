@@ -42,7 +42,9 @@ d3.json("data/combined-topo.json", function(error, us) {
 	    .data(lines)
 	    .enter().append("path")
 	    .attr('class', 'line')
-	    .attr("class", function(d) { return "line " + convertToSlug(d.properties.vendor); })
+	    .attr("class", function(d) { 
+	    	// TO DO send the colored lines to front with kennedy's method, set up a tooltip for lines, on hover highlight related lines and bar
+	    	return "line " + convertToSlug(d.properties.vendor); })
 	    .attr("d", pathFunc);
 
 	svg.selectAll(".port")

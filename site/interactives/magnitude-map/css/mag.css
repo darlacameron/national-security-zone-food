@@ -26,6 +26,60 @@ path.boundary {
 	stroke:gray;
 	stroke-width: 1px;
 }
-.line.cal-western, .line.arthurdanielsmidland, .line.didion, .line.bunge {stroke:#C96916;}
-
+/*.line.cal-western, .line.arthurdanielsmidland, .line.didion, .line.bunge {stroke:#C96916;}*/
+/*
 .cal-western:hover {stroke:black;	};
+*/
+    #container {
+	  width: 960px;
+	  height: 500px;
+	  margin: 60px auto 0 auto;
+	  color: #282828;
+	}
+	.half {float:left; width:460px; margin-right:20px; display: block;}
+	.half.last {margin-right:0px;}
+	#processors #shippers {
+		width: 480px;
+        height: 250px;
+        margin: 60px auto 0 auto;
+        display: block;
+        color: #282828;
+	}
+
+	.axis path {
+	  display: none;
+	}
+
+	.axis line {
+	  stroke: #eee;
+	  /*stroke-opacity: .5;*/
+	  shape-rendering: crispEdges;
+	}
+
+	.m75 {
+		margin-left: 75px
+	}
+
+/*line colors*/
+.cargill {stroke: #C86A28;}
+.archerdanielsmidland {stroke: #D08043;}
+.cal-western {stroke: #D89666;}
+.bunge {stroke: #E1B088;}
+.didion {stroke: #EBCBB1;}
+.others48 {stroke: #646464;}
+.line:hover{stroke:#000;}
+
+/*bar colors*/
+.bar.cargill {fill: #C86A28;}
+.bar.archerdanielsmidland {fill: #D08043;}
+.bar.cal-western {fill: #D89666;}
+.bar.bunge {fill: #E1B088;}
+.bar.didion {fill: #EBCBB1;}
+.bar.others48 {fill: #646464;}
+
+.bar.liberty-maritime {fill: #19374C;}
+.bar.maersk {fill: #415064;}
+.bar.sealift {fill: #676E80;}
+.bar.dome {fill: #9295A3;}
+.bar.reliance {fill: #C4C5CD;}
+.bar.others18 {fill: #646464;}
