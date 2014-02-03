@@ -26,16 +26,18 @@
 		  stroke: #000;
 		  shape-rendering: crispEdges;
 		}
+		path.domain {stroke:#000;}
+		.axis .tick line {stroke:#fff;}
 
 		.x.axis path {
-		  display: none;
+		  /*display: none;*/
 		}
 
-		.line {
+		/*.line {
 		  fill: none;
 		  stroke: steelblue;
 		  stroke-width: 1.5px;
-		}
+		}*/
 
 		.title {
 		    text-shadow: 0px 1px 1px #4d4d4d;
@@ -55,7 +57,8 @@
 
       .mt20 {margin-top:20px;}
 
-
+      .center {text-align:center;}
+      
 		ol, ul {
 			list-style: none;
 		}

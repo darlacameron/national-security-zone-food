@@ -1,0 +1,119 @@
+<!doctype html>
+ <html lang="en">
+<!--[if IE 7]>    <html class="no-js lt-ie11 lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie11 lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie11 lt-ie10" lang="en"> <![endif]-->
+<!--[if IE 10]>    <html class="no-js lt-ie11" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0;"/>
+  <title>Title Goes Here</title>
+
+<!-- STYLE SHEETS -->
+  <link type="text/css" rel="stylesheet" href="css/budgetUSAT.css">
+  <link rel="stylesheet" type="text/css" href="../../styles/all_styles.css" />
+
+  <style>
+  .example {background: #d4ecfb; display: block; margin: 20px 20px 0;}
+  .example h1 {font-size: 24px; padding: 5px;}
+
+  .about {background: #ececec; display: block; margin: 20px 20px 0; border-top: 1px solid #c2c2c2}
+  .about h2 {font-size: 14px; padding: 5px; font-weight: 700;}
+  .table-wrap-530 {margin: 20px auto;}
+
+  </style>
+
+<!-- EXTERNAL JS FILES (more files located in the footer) -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class='outter-wrap'>
+
+<!-- PROJECT HEAD -->
+  <div class="head-wrap">
+    <h2>The cost and effectiveness of food aid</h2>
+    <p class='chatter'>Unlike other countries' food aid programs, which send cash to buy food locally, the taxpayer-funded USAID Food for Peace program ships commodities grown stateside to famine-affected parts of the world. According to USAID, only 40 percent of the program's budget is spent on food itself. The rest goes to U.S.-based processors, which are owned by agribusinesses, and shippers based at U.S. ports. With these ancillary interests cornering an ever increasing slice of the budget, one U.S. dollar today purchases less food and feeds far fewer people in comparison to just a decade ago.</p>
+  </div>
+
+<!-- MAIN CONTENT -->
+  <div class='main-content-wrap'>
+
+
+    <h3 id="cost-per-ton" class='mt20'>Cost per ton to ship food</h3>
+      <div class='row posrel'>
+        
+        <div id='CTafrica' class='chart africa'>
+          <h4 class='center'>Africa</h4>
+        </div>
+        <div id='CTasia' class='chart asia'><label>
+          <h4 class='center'>Asia</h4>
+        </div>
+        <div id='CTamericas' class='chart americas'>
+          <h4 class='center'>Americas</h4>
+        </div>
+  
+      </div>
+
+        <p class='chatter'>The amount of money that USAID spends to ship a ton of food has steadily risen. Two factors have contributed to a rise in costs: a law that requires shippers to use expensive U.S.-flagged vessels and a spike in global food costs in 2008.</p>
+  
+
+    <h3 id="recipients-per-ton" class='mt20'>How many people a ton of food reaches</h3>
+      <div class='row posrel'>
+    
+        <div id='RTafrica' class='chart africa'>
+          <h4 class='center'>Africa</h4>
+        </div>
+        <div id='RTasia' class='chart asia'>
+          <h4 class='center'>Asia</h4>
+        </div>
+        <div id='RTamericas' class='chart americas'>
+          <h4 class='center'>Americas</h4>
+        </div>
+  
+      </div>  
+        
+        <p class='chatter'>Africa gets the highest volume of U.S. food aid, but a ton of food reaches fewer people in Africa than in other parts of the world because of high transportation costs and a complex transit network.</p>
+
+    <h3 id="cost-per-recipient" class='mt20'>Cost per aid recipient</h3>
+      <div class='row posrel'>
+    
+        <div id='CRafrica' class='chart africa'>
+          <h4 class='center'>Africa</h4>
+        </div>
+        <div id='CRasia' class='chart asia'>
+          <h4 class='center'>Asia</h4>
+        </div>
+        <div id='CRamericas' class='chart americas'>
+          <h4 class='center'>Americas</h4>
+        </div>
+  
+      </div>
+
+        <p class='chatter'>Due in part to rising food prices, the costs of delivering food to a person have doubled in the last decade. The program reaches fewer people for more money.</p>
+
+        <p class='table-source'>Source: United States Agency for International Development.</p>
+    
+  </div>
+
+<!-- FOOTER -->
+    <div class='footer-wrap cf'>
+      <!-- CREDITS LIST --><h6><strong>Credits:</strong> Medill National Security Journalism Initiative - Ajai Sreevatsan, Darla Cameron, Kate Van Winkle & Kennedy Elliot</h6>
+      <!-- CREDITS MODAL --><a href="#" class="credits_btn" data-reveal-id="credits_modal"></a>
+    </div>
+
+</body>
+
+<!-- EXTERNAL JS FILES -->
+
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/chart.js"></script>
+
+</html>

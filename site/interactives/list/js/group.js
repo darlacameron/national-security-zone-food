@@ -2,10 +2,6 @@
   'use strict';
 
 
-var init = function() {
-  // showAnnotation();
-};
-
 var margin = {top: 0, right: 50, bottom: 30, left: 200},
     width = 960 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
@@ -129,7 +125,5 @@ function convertToSlug(Text)
         .replace(/ +/g,'-')
         ;
 }
-
-init();
 
 })(jQuery);

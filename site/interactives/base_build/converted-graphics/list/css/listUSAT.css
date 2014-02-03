@@ -1,0 +1,94 @@
+
+
+.axis path,
+.axis line {
+  fill: none;
+  /*stroke: #000;*/
+  shape-rendering: crispEdges;
+}
+
+.axis text, .legend text {
+fill: grey;
+/*font-size: 11px;
+font-family: "Gotham", sans-serif;*/
+}
+
+.x.axis path {
+  display: none;
+}
+ 
+.label {
+  font-family:'Lato', sans-serif; /*using h4 from global */
+  font-size:16px;
+  color: #1A374D;
+  text-anchor: end;
+}
+
+.bar {stroke-width:0.5px; stroke: #8f8f8f;}
+
+.bulk-grains {fill: #5B9AC3;}
+.corncornmeal {fill: #DAA520;}
+.emergency-pouches {fill: #6b486b;}
+.flour {fill: #19374C;}
+.nonfat-dry-milk {fill: #7b6888;}
+.odd-commodities {fill: #C86A28;}
+.oil {fill: #D48745;}
+.peaslentilsbeans {fill: #A4B48C;}
+.soy-preparations {fill: #98abc5;}
+
+.stacked {position:relative;}
+
+
+#annotation {
+  display: none;
+}
+
+#arrowup {
+  position:absolute;
+  top: 170px;
+  left: 750px;
+  width: 50px;
+  height: 60px;
+}
+
+#arrowleft {
+  position:absolute;
+  top: 330px;
+  left: 285px;
+  width: 70px;
+  height: 100px;
+}
+
+#arrowright {
+  /* display: none; */
+  position:absolute;
+  top: 330px;
+  left: 740px;
+  width: 70px;
+  height: 100px;
+}
+
+.text {
+  width:300px;
+  position:absolute;
+  font-family: 'Merriweather Sans', sans-serif;
+  color:#646464;
+  font-weight: lighter;
+  line-height: 1.3em;
+}
+
+#annotation-text {
+  font-size:14px;
+  top:300px;
+  left:390px;
+}
+
+#radio-text {
+  font-size:16px;
+  top: 210px;
+  left: 665px;
+}
+
+form {
+  float: right;
+}
