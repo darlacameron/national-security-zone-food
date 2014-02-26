@@ -235,19 +235,26 @@ var setKey = function() {
 var showAnnotation = function() {
 	var currYear = curr_data.year;
 	$('.annotation').fadeOut();
+	$('.annoArrows').fadeOut();
 
 	if (currYear === '1993') {
 		$('#Rus1').fadeIn();
+		$('#Rus1Arrows').fadeIn();
 	} else if (currYear === '1999') {
 		$('#Rus2').fadeIn();
+		$('#Rus2Arrows').fadeIn();
 	} else if (currYear === '2003') {
 		$('#Eth').fadeIn();
+		$('#EthArrows').fadeIn();
 	} else if (currYear === '2005') {
 		$('#Eri').fadeIn();
+		$('#EriArrows').fadeIn();
 	} else if (currYear === '2006') {
 		$('#Eur').fadeIn();
+		$('#EurArrows').fadeIn();
 	} else if (currYear === '2010') {
 		$('#Bur').fadeIn();
+		$('#BurArrows').fadeIn();
 	}
 };
 

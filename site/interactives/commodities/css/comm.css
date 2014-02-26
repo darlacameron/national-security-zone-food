@@ -82,61 +82,112 @@ h1 {
 	font-weight:lighter;
 }
 
+#five{
+	position:absolute;
+	top:500px;
+	left:100px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight:lighter;
+	font-size:8px;
+	color:#646464;
+}
+
 .annotation{
-	width:300px;
+	width:290px;
 	font-weight: lighter;
 	color:#646464;
-	font-size:13px;
+	font-size:11px;
 	line-height: 1.3em;
+}
+
+.annoArrows{
+	height:20px;
+	width:20px;
+	position:absolute;
 }
 
 #Rus1{
 	display:none;
-	top:0px;
-	left:0px;
+	top:70px;
+	left:100px;
+}
+
+#Rus1Arrows{
+	top:50px;
+	left:96px;
+	display:none;
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Opera, Chrome, and Safari */
 }
 
 #Rus2{
 	display:none;
-	top:0px;
-	left:0px;
+	top:70px;
+	left:100px;
+}
+
+#Rus2Arrows{
+	top:50px;
+	left:96px;
+	display:none;
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Opera, Chrome, and Safari */
 }
 
 #Eth{
 	display:none;
-	top:70px;
-	left:280px;
+	top:96px;
+	left:278px;
+}
+
+#EthArrows{
+	top:97px;
+	left:568px;
+	display:none;
 }
 
 #Eri{
 	display:none;
-	top:300px;
-	left:500px;
+	top:306px;
+	left:536px;
+}
+
+#EriArrows{
+	top:307px;
+	left:829px;
+	display:none;
 }
 
 #Eur{
 	display:none;
-	top:150px;
-	left:600px;
+	top:56px;
+	left:368px;
+}
+
+#EurArrows{
+	top:56px;
+	left:642px;
+	display:none;
 }
 
 #Bur{
 	display:none;
-	top:320px;
-	left:600px;
+	width:210px;
+	top:314px;
+	left:836px;
 }
 
-/*#five{
-	font-size: 11px;
-	font-family: 'Merriweather', serif;
-	font-weight:lighter;
-	line-height: 1.1em;
-	color:#646464;
-	width:100px;
-	position:absolute;
-	top:500px;
-	left:-270px;
-}*/
+#BurArrows{
+	top:430px;
+	left:832px;
+	display:none;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
+}
+
 
 #key {
 	position: absolute;
@@ -157,6 +208,8 @@ h1 {
 	position: absolute;
 	top: 4px;
 	left: -58px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight:lighter;
 }
 
 .key-row span {

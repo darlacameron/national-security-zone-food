@@ -71,7 +71,7 @@ function makeCircles(){
 	});
 }
 
-$('#next').on('click', function() {
+$('.next').on('click', function() {
 	if (animating) {
 		return;
 	}
@@ -90,7 +90,7 @@ $('#next').on('click', function() {
 	progress();
 });
 
-$('#prev').on('click', function() {
+$('.prev').on('click', function() {
 	if (animating) {
 		return;
 	}
@@ -116,6 +116,13 @@ $('#prev').on('click', function() {
 	writeText();
 	progress();
 });
+
+function button_active(){
+
+	if (counter === 0){
+		$('.prev').hide();
+	}
+}
 
 function highlightStep() {
 	$('.step-active').removeClass('step-active');

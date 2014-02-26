@@ -18,17 +18,18 @@
 	width: 72.6%;
 	height: 500px;
 	border: 1px solid #ccc;
-	background: #C5D8E6;
+	background: #ECF7FB;
 	overflow: hidden;
-	margin:0px !important;
+	margin:0px;
+	margin-top:12px;
 }
 
 path {
-	fill: #EEEEEC;
+	fill: #fff;
 }
 
 .country, .state {stroke:#ccc;}
-path .highlight {fill:#EEEEEC;}
+path .highlight {fill:#ccc;}
 .country.niger {fill:#ccc;}
 
 path.boundary {
@@ -39,7 +40,7 @@ path.boundary {
 path.points {
 	fill: none;
 	stroke: #009BFF;
-	stroke-width: 3px;
+	stroke-width: 2px;
 	stroke-linecap: round;
 }
 
@@ -48,7 +49,7 @@ path.states {
 	stroke: #ccc;
 }
 
-.lake {fill:#C5D8E6;}
+.lake {fill: #ECF7FB;}
 
 /* text area */
 
@@ -63,8 +64,7 @@ path.states {
 }
 
 .slide-nav {
-	background-image: url(images/USATArrows.png);
-
+	background-image: url(../images/USATArrows.png);
 	display:block;
 	float:none;
 	height:68px;
@@ -72,6 +72,22 @@ path.states {
 	position:absolute;
 	right:auto;
 	top:50%;
+	z-index: 99;
+	overflow:hidden;
+}
+
+.slide-nav.next {
+	background-position: -44px 0;
+	right:-7px;
+}
+
+.slide-nav.next:hover {
+	background-position: -44px -68px;
+	right:-7px;
+}
+
+.slide-nav.prev {
+	background-position: 0 0;
 
 }
 
@@ -102,12 +118,6 @@ path.states {
 }
 
 #location {
-	/*font-family: 'Oswald', sans-serif;
-	font-weight: lighter;
-	font-size: 16px;
-	color: #1A374D;
-	margin-bottom: 14px;
-	line-height: 1.3em;*/
 	font: normal 12px/1.5 'Futura Today Bold',sans-serif; 
 	text-transform: uppercase;
 	color: #009BFF;
@@ -115,11 +125,6 @@ path.states {
 }
 
 .body {
-	/*margin-bottom: 8px;
-	font-size: 13px;
-	font-family: 'Merriweather', serif;
-	font-weight: lighter;
-	line-height: 1.65em;*/
 	font: normal 12px/1.5 'arial','helvetica',sans-serif; 
 	color: #515151;
 }
@@ -131,14 +136,14 @@ path.states {
 	margin: 0 auto 15px auto;
 	width: 100%;
 	height:18px;
-	background-color: #ccc;
+	background-color: #f8f8f8;
 	border-radius:8px;
 }
 
 #progress-bar #bar-fill {
 	position: absolute;
 	height: 100%;
-	background-color: #666;
+	background-color: #ccc;
 	display: block;
 	height: 100%;
 	border-radius: 8px;
@@ -146,7 +151,6 @@ path.states {
 
 #progress-bar #bar-fill #days{
 	position:absolute;
-	top: 2px;
 	right: 5px;
 	color:#fff;
 	font-size:13px;
