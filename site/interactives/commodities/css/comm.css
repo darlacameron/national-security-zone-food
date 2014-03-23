@@ -1,5 +1,5 @@
 #comm {
-	width: 900px;
+	width: 800px;
 	margin: 80px auto;
 	font-size: 12px;
 	font-family: 'Oswald', sans-serif;
@@ -78,16 +78,16 @@ h1 {
 
 #notes > p{
 	position:absolute;
-	font-family: 'Merriweather Sans', sans-serif;
-	font-weight:lighter;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 #five{
 	position:absolute;
 	top:500px;
 	left:100px;
-	font-family: 'Merriweather Sans', sans-serif;
-	font-weight:lighter;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size:8px;
 	color:#646464;
 }
@@ -194,12 +194,13 @@ h1 {
 	top: 0;
 	right: 20px;
 	width: 200px;
+	background-color: #ffffff;
 }
 
 .key-row {
 	position: relative;
 	height: 16px;
-	margin: 8px 0 0 50px;
+	margin: 4px 0 0 50px;
 	background-color: #C1C1C1;
 }
 
@@ -207,9 +208,12 @@ h1 {
 	color:#646464;
 	position: absolute;
 	top: 4px;
-	left: -58px;
-	font-family: 'Merriweather Sans', sans-serif;
-	font-weight:lighter;
+	left: -64px;
+	width: 58px;
+	background-color: #ffffff;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	text-align: right;
 }
 
 .key-row span {
@@ -277,10 +281,23 @@ h1 {
 }
 
 
-/* slider */
+/* override */
 
 
+.axis text, .slider-axis text {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+}
 
+#chart .y.axis path,
+#chart .y.axis line {
+	stroke: none;
+}
+
+#chart .y.axis .tick line {
+	stroke: #dcdcdc;
+	shape-rendering: crispEdges;
+}
 
 
 

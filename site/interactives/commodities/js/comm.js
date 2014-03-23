@@ -75,7 +75,7 @@ var init = function() {
 };
 
 var makeChart = function() {
-	var W = 960,
+	var W = 800,
 		H = 500,
 		margin = {top: 20, right: 20, bottom: 30, left: 50},
 		w = W - margin.left - margin.right,
@@ -115,7 +115,7 @@ var makeChart = function() {
 	      	d = addCommas(d / 100000);
 	      	return d;
 	    })
-	    .tickSize(0)
+	    .tickSize(-w)
 	    .tickPadding(12);
 
 	svg = d3.select('#chart')
@@ -135,6 +135,15 @@ var makeChart = function() {
 		.attr('class', 'y axis')
 		.attr('transform', 'translate(0,' + 0 + ')')
 		.call(yAxis);
+
+	// svg.append('g')
+	// 	.call(d3.svg.axis()
+	// 		.scale(yScale)
+	// 		.orient("left")
+	// 		.ticks(5)
+	// 		.tickSize(-w,0,0)
+	// 		.tickFormat("")
+ //    )
 };
 
 var drawCircles = function() {
