@@ -1,26 +1,52 @@
-#wrapper {
+/*#wrapper {
 	width: 960px;
 	height: 500px;
 	margin: 60px auto 0 auto;
 	color: #282828;
-}
+}*/
 .fourth {display:block; width:24%; float:left; margin-left:10px;}
 
+td {
+	text-align:left !important;
+}
+
+tr td h4{
+	font-family:"Futura Today"; 
+	font-size:14px;
+	text-align:left;
+}
+
+tr:first-child td{
+	border-right:1px solid #009bff;
+}
+
+tr:first-child td.end{
+	border-right:none;
+}
+
 #graphic {margin-bottom:20px;}
-#graphic img {width:85%; margin-left:15%;}
+#graphic img {width:75%; margin-left:25%;}
 
 
 td {padding:7px; width:21%; border-bottom:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
-td.label {width:10%;}
+td.label, {width:10%;}
 td.end {border-right:none;}
 
-tr.nutrition {background-color:#F5F5F5;}
-tr.nutrition td {font-size:14px; font-family: "Oswald", sans-serif; text-align:right;}
+.label{
+	 font-family:"Futura Today"; 
+	 font-size:14px;
+	 text-align:left;
+}
 
-p.body {
-margin-bottom: 8px;
-font-size: 13px;
-font-family: 'Merriweather', serif;
+tr.nutrition {background-color:#fff;}
+tr.nutrition td.label{font-size:14px; text-align:left;}
+tr.nutrition td {font-size:12px; sans-serif; text-align:left;}
+
+/*p.body, .s4{
+font-size: 12px;
+font-family: normal, 'arial', 'helvetica', sans-serif;
 font-weight: lighter;
 line-height: 1.65em;
+text-align: left;
 }
+*/
