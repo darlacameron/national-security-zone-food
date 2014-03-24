@@ -18,22 +18,23 @@ font-family: "Gotham", sans-serif;*/
 }
  
 .label {
-  font: normal 12px/1.5 'Futura Today',sans-serif; 
-  font-size:12px;
+  font-family:'Lato', sans-serif; /*using h4 from global */
+  font-size:16px;
+  color: #1A374D;
   text-anchor: end;
 }
 
 .bar {stroke-width:0.5px; stroke: #8f8f8f;}
 
-.bulk-grains {fill: #dd9d0d;}
-.corncornmeal {fill: #fa6600;}
-.emergency-pouches {fill: #ccc;}
-.flour {fill: #00c3c3;}
-.nonfat-dry-milk {fill: #666;}
-.odd-commodities {fill: #9600b4;}
-.oil {fill: #009bff;}
-.peaslentilsbeans {fill: #00a53c;}
-.soy-preparations {fill: #b81800;}
+.bulk-grains {fill: #5B9AC3;}
+.corncornmeal {fill: #DAA520;}
+.emergency-pouches {fill: #6b486b;}
+.flour {fill: #19374C;}
+.nonfat-dry-milk {fill: #7b6888;}
+.odd-commodities {fill: #C86A28;}
+.oil {fill: #D48745;}
+.peaslentilsbeans {fill: #A4B48C;}
+.soy-preparations {fill: #98abc5;}
 
 .stacked {position:relative;}
 
@@ -70,7 +71,7 @@ font-family: "Gotham", sans-serif;*/
 .text {
   width:300px;
   position:absolute;
-  font-family: normal, "arial", "helvetica", sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
   color:#646464;
   font-weight: lighter;
   line-height: 1.3em;
@@ -78,20 +79,15 @@ font-family: "Gotham", sans-serif;*/
 
 #annotation-text {
   font-size:14px;
-  top:400px;
+  top:300px;
   left:390px;
 }
 
-input[type="radio"]{
-  margin:5px;
-}
-
-/*
 #radio-text {
   font-size:16px;
   top: 210px;
   left: 665px;
-}*/
+}
 
 form {
   float: right;
