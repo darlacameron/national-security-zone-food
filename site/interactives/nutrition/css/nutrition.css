@@ -12,6 +12,11 @@
 
 td {padding:7px; width:21%; border-bottom:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
 td.label {width:10%;}
+td h4{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	color: #1A374D;
+}
 td.end {border-right:none;}
 
 tr.nutrition {background-color:#F5F5F5;}
@@ -20,7 +25,8 @@ tr.nutrition td {font-size:14px; font-family: "Oswald", sans-serif; text-align:r
 p.body {
 margin-bottom: 8px;
 font-size: 13px;
-font-family: 'Merriweather', serif;
-font-weight: lighter;
+font-family: 'Open Sans', serif;
+/*font-weight: lighter;*/
+color:#646464;
 line-height: 1.65em;
 }
