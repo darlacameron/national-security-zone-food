@@ -83,13 +83,14 @@ h1 {
 }
 
 #five{
-	position:absolute;
+	margin-bottom:3px;
+	/*position:absolute;
 	top:500px;
 	left:100px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	font-size:8px;
-	color:#646464;
+	color:#646464;*/
 }
 
 .annotation{
