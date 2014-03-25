@@ -15,10 +15,10 @@
 		  fill: #080524;
 		}
 
-
+/*
 		.axis {
 		  font: 11px tahoma;
-		}
+		}*/
 
 		.axis path,
 		.axis line {
@@ -49,15 +49,18 @@
       .posrel {position:relative;}
       .posabs {position:absolute;}
       .africa .bar {fill: #C96916;}
-      .africa .bar:hover {fill: #DAA520;}
+      .africa .bar:hover {fill: #d48745;}
       .asia .bar {fill: #1A374D;}
-      .asia .bar:hover {fill: #D62404;}
+      .asia .bar:hover {fill: #485f71;}
       .americas .bar {fill: #A4B48C;}
-      .americas .bar:hover {fill: #646464;}
+      .americas .bar:hover {fill: #b6c3a3;}
 
       .mt20 {margin-top:20px;}
 
-      .center {text-align:center;}
+      .center {
+      	text-align:center;
+      	margin:8px;
+      }
       
 		ol, ul {
 			list-style: none;
