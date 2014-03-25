@@ -1,5 +1,5 @@
 .state {
-	fill: #dcdcdc;
+	fill: #c1c1c1;
 	stroke: none;
 }
 
@@ -14,22 +14,26 @@ path.boundary {
 }
 
 .drop {
-	fill: black;
+	fill: blue;
 }
 
 .port {
-	fill: black;
+	fill: #1a374d;
 }
 
 .line {
 	fill:none;
-	stroke:gray;
+	stroke:#1a374d;
 	stroke-width: 1px;
 }
 /*.line.cal-western, .line.arthurdanielsmidland, .line.didion, .line.bunge {stroke:#C96916;}*/
 /*
 .cal-western:hover {stroke:black;	};
 */
+
+#map{
+	  background-color:#f5f5f5;
+}
     #container {
 	  width: 960px;
 	  height: 500px;
@@ -57,29 +61,35 @@ path.boundary {
 	}
 
 	.m75 {
-		margin-left: 75px
+		margin-left: 75px;
+		font-size:22px;
 	}
 
 /*line colors*/
-.cargill {stroke: #C86A28;}
-.archerdanielsmidland {stroke: #D08043;}
-.cal-western {stroke: #D89666;}
-.bunge {stroke: #E1B088;}
-.didion {stroke: #EBCBB1;}
-.others48 {stroke: #646464;}
+.cargill {stroke: #c96916;}
+.archerdanielsmidland {stroke: #d48745;}
+.cal-western {stroke: #dfa573;}
+.bunge {stroke: #e9c3a2;}
+.didion {stroke: #f4e1d0;}
+.others48 {stroke: #1a374d;}
 .line:hover{stroke:#000;}
 
 /*bar colors*/
-.bar.cargill {fill: #C86A28;}
-.bar.archerdanielsmidland {fill: #D08043;}
-.bar.cal-western {fill: #D89666;}
-.bar.bunge {fill: #E1B088;}
-.bar.didion {fill: #EBCBB1;}
-.bar.others48 {fill: #646464;}
+.bar.cargill {fill: #c96916;}
+.bar.archerdanielsmidland {fill: #d48745;}
+.bar.cal-western {fill: #dfa573;}
+.bar.bunge {fill: #e9c3a2;}
+.bar.didion {fill: #f4e1d0;}
+.bar.others48 {fill: #1a374d;}
 
-.bar.liberty-maritime {fill: #19374C;}
-.bar.maersk {fill: #415064;}
-.bar.sealift {fill: #676E80;}
-.bar.dome {fill: #9295A3;}
-.bar.reliance {fill: #C4C5CD;}
-.bar.others18 {fill: #646464;}
+.bar.liberty-maritime {fill: #5b9ac3;}
+.bar.maersk {fill: #7caecf;}
+.bar.sealift {fill: #9dc3db;}
+.bar.dome {fill: #bdd7e7;}
+.bar.reliance {fill: #deebf3;}
+.bar.others18 {fill: #1a374d;}
+
+
+
+
+
