@@ -16,24 +16,24 @@
 	float: left;
 	width: 72%;
 	height: 500px;
-	border: 1px solid #dfdfdf;
-	background: #fff;
+	border: 1px solid #fff;
+	background: #ececec;
 	overflow: hidden;
 	margin:0px;
 	margin-top:12px;
 }
 
 path {
-	fill: #dfdfdf;
+	fill: #fff;
 }
 
-.country, .state {stroke:#fff; stroke-width:1px;}
-path .highlight {fill:#fff;}
-.country.niger {fill:#dfdfdf;}
+.country, .state {stroke:#ccc; stroke-width:0.5px;}
+path .highlight {fill:#ccc;}
+.country.niger {fill:#ccc;}
 
 path.boundary {
 	fill: none;
-	stroke: #fff;
+	stroke: #ccc;
 }
 
 path.points {
@@ -48,7 +48,7 @@ path.states {
 	stroke: #fff;
 }
 
-.lake {fill: #fff;}
+.lake {fill: #ececec;}
 
 /* text area */
 
