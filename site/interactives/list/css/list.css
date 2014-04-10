@@ -1,8 +1,8 @@
-#container {
+#list {
   width: 960px;
   height: 600px;
   margin: 60px auto 0 auto;
-  color: #282828;
+/*  color: #282828;*/
 }
 
 .axis path,
@@ -23,23 +23,23 @@ font-family: "Gotham", sans-serif;*/
 }
  
 .label {
-  font-family:'Lato', sans-serif; /*using h4 from global */
-  font-size:16px;
-  color: #1A374D;
+  font-family:'Open Sans', sans-serif; /*using h4 from global */
+  font-size:13px;
+  color: #646464;
   text-anchor: end;
 }
 
 .bar {stroke-width:0.5px; stroke: #8f8f8f;}
 
-.bulk-grains {fill: #5B9AC3;}
-.corncornmeal {fill: #DAA520;}
-.emergency-pouches {fill: #6b486b;}
-.flour {fill: #19374C;}
-.nonfat-dry-milk {fill: #7b6888;}
-.odd-commodities {fill: #C86A28;}
-.oil {fill: #D48745;}
+.bulk-grains {fill: #DAA520;}
+.corncornmeal {fill: #c96916;}
+.emergency-pouches {fill: #646464;}
+.flour {fill: #1A374D;}
+.nonfat-dry-milk {fill: #c96916;}
+.odd-commodities {fill: #ccc;}
+.oil {fill: #5b9ac3;}
 .peaslentilsbeans {fill: #A4B48C;}
-.soy-preparations {fill: #98abc5;}
+.soy-preparations {fill: #485f71;}
 
 .stacked {position:relative;}
 
@@ -82,7 +82,7 @@ font-family: "Gotham", sans-serif;*/
 .text {
   width:300px;
   position:absolute;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color:#646464;
   font-weight: lighter;
   line-height: 1.3em;
@@ -90,15 +90,19 @@ font-family: "Gotham", sans-serif;*/
 
 #annotation-text {
   font-size:14px;
-  top:160px;
+  top:300px;
   left:400px;
 }
 
-#radio-text {
+input[type="radio"]{
+  margin:5px;
+}
+
+/*#radio-text {
   font-size:16px;
   top: 66px;
   left: 728px;
-}
+}*/
 
 form {
   float: right;

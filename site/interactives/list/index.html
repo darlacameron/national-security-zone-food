@@ -3,37 +3,38 @@
 <style>
 
 </style>
-<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
-   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Merriweather:400,300italic,300,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
     <link type="text/css" rel="stylesheet" href="../../../css/reset.css">
-    <link type="text/css" rel="stylesheet" href="../../../css/global-styles.css">
+    <link type="text/css" rel="stylesheet" href="../../css/global-styles.css">
     <link type="text/css" rel="stylesheet" href="css/list.css">
 
 <body>
-  <div id='container'>
-    <h1>What's on the food list</h1>
+  <div id='list'>
+    <h2>On the list</h2>
     <p class='chatter'>USDA's changing list of foods eligible for aid shipments over the last ten years illustrates changes in food technology and the influence of special interests and lobbyists.</p>
       <!-- <div class='stacked'>
       <p class='chatter sub'> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
     </div> -->
   <div id="chart-wrapper">
     <form>
-  <label><input type="radio" name="mode" value="multiples" checked> <span class='label'>By commodity type</span></label>
+  <label><input type="radio" name="mode" value="multiples" checked> <span class='label'>By commodity type</span></label></br>
   <label><input type="radio" name="mode" value="stacked"> <span class='label'>Overall aid</span></label>
     </form>
   
     <div id='chart'>
       <div id="annotation">
-        <img src="images/uparrow.png" id="arrowup"></img>
-        <img src="images/leftarrow.png" id="arrowleft"></img>
+        <!-- <img src="images/uparrow.png" id="arrowup"></img>
+        <img src="images/leftarrow.png" id="arrowleft"></img> -->
         <p class='text' id='annotation-text'> Due to rising costs, the amount of food the U.S. sends as aid has dropped dramatically </p>
-        <p class='text' id='radio-text'> Dig deeper </p>
-        <img src="images/rightarrow.png" id="arrowright"></img>
+       <!--  <p class='text' id='radio-text'> Dig deeper </p> -->
+      <!--   <img src="images/rightarrow.png" id="arrowright"></img> -->
        </div>
     </div>
   </div> 
   
-    <p class="source">Source: United States Department of Agriculture. Credit: Ajai Sreevatsan and Kate Van Winkle.</p>
+    <p class="source">Source: United States Department of Agriculture. Credit: Ajai Sreevatsan</p>
 
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
