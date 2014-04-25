@@ -103,6 +103,7 @@ var yAxis = d3.svg.axis()
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
+		.attr("fill", "#7c7c7c")
         .text(label);
 
     // svg.append("text")

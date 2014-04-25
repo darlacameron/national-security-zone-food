@@ -61,7 +61,8 @@ d3.tsv("data/data.tsv", function(error, data) {
       .attr("y", function(d) { return y1(d.values[0].metricTon / 2); })
       .attr("dy", ".35em")
       .text(function(d) { return d.key; })
-      .style({'opacity': '1'});
+      .style({'opacity': '1'})
+	  .attr("fill", "#7c7c7c");
 
   group.selectAll("rect")
       .data(function(d) { return d.values; })
