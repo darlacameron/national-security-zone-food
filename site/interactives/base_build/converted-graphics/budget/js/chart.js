@@ -1,5 +1,4 @@
 
-
 //maximums for each chart set
 var costTonMax = 2100;
 var recipientTonMax = 180;
@@ -200,3 +199,7 @@ function type(d) {
   d.region = +d.region; //coerces values to number
   return d;
 }
+
+
+/*Kate turning it into slides ina  very low-tech, but functional way*/
+

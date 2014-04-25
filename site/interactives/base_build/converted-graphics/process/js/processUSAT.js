@@ -181,16 +181,17 @@ var progress = function() {
 		width = (process_text[counter].days / total) * 100;
 
 	$('#progress-bar #bar-fill').animate({'width': width + '%'}, 1000);
-	$('#days').text(process_text[counter].days);
+	$('#days').text(process_text[counter].days+" days");
 
 	if (counter === 0 || counter === 1) {
 		$('#zero-days').show()
 		$('#days').hide()
+		$('#bar-fill').hide()
 	} else {
 		$('#zero-days').hide()
 		$('#days').show()
+		$('#bar-fill').show()
 	}
-
 };
 
 

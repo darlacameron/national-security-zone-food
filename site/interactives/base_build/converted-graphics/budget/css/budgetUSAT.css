@@ -1,4 +1,32 @@
+.int-wrap {
+  background:#fff; 
+  margin: 0 auto 20px; 
+  padding: 0; 
+  width: 100%; 
+  max-width:1000px; 
+  height:720px;
+  border-top: 1px solid #a2a5a1;
+  border-bottom: 1px solid #a2a5a1;
+  position: relative;
+}
 
+#int-title h2{
+  color: #3c3c3c;
+  font-size: 30px;
+  font-family: 'Futura Today Light','arial';
+  font-weight: normal;
+  margin: 15px 0 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#int-subhead{
+  color: #7c7c7c;
+  font: normal 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto 20px;
+  max-width: 830px;
+  text-align: center;
+}
 
 .body {
 	/*margin-bottom: 8px;

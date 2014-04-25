@@ -1,4 +1,32 @@
+.int-wrap {
+  background:#fff; 
+  margin: 0 auto 20px; 
+  padding: 0; 
+  width: 100%; 
+  max-width:1000px; 
+  height:620px;
+  border-top: 1px solid #a2a5a1;
+  border-bottom: 1px solid #a2a5a1;
+  position: relative;
+}
 
+#int-title h2{
+  color: #3c3c3c;
+  font-size: 30px;
+  font-family: 'Futura Today Light','arial';
+  font-weight: normal;
+  margin: 15px 0 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#int-subhead{
+  color: #7c7c7c;
+  font: normal 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto 20px;
+  max-width: 830px;
+  text-align: center;
+}
 
 .axis path,
 .axis line {
@@ -8,7 +36,7 @@
 }
 
 .axis text, .legend text {
-fill: grey;
+fill: #3c3c3c;
 /*font-size: 11px;
 font-family: "Gotham", sans-serif;*/
 }
@@ -21,25 +49,27 @@ font-family: "Gotham", sans-serif;*/
   font: normal 12px/1.5 'Futura Today',sans-serif; 
   font-size:12px;
   text-anchor: end;
+  color:#7c7c7c;
 }
 
-.bar {stroke-width:0.5px; stroke: #8f8f8f;}
+.bar {stroke-width:0.1px; stroke: #7c7c7c;}
 
-.bulk-grains {fill: #dd9d0d;}
-.corncornmeal {fill: #fa6600;}
-.emergency-pouches {fill: #ccc;}
-.flour {fill: #00c3c3;}
-.nonfat-dry-milk {fill: #666;}
-.odd-commodities {fill: #9600b4;}
-.oil {fill: #009bff;}
-.peaslentilsbeans {fill: #00a53c;}
-.soy-preparations {fill: #b81800;}
+.bulk-grains {fill: #004529;}
+.corncornmeal {fill: #006837;}
+.emergency-pouches {fill: #238443;}
+.flour {fill: #41ab5d;}
+.nonfat-dry-milk {fill: #78c679;}
+.odd-commodities {fill: #addd8e;}
+.oil {fill: #d9f0a3;}
+.peaslentilsbeans {fill: #f7fcb9;}
+.soy-preparations {fill: #ffffe5;}
 
 .stacked {position:relative;}
 
 
 #annotation {
   display: none;
+
 }
 
 #arrowup {
@@ -71,13 +101,14 @@ font-family: "Gotham", sans-serif;*/
   width:300px;
   position:absolute;
   font-family: normal, "arial", "helvetica", sans-serif;
-  color:#646464;
+  color:#7c7c7c;
   font-weight: lighter;
   line-height: 1.3em;
 }
 
 #annotation-text {
-  font-size:14px;
+  color: #7c7c7c;
+  font: normal 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
   top:400px;
   left:390px;
 }
