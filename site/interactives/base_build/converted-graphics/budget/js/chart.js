@@ -126,7 +126,7 @@ var yAxis = d3.svg.axis()
         //adding hover stuff here
         .on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
-          d3.selectAll('.'+classes).style({'stroke': '#666', 'stroke-width': 2}) //matches all of the things w/ the hovered class and gives them a stroke
+          d3.selectAll('.'+classes).style({'stroke': '#7c7c7c', 'stroke-width': 0.5}) //matches all of the things w/ the hovered class and gives them a stroke
           
         })
         .on('mouseout', function(d){
@@ -200,6 +200,4 @@ function type(d) {
   return d;
 }
 
-
-/*Kate turning it into slides ina  very low-tech, but functional way*/
 
