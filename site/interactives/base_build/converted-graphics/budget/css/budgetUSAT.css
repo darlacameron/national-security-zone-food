@@ -64,13 +64,13 @@ stroke:#a2a5a1;
       .chart {width:270px; height:100px; display:block; float:left; margin-right:20px;}
       .posrel {position:relative;}
       .posabs {position:absolute;}
-      .africa .bar {fill: #78c679;}
-      .africa .bar:hover {fill: #f7fcb9;}
+  /*    .africa .bar {fill: #78c679;}
       .asia .bar {fill: #238443;}
-      .asia .bar:hover {fill: #f7fcb9;}
       .americas .bar {fill: #004529;}
-      .americas .bar:hover {fill: #f7fcb9;}
+    .bar:hover {fill: #f7fcb9;} */
+	  .active {fill: #f7fcb9;}
 
+	  
       .mt20 {margin:10px 0;
       font-family:'Futura Today';
       text-transform: uppercase;
