@@ -112,11 +112,10 @@ path.states {
 }
 
 .slide-nav {
-	background-image: url(../images/USATArrows.png);
 	display:block;
 	float:none;
-	height:68px;
-	width:44px;
+	height:46px;
+	width:25px;
 	position:absolute;
 	right:auto;
 	top:50%;
@@ -125,23 +124,27 @@ path.states {
 }
 
 .slide-nav.next {
-	background-position: -44px 0;
-	right:-7px;
+	background-image: url(../images/thin-arrow-next.png);
+/*	background-position: -44px 0;*/
+	right:-10px;
 }
 
 .slide-nav.next:hover {
-	background-position: -44px -68px;
-	right:-7px;
+	/*background-position: -44px -68px;
+	right:-7px;*/
+	opacity:0.6;
 }
 
 .slide-nav.prev {
-	background-position: 0 0;
-	left:-7px;
+	background-image: url(../images/thin-arrow-prev.png);
+	/*background-position: 0 0;*/
+	left:-20px;
 }
 
 .slide-nav.prev:hover {
-	background-position: 0 -68px;
-	left:-7px;
+	/*background-position: 0 -68px;
+	left:-7px;*/
+	opacity:0.6;
 }
 
 #steps {
