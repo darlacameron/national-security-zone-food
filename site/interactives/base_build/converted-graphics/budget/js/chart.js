@@ -10,10 +10,6 @@ var label1 = "cost per ton";
 var label2 = "recipients per ton";
 var label3 = "cost per recipient";
 
-var title1 = "Africa";
-var title2 = "Asia";
-var title3 = "Americas";
-
 var color1 = "#78c679";
 var color2 = "#238443";
 var color3 = "#004529";
@@ -25,24 +21,24 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 
 
 //one of these for each country and each row
-charts("africaCT", '#CTafrica', costTonMax, label1, title1, color1);
-charts("asiaCT", '#CTasia', costTonMax, label1, title2, color2);
-charts("americasCT", '#CTamericas', costTonMax, label1, title3, color3);
+charts("africaCT", '#CTafrica', costTonMax, label1, color1, '$');
+charts("asiaCT", '#CTasia', costTonMax, label1, color2, '$');
+charts("americasCT", '#CTamericas', costTonMax, label1, color3, '$');
 
 //run chart function with specific max for each row
 
-charts("africaRT", '#RTafrica', recipientTonMax, label2, title1, color1);
-charts("asiaRT", '#RTasia', recipientTonMax, label2, title2, color2);
-charts("americasRT", '#RTamericas', recipientTonMax, label2, title3, color3);
+charts("africaRT", '#RTafrica', recipientTonMax, label2, color1);
+charts("asiaRT", '#RTasia', recipientTonMax, label2, color2);
+charts("americasRT", '#RTamericas', recipientTonMax, label2, color3);
 
-charts("africaCR", '#CRafrica', costRecipientMax, label3, title1, color1);
-charts("asiaCR", '#CRasia', costRecipientMax, label3, title2, color2);
-charts("americasCR", '#CRamericas', costRecipientMax, label3, title3, color3);
+charts("africaCR", '#CRafrica', costRecipientMax, label3, color1, '$');
+charts("asiaCR", '#CRasia', costRecipientMax, label3, color2, '$');
+charts("americasCR", '#CRamericas', costRecipientMax, label3, color3, '$');
 
 
 // 'region' is the part of the world, 'id' is used to call the chart within the page, 'max' is the maximum value for that row of charts and 'label' is the y axis label
 
-function charts(region, id, max, label, title, color){
+function charts(region, id, max, label, color, prefix){
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -106,13 +102,6 @@ var yAxis = d3.svg.axis()
 		.attr("fill", "#7c7c7c")
         .text(label);
 
-    // svg.append("text")
-    //     .attr("x", width - 65)             
-    //     .attr("y", 12)
-    //     .attr("class", "title")  
-    //     .text(title);
-
-
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
@@ -122,41 +111,48 @@ var yAxis = d3.svg.axis()
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d[region]); })
         .attr("height", function(d) { return height - y(d[region]); })
-		.attr("fill", color)
+		.attr("fill", color);
         //.on('mouseover', tip.show)
         //.on('mouseout', tip.hide)
         //adding hover stuff here
-        .on('mouseover', function(d){
+        
+	var yTextPadding = 5;
+	
+	svg.selectAll(".bartext")
+	   .data(data)
+	   .enter()
+       .append("text")
+	   .attr("class", function(d){return "bartext y" + d.year;})
+	   .attr("text-anchor", "middle")
+	   .attr("fill", "red")
+	   .attr("x", function(d,i) {
+			return x(d.year)+x.rangeBand()/2;
+		})
+		.attr("y", function(d,i) {
+			return height - (height - y(d[region])) - yTextPadding;
+		})
+		.text(function(d){
+			 return (d3.round(d[region]));
+	    });
+		
+	svg.selectAll(".bar")	
+		.on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
           d3.selectAll('.'+classes).style({'stroke': '#7c7c7c', 'stroke-width': 1}) //matches all of the things w/ the hovered class and gives them a stroke
 								   .classed('active', true)
+								   
+          /*d3.selectAll(".bar").filter(function(d,i) {return (this !== classes);})
+							  .transition().attr('opacity','0.5');
+		  d3.selectAll('.'+classes).style('opacity','1'); */
+  		
         })
         .on('mouseout', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
           d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}) //removes the stroke. 
 			                       .classed('active', false)      
-		
+		  
 		})	
           
-		  
-		 /* var dataSum = d3.sum(data, function(d) { return d[region]; });
-          var dataAvg = dataSum / data.length;
- 
-
-          var line = d3.svg.line()
-          .x(function(d, i) { 
-            // return x(i) + i;
-            return x2(i) +i; 
-          })
-          .y(function(d, i) { return y(50); }); 
-        
-          svg.append("path")
-              .datum(data)
-              .attr("class", "line")
-              .attr("d", line);
-
-        */
-
       });
 
 }
