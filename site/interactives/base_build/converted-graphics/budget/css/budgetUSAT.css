@@ -69,6 +69,10 @@ stroke:#a2a5a1;
       .americas .bar {fill: #004529;}
     .bar:hover {fill: #f7fcb9;} */
 	  .active {fill: #f7fcb9;}
+	  .bartext{fill: #7c7c7c;
+			   font-family:'Futura Today';
+			   font-size:11px;
+	    }
 
       .mt20 {margin:10px 0;
       font-family:'Futura Today';

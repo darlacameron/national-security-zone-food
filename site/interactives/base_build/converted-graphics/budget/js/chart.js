@@ -124,7 +124,6 @@ var yAxis = d3.svg.axis()
        .append("text")
 	   .attr("class", function(d){return "bartext y" + d.year;})
 	   .attr("text-anchor", "middle")
-	   .attr("fill", "red")
 	   .attr("x", function(d,i) {
 			return x(d.year)+x.rangeBand()/2;
 		})
