@@ -132,7 +132,7 @@ var yAxis = d3.svg.axis()
 			return height - (height - y(d[region])) - yTextPadding;
 		})
 		.text(function(d){
-			 return (d3.round(d[region]));
+			 return d3.format(prefix)(d3.round(d[region]));
 	    });
 		
 	svg.selectAll(".bar")	
