@@ -38,7 +38,7 @@ charts("americasCR", '#CRamericas', costRecipientMax, label3, color3, '$');
 
 // 'region' is the part of the world, 'id' is used to call the chart within the page, 'max' is the maximum value for that row of charts and 'label' is the y axis label
 
-function charts(region, id, max, label, color, prefix){
+function charts(region, chartID, max, label, color, prefix) {
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -74,7 +74,7 @@ var yAxis = d3.svg.axis()
   })
 */
   //specifying where to put it
-  var svg = d3.select(id).append("svg")
+  var svg = d3.select(chartID).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -105,24 +105,22 @@ var yAxis = d3.svg.axis()
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
-        .attr("class", function(d){return "bar y" + d.year;})
         .attr('data-value', function(d){return d[region]})
         .attr("x", function(d) { return x(d.year); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d[region]); })
-        .attr("height", function(d) { return height - y(d[region]); })
-		.attr("fill", color);
-        //.on('mouseover', tip.show)
-        //.on('mouseout', tip.hide)
-        //adding hover stuff here
-        
+		.attr("height", function(d) { return height - y(d[region]); })
+		.attr("fill", color)
+		.attr("index_year", function(d, i) { return "index-" + d.year; })
+        .attr("class", function(d){return "bar " + "bar-index-" + d.year;})
+		.attr("color_value", color);
+		
 	var yTextPadding = 5;
 	
 	svg.selectAll(".bartext")
 	   .data(data)
 	   .enter()
        .append("text")
-	   .attr("class", function(d){return "bartext y" + d.year;})
 	   .attr("text-anchor", "middle")
 	   .attr("x", function(d,i) {
 			return x(d.year)+x.rangeBand()/2;
@@ -132,26 +130,34 @@ var yAxis = d3.svg.axis()
 		})
 		.text(function(d){
 			 return d3.format(prefix)(d3.round(d[region]));
-	    });
-		
-	svg.selectAll(".bar")	
+	    })
+		.attr("index_year", function(d, i) { return "index-" + d.year; })
+	    .attr("class", function(d){return "bartext " + "label-index-" + d.year;})
+        .attr("opacity", "0");
+				
+	 svg.selectAll(".bar")	
 		.on('mouseover', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //this finds the class of what you've hovered on
-          d3.selectAll('.'+classes).style({'stroke': '#7c7c7c', 'stroke-width': 1}) //matches all of the things w/ the hovered class and gives them a stroke
+          d3.selectAll('.'+classes).style({'stroke': '#7c7c7c', 'stroke-width': 0.5}) //matches all of the things w/ the hovered class and gives them a stroke
 								   .classed('active', true)
-								   
+		  var text = d3.selectAll(".label-index-" + d.year)
+					   .style("opacity","1");
+        						   
           /*d3.selectAll(".bar").filter(function(d,i) {return (this !== classes);})
 							  .transition().attr('opacity','0.5');
-		  d3.selectAll('.'+classes).style('opacity','1'); */
-  		
+		  d3.selectAll('.'+classes).style('opacity','1');*/
+		
         })
         .on('mouseout', function(d){
           var classes = $(this).attr('class').replace(/ /g,'.'); //re-finds the class, since we're in a new function
           d3.selectAll('.'+classes).style({'stroke': 'none', 'stroke-width': 0}) //removes the stroke. 
 			                       .classed('active', false)      
-		  
+		  var text = d3.selectAll(".label-index-" + d.year)
+					  .style("opacity","0");
+ 
+		
 		})	
-          
+        
       });
 
 }
@@ -160,5 +166,3 @@ function type(d) {
   d.region = +d.region; //coerces values to number
   return d;
 }
-
-
