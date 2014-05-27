@@ -23,23 +23,19 @@
 	margin: 0 auto 20px; 
 	padding: 0; 
 	width: 100%; 
-	max-width:1000px; 
+	max-width:960px; 
 	height:720px;
 	border-top: 1px solid #a2a5a1;
 	border-bottom: 1px solid #a2a5a1;
 	position: relative;
 }
 
-#process {
+.interactive-wrap {
 	width: 960px;
 	height: 500px;
 	/*margin: 60px auto 0 auto;*/
 }
 
-/*#wrapper {
-	margin: 10px 0;
-}
-*/
 #int-title h2{
 	color: #3c3c3c;
 	font-size: 30px;

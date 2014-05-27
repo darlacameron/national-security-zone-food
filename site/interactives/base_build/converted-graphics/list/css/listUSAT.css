@@ -54,15 +54,15 @@ font-family: "Gotham", sans-serif;*/
 
 .bar {stroke-width:0.1px; stroke: #7c7c7c;}
 
-.bulk-grains {fill: #004529;}
-.corncornmeal {fill: #006837;}
-.emergency-pouches {fill: #238443;}
-.flour {fill: #41ab5d;}
-.nonfat-dry-milk {fill: #78c679;}
-.odd-commodities {fill: #addd8e;}
-.oil {fill: #d9f0a3;}
-.peaslentilsbeans {fill: #f7fcb9;}
-.soy-preparations {fill: #ffffe5;}
+.bulk-grains {fill: #DAA520;}
+.corncornmeal {fill: #c96916;}
+.emergency-pouches {fill: #646464;}
+.flour {fill: #1A374D;}
+.nonfat-dry-milk {fill: #c96916;}
+.odd-commodities {fill: #ccc;}
+.oil {fill: #5b9ac3;}
+.peaslentilsbeans {fill: #A4B48C;}
+.soy-preparations {fill: #485f71;}
 
 .stacked {position:relative;}
 
